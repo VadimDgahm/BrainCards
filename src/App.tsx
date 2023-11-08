@@ -1,5 +1,5 @@
 function App() {
-  return <div>Сделаю здесь изменения</div>
+  return <div>делаю фичу</div>
 }
 
 export default App
