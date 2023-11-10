@@ -4,6 +4,7 @@ function App() {
       newww 2222333git
       <button>ddd</button>
       <p>new test</p>
+      <p>max test</p>
     </div>
   )
 }
