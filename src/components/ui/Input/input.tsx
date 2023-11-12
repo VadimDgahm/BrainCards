@@ -10,32 +10,55 @@ export type InputProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input: FC<InputProps> = props => {
+  const { className, errorMessage, title, ...rest } = props
+  const [isOpenEye, setIsOpenEye] = useState(true)
   const [isActiveInput, setIsActiveInput] = useState(false)
+  const [typeInput, setTypeInput] = useState<string | undefined>('text')
   const rootEl = useRef(null)
 
   useEffect(() => {
+    setTypeInput(rest.type)
+    if (rest.type === 'password') {
+      setIsOpenEye(true)
+    }
     const onClick = (e: MouseEvent) => e.target !== rootEl.current && setIsActiveInput(false)
 
     document.addEventListener('click', onClick)
 
     return () => document.removeEventListener('click', onClick)
-  }, [])
-  const { className, errorMessage, title, ...rest } = props
+  }, [rest.type])
+  const onClickSvgEyeHandler = (isOpen: boolean) => {
+    !isOpen ? setTypeInput('text') : setTypeInput('password')
+    setIsOpenEye(isOpen)
+  }
 
   return (
     <div className={s.box}>
-      {title && rest.type !== 'search' && <label>{title}</label>}
+      {title && typeInput !== 'search' && <label>{title}</label>}
       <div className={s.inputBox} onClick={() => setIsActiveInput(true)}>
-        {rest.type === 'search' && <SvgSearchInput isActive={isActiveInput} />}
+        {typeInput === 'search' && <SvgSearchInput isActive={isActiveInput} />}
         <input
           className={`${s.input} ${className} ${errorMessage && s.error} ${
-            rest.type === 'search' && s.search
+            typeInput === 'search' && s.search
           }`}
           ref={rootEl}
           {...rest}
+          type={typeInput}
         />
         {errorMessage && <span className={s.errorMessage}>{errorMessage}</span>}
-        {rest.type === 'password' && <SvgEyeInput disabled={rest.disabled} />}
+        {isOpenEye ? (
+          <SvgEyeInput
+            disabled={rest.disabled}
+            isOpen={isOpenEye}
+            onClickEye={onClickSvgEyeHandler}
+          />
+        ) : (
+          <SvgEyeInput
+            disabled={rest.disabled}
+            isOpen={isOpenEye}
+            onClickEye={onClickSvgEyeHandler}
+          />
+        )}
       </div>
     </div>
   )
