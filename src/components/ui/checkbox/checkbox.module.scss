@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  //   margin-left: 5px;
+}
+
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: transparent;
+  background-color: transparent;
+
+  &:active {
+    background-color: var(--color-dark-100);
+  }
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+  &:focus {
+    background-color: var(--color-dark-100);
+  }
+  &:disabled {
+    background-color: transparent;
+  }
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  margin: 3px;
+  border: 2px solid;
+}
+
+.checked {
+  background-color: var(--color-light-100);
+  color: var(--color-light-100);
+  &:disabled {
+    background-color: var(--color-dark-100);
+    border-color: var(--color-dark-100);
+  }
+}
+
+.unchecked {
+  background-color: transparent;
+  color: var(--color-light-900);
+  &:disabled {
+    border-color: var(--color-dark-100);
+  }
+}
+
+.indicator {
+  width: 18px;
+  height: 18px;
+}
+
+////////////////////////////////////////////////////////////////////////////
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+// .option {
+//   display: block;
+//   margin-bottom: 0.25em;
+// }
+
+// .check__input {
+//   position: absolute;
+//   -moz-appearance: none;
+//   -webkit-appearance: none;
+//   appearance: none;
+// }
+
+// .check__box {
+//   position: absolute;
+//   width: 1em;
+//   height: 1em;
+//   background-color: tomato;
+//   margin-left: -1.2em;
+// }
+
+// .check {
+//   padding-left: 1.2em;
+// }
