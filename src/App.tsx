@@ -1,3 +1,5 @@
+import { Typography } from '@/components/ui/typography'
+
 function App() {
   return (
     <div>
@@ -5,6 +7,9 @@ function App() {
       <button>ddd</button>
       <p>new test</p>
       <p>max test</p>
+      <Typography brightTheme variant={'large'}>
+        New Text
+      </Typography>
     </div>
   )
 }
