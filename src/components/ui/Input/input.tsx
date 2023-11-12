@@ -15,13 +15,10 @@ export const Input: FC<InputProps> = props => {
   const { isActiveInput, isOpenEye, onClickSvgEyeHandler, rootInput, setIsActiveInput, typeInput } =
     useInput(rest.type)
 
-  console.log(isOpenEye)
-
   return (
     <div className={s.box}>
       {title && typeInput !== 'search' && <label>{title}</label>}
       <div className={s.inputBox} onClick={() => setIsActiveInput(true)}>
-        {typeInput === 'search' && <SvgSearchInput isActive={isActiveInput} />}
         <input
           className={`${s.input} ${className} ${errorMessage && s.error} ${
             typeInput === 'search' && s.search
@@ -31,6 +28,7 @@ export const Input: FC<InputProps> = props => {
           type={typeInput}
         />
         {errorMessage && <span className={s.errorMessage}>{errorMessage}</span>}
+        {typeInput === 'search' && <SvgSearchInput isActive={isActiveInput} />}
         {isOpenEye !== undefined &&
           (!isOpenEye ? (
             <SvgEyeInput
