@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import SvgButton from '@/components/ui/button/svg/SvgButton.tsx'
+import SvgButton from '@/components/ui/button/svg/SvgButton'
 
 import { Button } from './'
 
@@ -42,6 +42,18 @@ export const PrimaryWithIcon: Story = {
 export const Secondary: Story = {
   args: {
     children: 'Secondary Button',
+    disabled: false,
+    variant: 'secondary',
+  },
+}
+export const SecondaryWithIcon: Story = {
+  args: {
+    children: (
+      <>
+        <SvgButton />
+        Secondary Button
+      </>
+    ),
     disabled: false,
     variant: 'secondary',
   },

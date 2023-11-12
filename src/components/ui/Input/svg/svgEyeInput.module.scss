@@ -1,0 +1,10 @@
+.svg {
+  cursor: not-allowed;
+  position: absolute;
+  top: 7px;
+  right: 10px;
+}
+
+.disabled path {
+  fill: var(--color-dark-300);
+}

@@ -1,0 +1,14 @@
+.svg {
+  position: absolute;
+  top: 7px;
+  left: 11px;
+
+  fill: var(--color-light-100);
+
+  transition: fill 0.3s linear;
+}
+
+.active {
+  fill: var(--color-light-100);
+  transition: fill 0.3s linear;
+}
