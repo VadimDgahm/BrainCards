@@ -1,0 +1,21 @@
+.svg {
+  cursor: pointer;
+}
+
+.svg path {
+  transition:
+    opacity 0.3s ease-out,
+    fill 0.2s linear;
+}
+
+.svg:hover path {
+  opacity: 0.8;
+}
+
+.svg:active path {
+  fill: var(--color-info-500);
+}
+
+.svg:focus path {
+  border: 1px solid var(--color-info-500);
+}
