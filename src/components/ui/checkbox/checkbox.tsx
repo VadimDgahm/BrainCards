@@ -1,46 +1,52 @@
-import { FC } from 'react'
+import { DetailedHTMLProps, FC, InputHTMLAttributes } from 'react'
 
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import * as LabelRadix from '@radix-ui/react-label'
-import { clsx } from 'clsx'
 
 import s from './checkbox.module.scss'
 
-import { Check } from './check'
+import Check from './check'
 
-type CheckboxPropsType = {
+type DefaultInputPropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>
+
+type CheckboxPropsType = Omit<DefaultInputPropsType, 'type'> & {
   checked?: boolean
   className?: string
   disabled?: boolean
   label?: string
-  // onChange?: (checked: boolean) => void
+  onChange?: (checked: boolean) => void
 }
 
 export const Checkbox: FC<CheckboxPropsType> = props => {
-  const { checked, disabled = false, label, ...restProps } = props
+  const { checked, children, disabled = false, onChange, ...rest } = props
 
-  const className = {
-    buttonContainer: s.buttonContainer,
-    container: s.container,
-    indicator: s.indicator,
-    label: s.label,
-    root: `${s.button} ${checked ? s.checked : s.unchecked}`,
-  }
+  const classNameRoot = `${s.button} ${checked ? s.checked : s.unchecked}`
 
-  debugger
+  // debugger
+  // const color = disabled ? 'var(--color-dark-900)' : 'var(--color-light-700)'
 
   return (
-    <div className={className.container}>
-      <LabelRadix.Root asChild className={className.label}>
+    <div className={s.container}>
+      <LabelRadix.Root asChild>
         <>
-          <div className={className.buttonContainer}>
-            <CheckboxRadix.Root className={className.root} {...props}>
-              <CheckboxRadix.Indicator className={className.indicator}>
-                {checked && <Check />}
-              </CheckboxRadix.Indicator>
+          <div className={s.buttonContainer}>
+            <CheckboxRadix.Root
+              className={classNameRoot}
+              disabled={disabled}
+              onCheckedChange={onChange}
+            >
+              {checked && (
+                <CheckboxRadix.Indicator className={s.indicator}>
+                  <Check />
+                </CheckboxRadix.Indicator>
+              )}
             </CheckboxRadix.Root>
           </div>
-          {label}
+          {children}
+          {/* {children && <span>{children}</span>} */}
         </>
       </LabelRadix.Root>
     </div>

@@ -3,10 +3,9 @@
   align-items: center;
 }
 
-.label {
-  //   margin-left: 5px;
-}
-
+// .label {
+//   //   margin-left: 5px;
+// }
 
 .buttonContainer {
   display: flex;
@@ -15,20 +14,10 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: transparent;
-  background-color: transparent;
-
-  &:active {
-    background-color: var(--color-dark-100);
-  }
+  transition: ease-in 0.2s;
+//   z-index: 0;
   &:hover {
     background-color: var(--color-dark-500);
-  }
-  &:focus {
-    background-color: var(--color-dark-100);
-  }
-  &:disabled {
-    background-color: transparent;
   }
 }
 
@@ -42,22 +31,38 @@
   border-radius: 2px;
   margin: 3px;
   border: 2px solid;
+//   z-index: 2;
+
+  &:active {
+    background-color: var(--color-dark-900);
+  }
+  &:hover {
+    background-color: var(--color-dark-900);
+  }
+  &:focus {
+    background-color: var(--color-dark-900);
+  }
+  &:disabled {
+    background-color: var(--color-dark-100);
+  }
 }
 
 .checked {
-  background-color: var(--color-light-100);
-  color: var(--color-light-100);
+  background-color: transparent;
+  //   background-color: var(--color-dark-100);
   &:disabled {
     background-color: var(--color-dark-100);
     border-color: var(--color-dark-100);
+    cursor: default;
   }
 }
 
 .unchecked {
   background-color: transparent;
-  color: var(--color-light-900);
+  border-color: var(--color-light-900);
   &:disabled {
     border-color: var(--color-dark-100);
+    cursor: default;
   }
 }
 
@@ -77,29 +82,3 @@
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
-
-/////////////////////////////////////////////////////////////////////////////
-
-// .option {
-//   display: block;
-//   margin-bottom: 0.25em;
-// }
-
-// .check__input {
-//   position: absolute;
-//   -moz-appearance: none;
-//   -webkit-appearance: none;
-//   appearance: none;
-// }
-
-// .check__box {
-//   position: absolute;
-//   width: 1em;
-//   height: 1em;
-//   background-color: tomato;
-//   margin-left: -1.2em;
-// }
-
-// .check {
-//   padding-left: 1.2em;
-// }
