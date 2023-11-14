@@ -12,34 +12,87 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const CheckDefault: Story = {
   args: {
     checked: true,
   },
 }
-export const DefaultWithLabel: Story = {
+export const UnCheckDefault: Story = {
+  args: {
+    checked: false,
+  },
+}
+export const CheckDefaultWithLabel: Story = {
   args: {
     checked: true,
     children: 'Check-box',
   },
 }
-export const Active: Story = {
+export const UnCheckDefaultWithLabel: Story = {
+  args: {
+    checked: false,
+    children: 'Check-box',
+  },
+}
+export const CheckActive: Story = {
   args: {
     checked: true,
+  },
+  parameters: {
+    pseudo: { active: true },
+  },
+}
+export const UnCheckActive: Story = {
+  args: {
+    checked: false,
+  },
+  parameters: {
+    pseudo: { active: true },
   },
 }
 
-export const Hover: Story = {
+export const CheckHover: Story = {
   args: {
     checked: true,
   },
+  parameters: {
+    pseudo: { hover: true },
+  },
 }
-export const Focus: Story = {
+export const UnCheckHover: Story = {
+  args: {
+    checked: false,
+  },
+  parameters: {
+    pseudo: { hover: true },
+  },
+}
+
+export const CheckFocus: Story = {
   args: {
     checked: true,
   },
+  parameters: {
+    pseudo: { focus: true },
+  },
 }
-export const Disabled: Story = {
+export const UnChekFocus: Story = {
+  args: {
+    checked: true,
+  },
+  parameters: {
+    pseudo: { focus: true },
+  },
+}
+
+export const CheckDisabled: Story = {
+  args: {
+    checked: true,
+    disabled: true,
+  },
+}
+
+export const UnCheckDisabled: Story = {
   args: {
     checked: false,
     disabled: true,

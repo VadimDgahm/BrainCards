@@ -3,10 +3,6 @@
   align-items: center;
 }
 
-// .label {
-//   //   margin-left: 5px;
-// }
-
 .buttonContainer {
   display: flex;
   justify-content: center;
@@ -15,9 +11,15 @@
   height: 36px;
   border-radius: 50%;
   transition: ease-in 0.2s;
-//   z-index: 0;
+  &:active,
+  &:focus {
+    background-color: var(--color-dark-100);
+  }
   &:hover {
     background-color: var(--color-dark-500);
+  }
+  &:disabled {
+    background-color: transparent;
   }
 }
 
@@ -31,38 +33,33 @@
   border-radius: 2px;
   margin: 3px;
   border: 2px solid;
-//   z-index: 2;
-
-  &:active {
-    background-color: var(--color-dark-900);
-  }
+  background-color: var(--color-dark-500);
+  &:active,
   &:hover {
-    background-color: var(--color-dark-900);
+    // background-color: var(--color-dark-500);
   }
   &:focus {
-    background-color: var(--color-dark-900);
-  }
-  &:disabled {
-    background-color: var(--color-dark-100);
+    // background-color: transparent;
   }
 }
 
 .checked {
   background-color: transparent;
-  //   background-color: var(--color-dark-100);
+  &:focus {
+    // background-color: transparent;
+  }
   &:disabled {
     background-color: var(--color-dark-100);
     border-color: var(--color-dark-100);
-    cursor: default;
   }
 }
 
 .unchecked {
   background-color: transparent;
-  border-color: var(--color-light-900);
+  //   border-color: var(--color-light-900);
   &:disabled {
+    background-color: transparent;
     border-color: var(--color-dark-100);
-    cursor: default;
   }
 }
 

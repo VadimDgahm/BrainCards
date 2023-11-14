@@ -37,16 +37,17 @@ export const Checkbox: FC<CheckboxPropsType> = props => {
               className={classNameRoot}
               disabled={disabled}
               onCheckedChange={onChange}
+              // {...rest}
             >
               {checked && (
                 <CheckboxRadix.Indicator className={s.indicator}>
-                  <Check />
+                  <Check color={checked ? 'white' : 'black'} />
                 </CheckboxRadix.Indicator>
               )}
             </CheckboxRadix.Root>
           </div>
-          {children}
-          {/* {children && <span>{children}</span>} */}
+          {/* {children} */}
+          {children && <span>{children}</span>}
         </>
       </LabelRadix.Root>
     </div>
