@@ -9,9 +9,9 @@
 
   padding: 6px 28px;
 
-  font-size: 14px;
+  font-size: var(--font-size-s);
   font-weight: var(--font-weight-bold);
-  line-height: 24px;
+  line-height: var(--line-height-m);
   color: var(--color-light-100);
   word-wrap: break-word;
 
