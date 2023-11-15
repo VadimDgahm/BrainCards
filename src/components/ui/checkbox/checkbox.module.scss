@@ -18,7 +18,7 @@
   &:hover {
     background-color: var(--color-dark-500);
   }
-  &:disabled {
+  &.disabled {
     background-color: transparent;
   }
 }
@@ -32,22 +32,16 @@
   height: 18px;
   border-radius: 2px;
   margin: 3px;
-  border: 2px solid;
+  border: 2px solid var(--color-light-900);
   background-color: var(--color-dark-500);
-  &:active,
-  &:hover {
-    // background-color: var(--color-dark-500);
-  }
-  &:focus {
-    // background-color: transparent;
+  background-color: transparent;
+  &:disabled {
+    cursor: default;
+    border-color: var(--color-dark-100);
   }
 }
 
 .checked {
-  background-color: transparent;
-  &:focus {
-    // background-color: transparent;
-  }
   &:disabled {
     background-color: var(--color-light-700);
     border-color: var(--color-dark-100);
@@ -55,8 +49,6 @@
 }
 
 .unchecked {
-  background-color: transparent;
-  //   border-color: var(--color-light-900);
   &:disabled {
     background-color: transparent;
     border-color: var(--color-dark-100);
@@ -68,14 +60,6 @@
   height: 18px;
 }
 
-////////////////////////////////////////////////////////////////////////////
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  border: 0;
-  padding: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
+.disabled {
+  color: var(--color-dark-100);
 }
