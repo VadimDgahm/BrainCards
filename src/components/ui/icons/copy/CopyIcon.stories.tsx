@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CopyIcon } from '@/components/ui/icons/copy/CopyIcon.tsx'
+import { CopyIcon } from '@/components/ui/icons/copy/CopyIcon'
 
 const meta = {
   argTypes: {

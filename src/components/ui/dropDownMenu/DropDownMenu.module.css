@@ -1,0 +1,20 @@
+.container{
+    padding: 12px;
+    border-radius: 4px;
+    border: 1px solid var(--color-dark-500);
+    background-color: var(--color-dark-700);
+    position: relative;
+}
+.container::before{
+    content: '';
+    position: absolute;
+    top: -6px;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    transform: rotateZ(45deg);
+    background-color: var(--color-dark-700);
+    border-left:  1px solid var(--color-dark-500);
+    border-top:  1px solid var(--color-dark-500);
+}

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CopyOutline } from '@/components/ui/icons/copy-outline/CopyOutline.tsx'
+import { CopyOutline } from '@/components/ui/icons/copy-outline/CopyOutline'
 
 const meta = {
   argTypes: {
