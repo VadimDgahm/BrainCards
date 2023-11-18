@@ -1,6 +1,12 @@
-import { Typography } from '@/components/ui/typography'
+import SliderDemo from '@/components/ui/slider/slider'
+
 function App() {
-  return <div>APP пустая</div>
+  return (
+    <>
+      <div></div>
+      <SliderDemo />
+    </>
+  )
 }
 
 export default App
