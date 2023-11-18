@@ -14,7 +14,7 @@
 .brightTheme {
   // удалить background-color после реализации светлой темы
   color: var(--color-light-100) !important;
-  background-color: black;
+  background-color: black !important;
 }
 
 .link1.brightTheme,
