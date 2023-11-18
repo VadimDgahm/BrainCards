@@ -1,5 +1,6 @@
+import { Typography } from '@/components/ui/typography'
 function App() {
-  return <div>App путсая</div>
+  return <div>APP пустая</div>
 }
 
 export default App

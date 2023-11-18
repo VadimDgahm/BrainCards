@@ -1,5 +1,6 @@
 .svg {
-  cursor: pointer;
+  width: 16px;
+  height: 16px;
 }
 
 .svg path {
@@ -8,14 +9,3 @@
     fill 0.2s linear;
 }
 
-.svg:hover path {
-  opacity: 0.8;
-}
-
-.svg:active path {
-  fill: var(--color-info-500);
-}
-
-.svg:focus path {
-  border: 1px solid var(--color-info-500);
-}

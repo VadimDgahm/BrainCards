@@ -1,0 +1,26 @@
+.content {
+    display: flex;
+    padding: 12px 0;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s linear, background-color 0.3s linear;
+    &:hover {
+        color: var( --color-dark-100);
+    }
+}
+.content:hover svg path{
+    fill: var(--color-dark-100);
+}
+.line{
+    border-bottom: 1px solid var(--color-dark-500);
+}
+.title {
+    margin-left: 6px;
+    font-size: var(--font-size-xs);
+    font-family: Roboto;
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-s);
+}
+.line{
+
+}

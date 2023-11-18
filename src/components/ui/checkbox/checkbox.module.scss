@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: ease-in 0.2s;
+  &:active,
+  &:focus {
+    background-color: var(--color-dark-100);
+  }
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+  &.disabled {
+    background-color: transparent;
+  }
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  margin: 3px;
+  border: 2px solid var(--color-light-900);
+  background-color: var(--color-dark-500);
+  background-color: transparent;
+  &:disabled {
+    cursor: default;
+    border-color: var(--color-dark-100);
+  }
+}
+
+.checked {
+  &:disabled {
+    background-color: var(--color-light-700);
+    border-color: var(--color-dark-100);
+  }
+}
+
+.unchecked {
+  &:disabled {
+    background-color: transparent;
+    border-color: var(--color-dark-100);
+  }
+}
+
+.indicator {
+  width: 18px;
+  height: 18px;
+}
+
+.disabled {
+  color: var(--color-dark-100);
+}
