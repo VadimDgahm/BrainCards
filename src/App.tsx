@@ -1,17 +1,5 @@
-import { Typography } from '@/components/ui/typography'
-
 function App() {
-  return (
-    <div>
-      newww 2222333git
-      <button>ddd</button>
-      <p>new test</p>
-      <p>max test</p>
-      <Typography brightTheme variant={'large'}>
-        New Text
-      </Typography>
-    </div>
-  )
+  return <div>App путсая</div>
 }
 
 export default App

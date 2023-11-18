@@ -56,4 +56,4 @@ const ComponentCollection = {
   subtitle2: 'p',
 } as const
 
-type ComponentCollectionTagVariants = keyof typeof ComponentCollection
+export type ComponentCollectionTagVariants = keyof typeof ComponentCollection
