@@ -1,6 +1,11 @@
-import { Typography } from '@/components/ui/typography'
+import { Input } from '@/components/ui/Input'
+
 function App() {
-  return <div>APP пустая</div>
+  return (
+    <div>
+      <Input />
+    </div>
+  )
 }
 
 export default App
