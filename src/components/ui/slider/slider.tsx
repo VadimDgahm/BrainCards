@@ -1,17 +1,18 @@
-import React, { ChangeEvent } from 'react'
-
-type Props = {
-  cb: (values: number[]) => void
-  max: number
-  values: number[]
-}
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/components/ui/typography'
 import * as SliderRadix from '@radix-ui/react-slider'
 
 import s from './slider.module.scss'
 
-export const Slider = ({ cb, max, values, ...rest }: Props) => {
+export const Slider = forwardRef<
+  ElementRef<typeof SliderRadix.Root>,
+  ComponentPropsWithoutRef<typeof SliderRadix.Root> & {
+    cb: (values: number[]) => void
+    max: number
+    values: number[]
+  }
+>(({ cb, max, values, ...rest }, ref) => {
   const updateSliderNumbersCb = (numbers: number[]) => {
     cb(numbers)
   }
@@ -25,6 +26,7 @@ export const Slider = ({ cb, max, values, ...rest }: Props) => {
         className={s.SliderRoot}
         max={max}
         onValueChange={updateSliderNumbersCb}
+        ref={ref}
         step={1}
         value={values}
         {...rest}
@@ -42,4 +44,4 @@ export const Slider = ({ cb, max, values, ...rest }: Props) => {
       </Typography>
     </form>
   )
-}
+})
