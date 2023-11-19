@@ -8,13 +8,13 @@ import s from './slider.module.scss'
 export const Slider = forwardRef<
   ElementRef<typeof SliderRadix.Root>,
   ComponentPropsWithoutRef<typeof SliderRadix.Root> & {
-    cb: (values: number[]) => void
-    max: number
+    maxValue: number
+    updateValues: (values: number[]) => void
     values: number[]
   }
->(({ cb, max, values, ...rest }, ref) => {
-  const updateSliderNumbersCb = (numbers: number[]) => {
-    cb(numbers)
+>(({ maxValue, updateValues, values, ...rest }, ref) => {
+  const onValueChangeHandler = (numbers: number[]) => {
+    updateValues(numbers)
   }
 
   return (
@@ -24,8 +24,8 @@ export const Slider = forwardRef<
       </Typography>
       <SliderRadix.Root
         className={s.SliderRoot}
-        max={max}
-        onValueChange={updateSliderNumbersCb}
+        max={maxValue}
+        onValueChange={onValueChangeHandler}
         ref={ref}
         step={1}
         value={values}

@@ -4,12 +4,12 @@ import { Slider } from '@/components/ui/slider/slider'
 
 function App() {
   const [values, setValues] = useState([0, 20])
-  const sliderCB = (newValues: number[]) => setValues(newValues)
+  const sliderCallback = (newValues: number[]) => setValues(newValues)
 
   return (
     <>
       <div></div>
-      <Slider cb={sliderCB} max={30} values={values} />
+      <Slider maxValue={30} updateValues={sliderCallback} values={values} />
     </>
   )
 }
