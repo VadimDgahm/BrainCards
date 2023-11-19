@@ -1,28 +1,45 @@
 import React, { ChangeEvent } from 'react'
 
+type Props = {
+  cb: (values: number[]) => void
+  max: number
+  values: number[]
+}
+
 import { Typography } from '@/components/ui/typography'
-import * as Slider from '@radix-ui/react-slider'
+import * as SliderRadix from '@radix-ui/react-slider'
 
 import s from './slider.module.scss'
 
-const SliderDemo = () => (
-  <form className={s.SliderStyle}>
-    <Typography variant={'body1'}>
-      <span className={s.SliderNumbers}>2</span>
-    </Typography>
-    <Slider.Root className={s.SliderRoot} defaultValue={[0, 100]} step={1}>
-      <Slider.Track className={s.SliderTrack}>
-        <Slider.Range className={s.SliderRange} />
-      </Slider.Track>
+export const Slider = ({ cb, max, values, ...rest }: Props) => {
+  const updateSliderNumbersCb = (numbers: number[]) => {
+    cb(numbers)
+  }
 
-      <Slider.Thumb aria-label={'Volume1'} className={s.SliderThumb} />
+  return (
+    <form className={s.SliderStyle}>
+      <Typography variant={'body1'}>
+        <span className={s.SliderNumbers}>{values[0]}</span>
+      </Typography>
+      <SliderRadix.Root
+        className={s.SliderRoot}
+        max={max}
+        onValueChange={updateSliderNumbersCb}
+        step={1}
+        value={values}
+        {...rest}
+      >
+        <SliderRadix.Track className={s.SliderTrack}>
+          <SliderRadix.Range className={s.SliderRange} />
+        </SliderRadix.Track>
 
-      <Slider.Thumb aria-label={'Volume2'} className={s.SliderThumb} />
-    </Slider.Root>
-    <Typography variant={'body1'}>
-      <span className={s.SliderNumbers}>10</span>
-    </Typography>
-  </form>
-)
+        <SliderRadix.Thumb aria-label={'Volume1'} className={s.SliderThumb} />
 
-export default SliderDemo
+        <SliderRadix.Thumb aria-label={'Volume2'} className={s.SliderThumb} />
+      </SliderRadix.Root>
+      <Typography variant={'body1'}>
+        <span className={s.SliderNumbers}>{values[1]}</span>
+      </Typography>
+    </form>
+  )
+}

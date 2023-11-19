@@ -1,10 +1,15 @@
-import SliderDemo from '@/components/ui/slider/slider'
+import { useState } from 'react'
+
+import { Slider } from '@/components/ui/slider/slider'
 
 function App() {
+  const [values, setValues] = useState([0, 20])
+  const sliderCB = (newValues: number[]) => setValues(newValues)
+
   return (
     <>
       <div></div>
-      <SliderDemo />
+      <Slider cb={sliderCB} max={30} values={values} />
     </>
   )
 }

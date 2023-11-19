@@ -10,6 +10,7 @@
   height: 36px;
   width: 36px;
   border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
   display: flex;
   align-items: center; /* Выравнивание по вертикали по центру */
   justify-content: center;
@@ -71,5 +72,5 @@
 
 .SliderThumb:focus {
   outline: none;
-  box-shadow: 0 0 0 5px var(--color-dark-300);
+  box-shadow: 0 0 0 2px var(--color-dark-300);
 }
