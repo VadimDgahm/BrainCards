@@ -4,7 +4,7 @@ import { Typography } from '@/components/ui/typography'
 import * as SliderRadix from '@radix-ui/react-slider'
 
 import s from './slider.module.scss'
-//
+
 export const Slider = forwardRef<
   ElementRef<typeof SliderRadix.Root>,
   ComponentPropsWithoutRef<typeof SliderRadix.Root> & {
