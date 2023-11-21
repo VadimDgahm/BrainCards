@@ -22,7 +22,7 @@ button {
   width: 16px;
   height: 16px;
 
-  background-color: black;
+  // background-color: black;
   border: 3px solid var(--color-accent-500);
   border-radius: 50%;
 
@@ -88,5 +88,5 @@ button {
 }
 
 .RadioLabel {
-  color: var(--color-light-100) !important;
+  color: var(--color-light-100);
 }
