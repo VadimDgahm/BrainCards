@@ -1,20 +1,20 @@
 @mixin base-styles($fontSize, $lineHeight, $fontWeight) {
   display: block;
 
-  width: fit-content; // спросить, нужно ли здесь ширина, т к без нее ссылка выбирается при движении мыши по всей ширине элемента
+  width: fit-content;
   margin: 0;
 
   font-family: var(--font-family-primary);
   font-size: $fontSize;
   font-weight: $fontWeight;
   line-height: $lineHeight;
-  color: var(--dark-900, #000);
+  color: var(--color-light-100);
 }
 
 .brightTheme {
   // удалить background-color после реализации светлой темы
-  color: var(--color-light-100) !important;
-  background-color: black !important;
+  color: var(--color-dark-700) !important;
+  background-color: var(--color-light-100) !important;
 }
 
 .link1.brightTheme,
