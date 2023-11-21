@@ -10,7 +10,7 @@ export const RadioGroup: FC<
   RadioGroupProps & Omit<TypographyProps, 'as' | 'children' | 'className'>
 > = props => {
   return (
-    <div>
+    <div className={s.sss}>
       <RadixRadioGroup.Root
         className={`${s.RadioGroupRoot}${props.disabled ? ` ${s.DisabledRadioGroup}` : ''}`}
         tabIndex={props.disabled ? -1 : undefined}
