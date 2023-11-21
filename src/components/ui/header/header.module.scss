@@ -1,85 +1,39 @@
-.input {
-  width: 100%;
-  padding: 6px 12px;
-
-  font-size: var(--font-size-m);
-
-  background: none;
-  border: 1px solid var(--color-dark-100);
-  border-radius: 2px;
-  outline: none;
-
-  transition:
-    background-color 0.3s linear,
-    border 0.3s linear;
-
-  &:focus {
-    border: 1px solid var(--color-info-700);
-  }
-
-  &:hover {
-    background-color: var(--color-dark-500);
-    border: 1px solid var(--color-light-900);
-  }
-
-  &:active {
-    border: 1px solid var(--color-light-900);
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background: none;
-    border: 1px solid var(--color-dark-300);
-  }
-}
-
-input[type='search'] {
-  appearance: none;
-
-  &::-webkit-search-cancel-button {
-    cursor: pointer;
-
-    display: block;
-
-    width: 10px;
-    height: 10px;
-
-    appearance: none;
-    background-image: url('./svg/close.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
-
-.box {
+.HeaderRoot {
   display: flex;
-  flex-direction: column;
-  width: 284px;
-  font-size: var(--font-size-s);
+  align-items: center;
+  justify-content: flex-end;
+
+  width: 80rem;
+  height: 3.75rem;
+  margin: 0 auto;
+  padding: 0.75rem 8.5rem;
+
+  background-color: var(--color-dark-700);
 }
 
-.box label {
-  display: block;
-  color: var(--color-dark-100);
+.Logo {
+  position: fixed;
+  margin-right: auto;
 }
 
-.inputBox {
-  position: relative;
-  display: block;
+.SignButton {
+  margin-left: auto;
+  padding: 0.375rem 1.75rem;
 }
 
-.error {
-  border: 1px solid var(--color-danger-300);
+.SignedUser {
+  cursor: pointer;
+
+  display: flex;
+  gap: 0.88rem;
+  align-items: center;
+
+  margin-left: auto;
 }
 
-.error::placeholder {
-  color: var(--color-danger-300);
-}
-
-.errorMessage {
-  color: var(--color-danger-300);
-}
-
-.search {
-  padding: 6px 12px 6px 41px;
+.UserName {
+  cursor: pointer;
+  color: white;
+  text-decoration: underline;
+  text-decoration-style: dotted;
 }

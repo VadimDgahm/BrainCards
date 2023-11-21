@@ -1,13 +1,15 @@
-import { Ref, SVGProps } from 'react'
+import { SVGProps } from 'react'
 
-const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
+import s from './logo.module.scss'
+
+const SvgComponent = (props: SVGProps<SVGSVGElement>) => (
   <svg
     fill={'none'}
     height={'1em'}
-    ref={ref}
     width={'1em'}
     xmlns={'http://www.w3.org/2000/svg'}
     {...props}
+    className={s.LogoRoot}
   >
     <path
       d={

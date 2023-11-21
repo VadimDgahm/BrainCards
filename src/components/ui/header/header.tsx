@@ -1,49 +1,38 @@
-import { ComponentPropsWithoutRef, FC } from 'react'
+import { FC } from 'react'
 
-import { useInput } from '@/components/ui/Input/hook/hookInput'
-import SvgEyeInput from '@/components/ui/Input/svg/SvgEyeInput'
-import SvgSearchInput from '@/components/ui/Input/svg/SvgSearchInput'
+import defaultAvatar from '@/components/img/avatar.png'
+import { Avatar } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import Logo from '@/components/ui/header/logo/logo'
+import { Typography } from '@/components/ui/typography'
 
-import s from './input.module.scss'
+import s from './header.module.scss'
 
-export type InputProps = {
-  errorMessage?: string
-} & ComponentPropsWithoutRef<'input'>
+type HeaderProps = {
+  isLoggedIn: boolean
+  profileInfo?: {
+    avatar?: string
+    name: string
+  } | null
+}
 
-export const Input: FC<InputProps> = props => {
-  const { className, errorMessage, title, ...rest } = props
-  const { isActiveInput, isOpenEye, onClickSvgEyeHandler, rootInput, setIsActiveInput, typeInput } =
-    useInput(rest.type)
-
+export const Header: FC<HeaderProps> = ({ isLoggedIn = false, profileInfo }) => {
   return (
-    <div className={s.box}>
-      {title && typeInput !== 'search' && <label>{title}</label>}
-      <div className={s.inputBox} onClick={() => setIsActiveInput(true)}>
-        <input
-          className={`${s.input} ${className} ${errorMessage && s.error} ${
-            typeInput === 'search' && s.search
-          }`}
-          ref={rootInput}
-          {...rest}
-          type={typeInput}
-        />
-        {errorMessage && <span className={s.errorMessage}>{errorMessage}</span>}
-        {typeInput === 'search' && <SvgSearchInput isActive={isActiveInput} />}
-        {isOpenEye !== undefined &&
-          (!isOpenEye ? (
-            <SvgEyeInput
-              disabled={rest.disabled}
-              isOpen={isOpenEye}
-              onClickEye={onClickSvgEyeHandler}
-            />
-          ) : (
-            <SvgEyeInput
-              disabled={rest.disabled}
-              isOpen={isOpenEye}
-              onClickEye={onClickSvgEyeHandler}
-            />
-          ))}
-      </div>
+    <div className={s.HeaderRoot}>
+      <Logo />
+      {isLoggedIn ? (
+        <div className={s.SignedUser}>
+          <Typography className={s.UserName} variant={'subtitle1'}>
+            Ivan
+          </Typography>
+          <Avatar name={profileInfo?.name ?? 'user'} src={profileInfo?.avatar ?? defaultAvatar} />
+        </div>
+      ) : (
+        <Button className={s.SignButton} variant={'primary'}>
+          Sign in
+        </Button>
+      )}
+
     </div>
   )
 }
