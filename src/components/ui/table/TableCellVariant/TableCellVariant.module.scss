@@ -1,0 +1,24 @@
+.cell {
+  display: flex;
+  align-items: center;
+}
+
+.star,
+.indentation {
+  margin-right: 10px;
+}
+
+.attached,
+.icon {
+  cursor: pointer;
+
+  &:hover {
+    path {
+      fill: var(--color-dark-100);
+    }
+  }
+}
+
+.sort {
+  margin-right: 4px;
+}
