@@ -4,16 +4,14 @@ import s from './svgEyeInput.module.scss'
 
 type PropsType = {
   disabled?: boolean
-  isOpen: boolean
-  onClickEye: (isOpen: boolean) => void
+  isOpen?: boolean
 }
-const SvgEyeInput: FC<PropsType> = ({ disabled, isOpen, onClickEye }) => {
+const SvgEyeInput: FC<PropsType> = ({ disabled, isOpen = true }) => {
   return isOpen ? (
     <svg
       className={`${s.svg} ${disabled && s.disabled}`}
       fill={'none'}
       height={'24'}
-      onClick={() => onClickEye(false)}
       viewBox={'0 0 24 24'}
       width={'24'}
       xmlns={'http://www.w3.org/2000/svg'}
@@ -36,7 +34,6 @@ const SvgEyeInput: FC<PropsType> = ({ disabled, isOpen, onClickEye }) => {
       className={s.svg}
       fill={'none'}
       height={'24'}
-      onClick={() => onClickEye(true)}
       viewBox={'0 0 24 24'}
       width={'24'}
       xmlns={'http://www.w3.org/2000/svg'}

@@ -1,10 +1,8 @@
-import { ReactNode } from 'react'
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
 import s from './typography.module.scss'
 
-import IntrinsicElements = JSX.IntrinsicElements
-
-export type TypographyProps<T extends ComponentCollectionTagVariants = 'body1'> = {
+export type TypographyProps<T extends ElementType> = {
   as?: T
   brightTheme?: boolean
   children: ReactNode
@@ -24,12 +22,12 @@ export type TypographyProps<T extends ComponentCollectionTagVariants = 'body1'> 
     | 'subtitle2'
 }
 
-export const Typography = <T extends ComponentCollectionTagVariants = 'body1'>(
-  props: TypographyProps<T>
+export const Typography = <T extends ElementType = 'p'>(
+  props: TypographyProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>
 ) => {
-  const { as: Component = 'p', brightTheme, className, variant = 'body1', ...rest } = props
+  const { as, brightTheme, className, variant = 'body1', ...rest } = props
 
-  const ComponentElement = ComponentCollection[variant] as keyof IntrinsicElements
+  const ComponentElement = as || 'p'
 
   return (
     <ComponentElement
@@ -40,20 +38,3 @@ export const Typography = <T extends ComponentCollectionTagVariants = 'body1'>(
     />
   )
 }
-
-const ComponentCollection = {
-  body1: 'p',
-  body2: 'p',
-  caption: 'caption',
-  h1: 'h1',
-  h2: 'h2',
-  h3: 'h3',
-  large: 'p',
-  link1: 'a',
-  link2: 'a',
-  overline: 'p',
-  subtitle1: 'p',
-  subtitle2: 'p',
-} as const
-
-type ComponentCollectionTagVariants = keyof typeof ComponentCollection
