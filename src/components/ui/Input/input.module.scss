@@ -73,8 +73,7 @@ input[type='search'] {
 .inputBox {
   position: relative;
   display: block;
-
-  // height: 80px; //- нужен, чтобы текст при отправке формы не скакал, но если его выставить, начинает баловаться глаз
+  //height: 80px;
 }
 
 .error {

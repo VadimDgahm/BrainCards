@@ -35,15 +35,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         {title && typeInput !== 'search' && <label>{title}</label>}
         <div className={s.inputBox} onClick={() => setIsActiveInput(true)}>
           {label}
-          <div className={s.inputContainer}>
-            <input
-              className={classNames}
-              // ref={rootInput}
-              ref={ref}
-              {...rest}
-              type={typeInput}
-            />
-          </div>
+          <input
+            className={classNames}
+            // ref={rootInput}
+            ref={ref}
+            {...rest}
+            type={typeInput}
+          />
           {/*{errorMessage && <span className={s.errorMessage}>{errorMessage}</span>}*/}
           {errorMessage && (
             <Typography className={s.errorMessage} variant={'caption'}>
@@ -68,5 +66,5 @@ const showEyeIcon = (
     </button>
   )
 
-/*обернуто forwardRef, ref = {ref}, ref = {rootInput} и rootInput в пропсах закоменчено, в errorMessage текст
- упакован в типографию, чтобы им можно было управлять*/
+/*обернуто forwardRef, ref = {ref}, ref = {rootInput} и rootInput в пропсах закоменчено, errorMessage обернуто
+ типографией, чтобы задать стили*/
