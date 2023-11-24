@@ -1,14 +1,17 @@
 .input {
   width: 100%;
   padding: 6px 12px;
+
   font-size: var(--font-size-m);
+
   background: none;
   border: 1px solid var(--color-dark-100);
   border-radius: 2px;
   outline: none;
 
-  transition: background-color 0.3s linear,
-  border 0.3s linear;
+  transition:
+    background-color 0.3s linear,
+    border 0.3s linear;
 
   &:focus {
     border: 1px solid var(--color-info-700);
@@ -47,12 +50,12 @@ input[type='search'] {
     background-position: center;
   }
 }
-.buttonEye{
+
+.buttonEye {
   all: inherit;
   position: absolute;
   top: 6px;
   right: 10px;
-
 }
 
 .box {
@@ -70,6 +73,8 @@ input[type='search'] {
 .inputBox {
   position: relative;
   display: block;
+
+  // height: 80px; //- нужен, чтобы текст при отправке формы не скакал, но если его выставить, начинает баловаться глаз
 }
 
 .error {
@@ -81,7 +86,7 @@ input[type='search'] {
 }
 
 .errorMessage {
-  color: var(--color-danger-300);
+  color: var(--color-danger-300) !important;
 }
 
 .search {

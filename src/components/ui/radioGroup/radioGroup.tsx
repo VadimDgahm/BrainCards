@@ -1,4 +1,4 @@
-import { ElementRef, FC, forwardRef } from 'react'
+import { ElementRef, ElementType, FC, forwardRef } from 'react'
 
 import { Typography, TypographyProps } from '@/components/ui/typography'
 import * as RadixRadioGroup from '@radix-ui/react-radio-group'
@@ -6,12 +6,12 @@ import { RadioGroupProps } from '@radix-ui/react-radio-group'
 
 import s from './radioGroup.module.scss'
 
-type CustomRadioGroupProps = RadioGroupProps &
-  Omit<TypographyProps, 'as' | 'children' | 'className'>
+type CustomRadioGroupProps<T extends ElementType> = RadioGroupProps &
+  Omit<TypographyProps<T>, 'as' | 'children' | 'className'>
 
 export const RadioGroup = forwardRef<
   ElementRef<typeof RadixRadioGroup.Root>,
-  CustomRadioGroupProps
+  CustomRadioGroupProps<'p'>
 >(({ defaultValue, disabled, onChange, value, variant, ...rest }, ref) => {
   return (
     <div className={s.sss}>
@@ -38,7 +38,7 @@ type BigRadioProps = {
   radioQuantity: number
   values: string[]
 } & RadioGroupProps &
-  Omit<TypographyProps, 'as' | 'children' | 'className'>
+  Omit<TypographyProps<'p'>, 'as' | 'children' | 'className'>
 
 export const BigRadioGroup: FC<BigRadioProps> = ({ values, variant }) => {
   return (

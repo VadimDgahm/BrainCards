@@ -32,7 +32,6 @@ export const Header: FC<HeaderProps> = ({ isLoggedIn = false, profileInfo }) => 
           Sign in
         </Button>
       )}
-
     </div>
   )
 }
