@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form'
 
-import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox'
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
@@ -8,27 +7,34 @@ import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
-import s from './sign-in.module.scss'
+import s from './sign-up.module.scss'
 
 import { Button } from '../../ui/button'
 
-const loginSchema = z.object({
-  email: z.string().email({ message: 'Invalid email address' }),
-  password: z
-    .string()
-    .min(3, 'Password has to be at least 3 characters long')
-    .max(30, 'Password should be less than' + ' 30 characters'),
-  rememberMe: z.boolean(),
-})
+const passwordSchema = z
+  .string()
+  .min(3, 'Password has to be at least 3 characters long')
+  .max(30, 'Password should be less than 30 characters')
+
+const loginSchema = z
+  .object({
+    confirm: passwordSchema.min(1, 'Confirm your password'),
+    email: z.string().email({ message: 'Invalid email address' }),
+    password: passwordSchema,
+  })
+  .refine((data: { confirm: string; password: string }) => data.password === data.confirm, {
+    message: "Passwords don't match",
+    path: ['confirm'],
+  })
 
 type FormValues = z.infer<typeof loginSchema>
 
-export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
+export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
+      confirm: '',
       email: '',
       password: '',
-      rememberMe: true,
     },
     mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
@@ -37,11 +43,11 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
   return (
     <>
       <DevTool control={control} />
-      <Card className={s.signInWrapper}>
-        <Typography className={s.signInTitle} variant={'large'}>
-          Sign in
+      <Card className={s.signUpWrapper}>
+        <Typography as={'h1'} className={s.signUpTitle} variant={'large'}>
+          Sign Up
         </Typography>
-        <form className={s.signInForm} onSubmit={handleSubmit(onSubmit)}>
+        <form className={s.signUpForm} onSubmit={handleSubmit(onSubmit)}>
           <ControlledInput
             className={s.emailInput}
             control={control}
@@ -57,17 +63,16 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
             placeholder={'Password'}
             type={'password'}
           />
-          <ControlledCheckbox
-            containerClassName={s.checkbox}
+          <ControlledInput
+            className={s.confirmInput}
             control={control}
-            label={'remember Me'}
-            name={'rememberMe'}
+            label={'Confirm Password'}
+            name={'confirm'}
+            placeholder={'Confirm Password'}
+            type={'password'}
           />
-          <Typography className={s.repairPassword} variant={'body2'}>
-            Forgot Password?
-          </Typography>
           <Button className={s.submitButton} fullWidth type={'submit'}>
-            Sign In
+            Sign Up
           </Button>
         </form>
         <Typography
@@ -75,15 +80,15 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
           // as={Link} to={'/'}
           variant={'body2'}
         >
-          Don&apos;t have an account?
+          Already have an account?
         </Typography>
         <Button as={'a'} variant={'link'}>
           <Typography
-            className={s.signUp}
+            className={s.signIn}
             // as={Link} to={'/'}
             variant={'link1'}
           >
-            Sign Up
+            Sign In
           </Typography>
         </Button>
       </Card>
