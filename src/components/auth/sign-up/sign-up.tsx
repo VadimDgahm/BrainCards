@@ -99,3 +99,4 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
 }
 
 /*строки 57, 60 - есть аккаунт, зарегистрироваться - заглушки для роутера*/
+/*после создания роутера заменить в Button as a-> Link*/
