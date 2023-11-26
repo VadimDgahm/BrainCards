@@ -29,7 +29,7 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
     <>
       <DevTool control={control} />
       <Card className={s.wrapper}>
-        <Typography as={'h1'} className={s.signInTitle} variant={'large'}>
+        <Typography className={s.signInTitle} variant={'large'}>
           Forgot your password?
         </Typography>
         <form className={s.forgotPassForm} onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +40,7 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
             name={'email'}
             placeholder={'Email'}
           />
-          <Typography as={'p'} className={s.passInform} variant={'body2'}>
+          <Typography className={s.passInform} variant={'body2'}>
             Enter your email address and we will send you further instructions
           </Typography>
           <Button className={s.submitButton} fullWidth type={'submit'}>
