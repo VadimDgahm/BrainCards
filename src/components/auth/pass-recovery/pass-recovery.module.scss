@@ -1,7 +1,6 @@
-.signUpWrapper {
-  width: 100%;
-  max-width: 413px;
-  height: 528px;
+.signInWrapper {
+  width: 420px;
+  height: 456px;
   margin: 0 auto;
   padding: 33px 36px 29px;
 
@@ -9,26 +8,35 @@
   border-radius: 5px;
 }
 
-.signUpForm {
+.forgotPassForm {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.signUpTitle {
-  margin: 0 auto 27px;
+.signInTitle {
+  margin: 0 auto 51px;
+}
+
+.passInform {
+  width: 284px;
+  height: 48px;
+  margin-top: 3px;
+  margin-bottom: 65px;
+
+  color: var(--color-light-900);
+  word-wrap: break-word;
 }
 
 .submitButton {
-  margin-top: 60px !important;
 }
 
-.account {
+.remember {
   margin: 20px auto 11px;
 }
 
-.signIn {
+.signUp {
   margin-right: 50px;
   font-weight: 700;
   color: var(--color-primary-500);
