@@ -38,7 +38,7 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
     <>
       <DevTool control={control} />
       <Card className={s.signInWrapper}>
-        <Typography as={'h1'} className={s.signInTitle} variant={'large'}>
+        <Typography className={s.signInTitle} variant={'large'}>
           Sign in
         </Typography>
         <form className={s.signInForm} onSubmit={handleSubmit(onSubmit)}>
@@ -65,7 +65,6 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
           />
           <Typography
             // as={Link} to={'/'}
-            as={'p'}
             className={s.repairPassword}
             variant={'body2'}
           >
@@ -75,12 +74,11 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
             Sign In
           </Button>
         </form>
-        <Typography as={'p'} className={s.account} variant={'body2'}>
+        <Typography className={s.account} variant={'body2'}>
           Don&apos;t have an account?
         </Typography>
         <Button as={'a'} variant={'link'}>
           <Typography
-            as={'p'}
             className={s.signUp}
             // as={Link} to={'/'}
             variant={'link1'}

@@ -44,7 +44,7 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
     <>
       <DevTool control={control} />
       <Card className={s.signUpWrapper}>
-        <Typography as={'h1'} className={s.signUpTitle} variant={'large'}>
+        <Typography className={s.signUpTitle} variant={'large'}>
           Sign Up
         </Typography>
         <form className={s.signUpForm} onSubmit={handleSubmit(onSubmit)}>
@@ -76,7 +76,6 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
           </Button>
         </form>
         <Typography
-          as={'p'}
           className={s.account}
           // as={Link} to={'/'}
           variant={'body2'}
@@ -85,7 +84,6 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
         </Typography>
         <Button as={'a'} variant={'link'}>
           <Typography
-            as={'p'}
             className={s.signIn}
             // as={Link} to={'/'}
             variant={'link1'}
