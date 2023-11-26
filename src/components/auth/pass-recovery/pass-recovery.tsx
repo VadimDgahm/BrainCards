@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
+import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { DevTool } from '@hookform/devtools'
@@ -8,8 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './pass-recovery.module.scss'
-
-import { Button } from '../../ui/button'
 
 const passRecoverySchema = z.object({
   email: z.string().min(1, 'Enter email address').email({ message: 'Invalid email address' }),
@@ -29,7 +28,7 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
   return (
     <>
       <DevTool control={control} />
-      <Card className={s.signInWrapper}>
+      <Card className={s.wrapper}>
         <Typography as={'h1'} className={s.signInTitle} variant={'large'}>
           Forgot your password?
         </Typography>
@@ -70,3 +69,4 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
 }
 
 /*строки 57, 60 - есть аккаунт, зарегистрироваться - заглушки для роутера*/
+/*после создания роутера заменить в Button as a-> Link*/
