@@ -76,6 +76,7 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
           </Button>
         </form>
         <Typography
+          as={'p'}
           className={s.account}
           // as={Link} to={'/'}
           variant={'body2'}
@@ -84,6 +85,7 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
         </Typography>
         <Button as={'a'} variant={'link'}>
           <Typography
+            as={'p'}
             className={s.signIn}
             // as={Link} to={'/'}
             variant={'link1'}
