@@ -6,12 +6,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 const radioSchema = z.object({
-  radioButton: z.array(z.string()).element,
+  radioButton: z.string(),
 })
 
 type FormValues = z.infer<typeof radioSchema>
 
 export const BigRadioGroup = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
+  const values = ['Did not know', 'Forgot', 'A lot of though', 'Confused', 'Knew the answer']
+
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       radioButton: 'Did not know',
@@ -19,8 +21,6 @@ export const BigRadioGroup = ({ onSubmit }: { onSubmit: (data: FormValues) => vo
     mode: 'onSubmit',
     resolver: zodResolver(radioSchema),
   })
-
-  const values = ['Did not know', 'Forgot', 'A lot of though', 'Confused', 'Knew the answer']
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
