@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
+import { ArrowBack } from '@/components/ui/icons/arrow-back/ArrowBack'
+import { ArrowForward } from '@/components/ui/icons/arrow-forward/ArrowForward'
+import { PaginationControls } from '@/components/ui/pagination/PaginationControls/PaginationControls'
 import { usePagination } from '@/components/ui/pagination/usePagination'
-import { OptionsType, Selector } from '@/components/ui/selector/Selector'
-import { Typography } from '@/components/ui/typography'
+import { OptionsType } from '@/components/ui/selector/Selector'
 
 import s from './Pagination.module.scss'
 
@@ -52,7 +54,7 @@ export const Pagination: FC<PaginationProps> = ({
           className={`${s.paginationItem} ${currentPage === 1 && s.disabled}`}
           onClick={onPrevious}
         >
-          <div className={`${s.arrow} ${s.left}`} />
+          <ArrowBack />
         </li>
         {paginationRange.map((pageNumber, index) => {
           if (pageNumber === '...') {
@@ -77,22 +79,10 @@ export const Pagination: FC<PaginationProps> = ({
           className={`${s.paginationItem} ${currentPage === lastPage && s.disabled}`}
           onClick={onNext}
         >
-          <div className={`${s.arrow} ${s.right}`} />
+          <ArrowForward className={s.arrow} />
         </li>
       </ul>
-      <div className={s.boxSelector}>
-        <Typography className={s.text} variant={'body2'}>
-          Показать
-        </Typography>
-        <Selector
-          onValueChange={onChangePageSize}
-          options={currentOptions}
-          variant={'pagination'}
-        />
-        <Typography className={s.text} variant={'body2'}>
-          на странице
-        </Typography>
-      </div>
+      <PaginationControls currentOptions={currentOptions} onChangePageSize={onChangePageSize} />
     </div>
   )
 }
