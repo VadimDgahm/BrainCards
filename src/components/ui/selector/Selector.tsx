@@ -8,7 +8,7 @@ import '@radix-ui/themes/styles.css'
 
 import s from './selector.module.scss'
 
-type OptionsType = {
+export type OptionsType = {
   title: string
   value: string
 }
