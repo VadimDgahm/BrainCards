@@ -1,24 +1,23 @@
 import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
 
-import { RadioGroup } from '@/components/ui/radioGroup'
-import { TypographyProps } from '@/components/ui/typography'
-import { RadioGroupProps } from '@radix-ui/react-radio-group'
+import { RadioGroup, RadioGroupProps } from '@/components/ui/radioGroup'
 
-export type CustomRadioGroupProps<T extends FieldValues> = UseControllerProps<T> &
-  RadioGroupProps &
-  Omit<TypographyProps<'p'>, 'as' | 'children' | 'className'>
+export type CustomRadioGroupProps<T extends FieldValues> = UseControllerProps<T> & RadioGroupProps
 
 export const ControlledRadio = <T extends FieldValues>({
   control,
   defaultValue,
   disabled,
+  errorMessage,
   name,
+  options,
   rules,
   shouldUnregister,
   ...rest
 }: CustomRadioGroupProps<T>) => {
   const {
     field: { onChange, ref, value },
+    fieldState: { error },
   } = useController({
     control,
     defaultValue,
@@ -28,5 +27,15 @@ export const ControlledRadio = <T extends FieldValues>({
     shouldUnregister,
   })
 
-  return <RadioGroup {...rest} disabled={disabled} onChange={onChange} ref={ref} value={value} />
+  return (
+    <RadioGroup
+      {...rest}
+      disabled={disabled}
+      errorMessage={error?.message}
+      name={name}
+      onChange={onChange}
+      options={options}
+      ref={ref}
+    />
+  )
 }

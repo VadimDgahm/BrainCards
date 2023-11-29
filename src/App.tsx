@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { RadioGroup } from '@/components/ui/radioGroup'
+import { BigRadioGroup } from '@/components/ui/radioRate/radioRate'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -11,7 +12,6 @@ function App() {
   return (
     <>
       <div></div>
-      <RadioGroup onChange={() => {}} options={arr} />
     </>
   )
 }
