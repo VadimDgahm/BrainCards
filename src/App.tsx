@@ -1,8 +1,5 @@
 import { useState } from 'react'
 
-import { ForgotPass } from '@/components/auth/pass-recovery'
-import { LoginForm } from '@/components/auth/sign-in'
-import { SingUpForm } from '@/components/auth/sign-up'
 import { RadioGroup } from '@/components/ui/radioGroup'
 
 function App() {

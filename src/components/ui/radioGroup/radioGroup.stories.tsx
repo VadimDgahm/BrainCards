@@ -29,3 +29,11 @@ export const DefaultDisable: Story = {
     options,
   },
 }
+
+export const RadioWithError: Story = {
+  args: {
+    disabled: true,
+    errorMessage: 'You are doing smth wrong',
+    options,
+  },
+}

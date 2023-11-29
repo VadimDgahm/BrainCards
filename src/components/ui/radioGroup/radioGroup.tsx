@@ -5,11 +5,6 @@ import * as RadixRadioGroup from '@radix-ui/react-radio-group'
 
 import s from './radioGroup.module.scss'
 
-// type Option = {
-//   label: string
-//   value: string
-// }
-
 export type RadioGroupProps = {
   disabled?: boolean
   errorMessage?: string
@@ -23,34 +18,34 @@ export type RadioGroupProps = {
 export const RadioGroup = forwardRef<ElementRef<typeof RadixRadioGroup.Root>, RadioGroupProps>(
   ({ defaultValue, dir, disabled, errorMessage, errorMessageProps, options, ...rest }, ref) => {
     return (
-      <div className={s.sss}>
+      <div className={s.wrapper}>
         <RadixRadioGroup.Root
           className={`${s.RadioGroupRoot} ${disabled ? ` ${s.DisabledRadioGroup}` : ''}`}
           defaultValue={defaultValue as string}
           ref={ref}
-          tabIndex={disabled ? -1 : undefined}
+          // tabIndex={disabled ? -1 : undefined}
           {...rest}
         >
-          {options.map(option => {
+          {options.map((option, index) => {
             return (
-              <>
-                <RadixRadioGroup.Item
-                  asChild
-                  className={`${s.RadioGroupItem}`}
-                  key={option}
-                  value={option}
-                >
+              <span className={s.radioString} key={index}>
+                <RadixRadioGroup.Item className={s.RadioGroupItem} key={index} value={option}>
                   <RadixRadioGroup.Indicator
-                    asChild
                     className={disabled ? '' : s.RadioGroupIndicator}
+                    key={index}
                   />
                 </RadixRadioGroup.Item>
-                <label>
-                  <Typography className={s.RadioLabel}>{option}</Typography>
+                <label className={s.RadioLabel}>
+                  <Typography>{option}</Typography>
                 </label>
-              </>
+              </span>
             )
           })}
+          {errorMessage && (
+            <Typography {...errorMessageProps} className={s.error}>
+              {errorMessage}
+            </Typography>
+          )}
         </RadixRadioGroup.Root>
       </div>
     )
