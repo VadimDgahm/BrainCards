@@ -6,10 +6,7 @@ const options = ['one', 'two', 'three', 'four']
 
 const meta = {
   argTypes: {
-    value: {
-      control: { type: 'radio' },
-      options: options,
-    },
+    options,
   },
   component: RadioGroup,
   tags: ['autodocs'],
@@ -22,11 +19,13 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     disabled: false,
+    options,
   },
 }
 
 export const DefaultDisable: Story = {
   args: {
     disabled: true,
+    options,
   },
 }
