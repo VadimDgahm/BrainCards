@@ -1,6 +1,6 @@
 import { ElementRef, forwardRef } from 'react'
 
-import { ArrowUp } from '@/components/ui/icons/arrowUp/ArrowUp'
+import { ArrowDown } from '@/components/ui/icons/arrowDown/ArrowDown'
 import { Typography } from '@/components/ui/typography'
 import * as Select from '@radix-ui/react-select'
 
@@ -8,16 +8,17 @@ import '@radix-ui/themes/styles.css'
 
 import s from './selector.module.scss'
 
-type OptionsaType = {
+export type OptionsType = {
   title: string
   value: string
 }
 type SelectorPropsType = {
-  options: OptionsaType[]
+  options: OptionsType[]
   title?: string
+  variant?: 'default' | 'pagination'
 } & Select.SelectProps
 export const Selector = forwardRef<ElementRef<typeof Select.Root>, SelectorPropsType>(
-  ({ options, title, ...rest }, ref) => {
+  ({ options, title, variant = 'default', ...rest }, ref) => {
     const optionsItem = options.map((op, i) => (
       <Select.Item className={s.SelectItem} key={i} value={op.value}>
         <Select.ItemText>{op.title}</Select.ItemText>
@@ -33,10 +34,13 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, SelectorProps
         )}
         <Select.Root {...rest}>
           <div className={s.back}>
-            <Select.Trigger className={s.SelectTrigger} ref={ref}>
-              <Select.Value />
+            <Select.Trigger
+              className={`${s.SelectTrigger} ${variant === 'pagination' && s.pagination}`}
+              ref={ref}
+            >
+              <Select.Value placeholder={variant === 'pagination' ? options[0].title : ''} />
               <Select.Icon>
-                <ArrowUp className={s.icon} color={'white'} />
+                <ArrowDown className={s.icon} color={'white'} />
               </Select.Icon>
             </Select.Trigger>
             <Select.Portal>

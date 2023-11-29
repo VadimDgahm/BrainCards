@@ -1,7 +1,8 @@
 import { useState } from 'react'
 
-import { RadioGroup } from '@/components/ui/radioGroup'
-import { BigRadioGroup } from '@/components/ui/radioRate/radioRate'
+
+import { Checkbox } from '@/components/ui/checkbox'
+import { Slider } from '@/components/ui/slider/slider'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -10,9 +11,9 @@ function App() {
   const arr = ['1', '2', '3']
 
   return (
-    <>
-      <div></div>
-    </>
+    <div style={{ margin: '0 auto', padding: '100px', width: '200px' }}>
+      <Checkbox />
+    </div>
   )
 }
 

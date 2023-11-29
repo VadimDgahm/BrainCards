@@ -46,6 +46,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
               <Check color={`${disabled ? 'var(--color-dark-100)' : 'white'}`} />
             </CheckboxRadix.Indicator>
           </CheckboxRadix.Root>
+          <div className={s.back} />
         </div>
         <label className={`${disabled && s.disabled}`} htmlFor={'checkbox'}>
           {label}
