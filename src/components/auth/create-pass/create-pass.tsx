@@ -42,6 +42,7 @@ export const CreatePass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
             label={'Password'}
             name={'password'}
             placeholder={'Password'}
+            type={'password'}
           />
           <Typography className={s.passInform} variant={'body2'}>
             Create new password and we will send you further instructions to email
