@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { LoginForm } from '@/components/auth/sign-in'
 import { Slider } from '@/components/ui/slider/slider'
 
 function App() {
@@ -9,7 +10,6 @@ function App() {
   return (
     <>
       <div></div>
-      <Slider maxValue={30} updateValues={sliderCallback} values={values} />
     </>
   )
 }
