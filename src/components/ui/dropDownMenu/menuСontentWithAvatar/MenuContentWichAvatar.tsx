@@ -1,23 +1,39 @@
-import {FC} from 'react';
+import { FC } from 'react'
+
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+
 import s from './MenuContentWichAvatar.module.css'
+
 import defaultAvatar from '../../../img/avatar.png'
 
 type PropsType = {
-    avatar?: string,
-    name: string,
-    url: string
-    onClickAvatar?: () => void
-    isLine?: boolean
+  avatar?: string
+  isLine?: boolean
+  name: string
+  onClickAvatar?: () => void
+  url: string
 }
-export const MenuContentWithAvatar: FC<PropsType> = ({avatar, url, name, onClickAvatar, isLine= true}) => {
-    return (
-        <div className={`${s.content} ${isLine && s.line}`}>
-            <img onClick={onClickAvatar} className={`${s.avatar} ${!!onClickAvatar && s.clickAvatar}`}
-                 src={avatar ? avatar : defaultAvatar} alt=""/>
-            <div className={s.info}>
-                <h4 onClick={onClickAvatar} className={`${s.name} `}>{name}</h4>
-                <a className={s.url}>{url}</a>
-            </div>
-        </div>
-    )
+export const MenuContentWithAvatar: FC<PropsType> = ({
+  avatar,
+  isLine = true,
+  name,
+  onClickAvatar,
+  url,
+}) => {
+  return (
+    <DropdownMenu.Item className={`${s.DropdownMenuItem} ${s.content} ${isLine && s.line}`}>
+      <img
+        alt={''}
+        className={`${s.avatar} ${!!onClickAvatar && s.clickAvatar}`}
+        onClick={onClickAvatar}
+        src={avatar ? avatar : defaultAvatar}
+      />
+      <div className={s.info}>
+        <h4 className={`${s.name} `} onClick={onClickAvatar}>
+          {name}
+        </h4>
+        <a className={s.url}>{url}</a>
+      </div>
+    </DropdownMenu.Item>
+  )
 }

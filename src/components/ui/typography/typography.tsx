@@ -31,9 +31,9 @@ export const Typography = <T extends ElementType = 'p'>(
 
   return (
     <ComponentElement
-      className={`${s[variant]} 
+      className={`${className} ${s[variant]} 
       ${brightTheme ? s.brightTheme : ''} 
-      ${className}`}
+      `}
       {...rest}
     />
   )

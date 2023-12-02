@@ -1,17 +1,26 @@
-import {FC} from 'react';
+import { FC, ReactNode } from 'react'
+
+import { Typography } from '@/components/ui/typography'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+
 import s from './MenuContent.module.css'
 
 type PropsType = {
-    svgIcon: any,
-    title: string,
-    onClick: () => void
-    isLine?: boolean
+  isLine?: boolean
+  onClick: () => void
+  svgIcon: ReactNode
+  title: string
 }
-export const MenuContent: FC<PropsType> = ({isLine = true, svgIcon, title, onClick}) => {
-    return (
-        <div className={`${s.content} ${isLine && s.line}`} onClick={onClick}>
-            {svgIcon}
-            <div className={s.title}>{title}</div>
-        </div>
-    )
+export const MenuContent: FC<PropsType> = ({ isLine = false, onClick, svgIcon, title }) => {
+  return (
+    <DropdownMenu.Item
+      className={` ${s.DropdownMenuItem} ${isLine && s.lastItem}`}
+      onClick={onClick}
+    >
+      <div className={s.icon}>{svgIcon}</div>
+      <Typography className={s.text} variant={'caption'}>
+        {title}
+      </Typography>
+    </DropdownMenu.Item>
+  )
 }

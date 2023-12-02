@@ -1,26 +1,40 @@
-.content {
-    display: flex;
-    padding: 12px 0;
-    align-items: center;
-    cursor: pointer;
-    transition: color 0.3s linear, background-color 0.3s linear;
-    &:hover {
-        color: var( --color-dark-100);
-    }
+.text {
+  margin-left: 6px;
+  transition: 0.3s;
 }
-.content:hover svg path{
-    fill: var(--color-dark-100);
-}
-.line{
-    border-bottom: 1px solid var(--color-dark-500);
-}
-.title {
-    margin-left: 6px;
-    font-size: var(--font-size-xs);
-    font-family: Roboto;
-    font-weight: var(--font-weight-regular);
-    line-height: var(--line-height-s);
-}
-.line{
 
+.icon {
+  display: flex;
+}
+
+.DropdownMenuItem {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  padding: 13px 0;
+
+  border-bottom: 0.8px solid var(--color-dark-300);
+  outline: none;
+
+  transition: 0.3s;
+
+  &:hover {
+    border-bottom: 0.8px solid var(--color-accent-100);
+
+    .icon path {
+      fill: var(--color-accent-100);
+    }
+
+    .text {
+      color: var(--color-accent-100);
+    }
+  }
+}
+
+.lastItem {
+  border-bottom: none;
 }
