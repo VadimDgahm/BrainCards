@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { LoginForm } from '@/components/auth/sign-in'
-import { Slider } from '@/components/ui/slider/slider'
+import { SingUpForm } from '@/components/auth/sign-up'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <div></div>
-      <LoginForm onSubmit={() => {}} />
+      <SingUpForm onSubmit={() => {}} />
     </>
   )
 }
