@@ -9,13 +9,14 @@
 
 .back {
   position: absolute;
+  z-index: 0;
+
   width: 40px;
   height: 40px;
+
   border-radius: 50%;
-  z-index: 0;
-  transition: .3s;
 
-
+  transition: 0.3s;
 }
 
 .buttonContainer {
@@ -24,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
   transition: ease-in 0.2s;
 
   &:hover {
@@ -37,33 +39,33 @@
       background-color: var(--color-dark-100);
     }
   }
-
 }
 
 .button {
-  z-index: 1;
   cursor: pointer;
+
+  z-index: 1;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 18px;
   height: 18px;
+
   background: none;
   border: 2px solid var(--color-light-900);
   border-radius: 2px;
 }
 
 .checked {
-
   &:disabled {
     background-color: var(--color-light-700);
     border-color: var(--color-dark-100);
   }
 }
 
-
 .unchecked {
-
   &:disabled {
     background-color: transparent;
     border-color: var(--color-dark-100);

@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 413px;
   height: 528px;
-  margin: 36px auto 0;
+  margin: 36px auto;
   padding: 33px 36px 29px;
 
   border: 1px solid var(--color-dark-500);
@@ -16,20 +16,25 @@
   justify-content: center;
 }
 
+.emailInput,
+.passwordInput {
+  margin-bottom: 24px;
+}
+
 .signUpTitle {
   margin: 0 auto 27px;
 }
 
-.submitButton {
-  margin-top: 60px !important;
+.confirmInput {
+  margin-bottom: 60px;
 }
 
 .account {
+  cursor: default;
   margin: 20px auto 11px;
 }
 
 .signIn {
-  margin-right: 50px;
   font-weight: 700;
   color: var(--color-primary-500);
 }
