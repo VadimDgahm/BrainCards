@@ -1,16 +1,17 @@
 import { useState } from 'react'
 
-import { CreatePass } from '@/components/auth/create-pass'
+import { DropDownMenu } from '@/components/ui/dropDownMenu/DropDownMenu'
 
 function App() {
   const [values, setValues] = useState([0, 20])
   const sliderCallback = (newValues: number[]) => setValues(newValues)
 
   return (
-    <>
-      <div></div>
-      <CreatePass onSubmit={() => {}} />
-    </>
+    <div style={{ margin: '0 auto', padding: '100px', width: '200px' }}>
+      <DropDownMenu>
+        <button>ll</button>
+      </DropDownMenu>
+    </div>
   )
 }
 

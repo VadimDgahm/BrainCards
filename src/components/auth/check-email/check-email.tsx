@@ -18,7 +18,7 @@ export const CheckEmail = ({ email }: EmailCheckingProps) => {
         </Typography>
         <EmailImage className={s.image} />
         <Typography className={s.inform} variant={'body2'}>
-          We’ve sent an Email with instructions to {email}
+          We’ve sent an Email with instructions to <br /> {email}
         </Typography>
         <Button as={'a'} className={s.backButton} fullWidth>
           Back to Sign In
