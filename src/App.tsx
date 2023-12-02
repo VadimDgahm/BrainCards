@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { ForgotPass } from '@/components/auth/pass-recovery'
+import { CreatePass } from '@/components/auth/create-pass'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div></div>
-      <ForgotPass onSubmit={() => {}} />
+      <CreatePass onSubmit={() => {}} />
     </>
   )
 }
