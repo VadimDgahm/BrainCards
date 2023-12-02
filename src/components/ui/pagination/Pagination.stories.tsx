@@ -13,7 +13,7 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-export const Default: Story = () => {
+export const PaginationComponent: Story = () => {
   const [page, setPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState(10)
   const options: OptionsType[] = [

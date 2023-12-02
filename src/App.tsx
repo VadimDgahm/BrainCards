@@ -1,8 +1,6 @@
 import { useState } from 'react'
 
-import { LoginForm } from '@/components/auth/sign-in'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Slider } from '@/components/ui/slider/slider'
+import { DropDownMenu } from '@/components/ui/dropDownMenu/DropDownMenu'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -10,7 +8,9 @@ function App() {
 
   return (
     <div style={{ margin: '0 auto', padding: '100px', width: '200px' }}>
-      <Checkbox />
+      <DropDownMenu>
+        <button>ll</button>
+      </DropDownMenu>
     </div>
   )
 }
