@@ -2,13 +2,13 @@ button {
   all: unset;
 }
 
-.RadioGroupRoot {
+.wrapper {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
-  align-items: center;
-
+  flex-direction: column;
   padding: 5px;
+}
+
+.RadioGroupRoot {
 }
 
 .DisabledRadioGroup {
@@ -16,13 +16,23 @@ button {
   opacity: 0.5;
 }
 
+.radioString {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  height: 24px;
+  margin-bottom: 12px;
+}
+
 .RadioGroupItem {
   position: relative;
+
+  display: flex;
 
   width: 16px;
   height: 16px;
 
-  // background-color: black;
   border: 3px solid var(--color-accent-500);
   border-radius: 50%;
 
@@ -89,4 +99,9 @@ button {
 
 .RadioLabel {
   color: var(--color-light-100);
+}
+
+.error {
+  font-size: 0.75rem;
+  color: red;
 }
