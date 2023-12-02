@@ -1,17 +1,17 @@
 import { useState } from 'react'
 
-import { DropDownMenu } from '@/components/ui/dropDownMenu/DropDownMenu'
+import { Header } from '@/components/ui/header'
+import { Slider } from '@/components/ui/slider/slider'
 
 function App() {
   const [values, setValues] = useState([0, 20])
   const sliderCallback = (newValues: number[]) => setValues(newValues)
 
   return (
-    <div style={{ margin: '0 auto', padding: '100px', width: '200px' }}>
-      <DropDownMenu>
-        <button>ll</button>
-      </DropDownMenu>
-    </div>
+    <>
+      <Header isLoggedIn />
+      <Slider maxValue={30} updateValues={sliderCallback} values={values} />
+    </>
   )
 }
 
