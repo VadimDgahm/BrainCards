@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
-import { LoginForm } from '@/components/auth/sign-in'
-import { SingUpForm } from '@/components/auth/sign-up'
+import { ForgotPass } from '@/components/auth/pass-recovery'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -10,7 +9,7 @@ function App() {
   return (
     <>
       <div></div>
-      <SingUpForm onSubmit={() => {}} />
+      <ForgotPass onSubmit={() => {}} />
     </>
   )
 }

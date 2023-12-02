@@ -19,25 +19,21 @@
   margin: 0 auto 51px;
 }
 
-.passInform {
-  width: 284px;
-  height: 48px;
-  margin-top: 3px;
-  margin-bottom: 65px;
-
-  color: var(--color-light-900);
-  word-wrap: break-word;
+.emailInput {
+  margin-bottom: 19px;
 }
 
-.submitButton {
+.passInform {
+  margin-bottom: 65px;
+  color: var(--color-light-900);
 }
 
 .remember {
+  cursor: default;
   margin: 20px auto 11px;
 }
 
 .signUp {
-  margin-right: 50px;
   font-weight: 700;
   color: var(--color-primary-500);
 }
