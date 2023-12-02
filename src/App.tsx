@@ -10,7 +10,6 @@ function App() {
   return (
     <>
       <div></div>
-      <Slider maxValue={30} updateValues={sliderCallback} values={values} />
       <LoginForm onSubmit={() => {}} />
     </>
   )

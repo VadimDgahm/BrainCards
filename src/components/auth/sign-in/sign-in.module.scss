@@ -1,7 +1,7 @@
 .signInWrapper {
   width: 420px;
   height: 528px;
-  margin: 0 auto;
+  margin: 36px auto;
   padding: 33px 36px 29px;
 
   border: 1px solid var(--color-dark-500);
@@ -20,34 +20,36 @@
 }
 
 .emailInput {
+  margin-bottom: 24px;
   color: var(--color-dark-100) !important;
 }
 
+.passwordInput {
+  margin-bottom: 10px;
+}
+
 .checkbox {
+  display: flex;
+  gap: 10px;
+
+  width: 140px;
+  height: 36px;
   margin-right: auto;
-  margin-left: 23px;
+  margin-bottom: 6px;
 }
 
 .repairPassword {
-  cursor: pointer;
-  margin-right: 12px;
+  cursor: default;
   margin-bottom: 66px;
   margin-left: auto;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.submitButton {
 }
 
 .account {
+  cursor: default;
   margin: 20px auto 11px;
 }
 
 .signUp {
-  margin-right: 50px;
   font-weight: 700;
   color: var(--color-primary-500);
 }
