@@ -19,15 +19,11 @@
   margin: 0 auto 51px;
 }
 
-.passInform {
-  width: 284px;
-  height: 48px;
-  margin-top: 3px;
-  margin-bottom: 41px;
-
-  color: var(--color-light-900);
-  word-wrap: break-word;
+.emailInput {
+  margin-bottom: 19px;
 }
 
-.submitButton {
+.passInform {
+  margin-bottom: 41px;
+  color: var(--color-light-900);
 }
