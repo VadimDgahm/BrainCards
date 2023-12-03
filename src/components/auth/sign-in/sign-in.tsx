@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox'
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
@@ -64,8 +65,9 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
             name={'rememberMe'}
           />
           <Typography
-            // as={Link} to={'/'}
+            as={Link}
             className={s.repairPassword}
+            to={'/forgot-password'}
             variant={'body2'}
           >
             Forgot Password?
@@ -77,12 +79,8 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
         <Typography className={s.account} variant={'body2'}>
           Don&apos;t have an account?
         </Typography>
-        <Button as={'a'} variant={'link'}>
-          <Typography
-            className={s.signUp}
-            // as={Link} to={'/'}
-            variant={'link1'}
-          >
+        <Button as={Link} to={'/sign-up'} variant={'link'}>
+          <Typography className={s.signUp} variant={'link1'}>
             Sign Up
           </Typography>
         </Button>
@@ -90,6 +88,3 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
     </>
   )
 }
-
-/*строки 57, 60 - есть аккаунт, зарегистрироваться - заглушки для роутера*/
-/*после создания роутера заменить в Button as a-> Link*/

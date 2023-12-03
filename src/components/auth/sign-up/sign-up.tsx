@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
 import { Card } from '@/components/ui/card'
@@ -75,19 +76,11 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
             Sign Up
           </Button>
         </form>
-        <Typography
-          className={s.account}
-          // as={Link} to={'/'}
-          variant={'body2'}
-        >
+        <Typography className={s.account} variant={'body2'}>
           Already have an account?
         </Typography>
-        <Button as={'a'} variant={'link'}>
-          <Typography
-            className={s.signIn}
-            // as={Link} to={'/'}
-            variant={'link1'}
-          >
+        <Button as={Link} to={'/login'} variant={'link'}>
+          <Typography className={s.signIn} variant={'link1'}>
             Sign In
           </Typography>
         </Button>
@@ -95,6 +88,3 @@ export const SingUpForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
     </>
   )
 }
-
-/*строки 57, 60 - есть аккаунт, зарегистрироваться - заглушки для роутера*/
-/*после создания роутера заменить в Button as a-> Link*/

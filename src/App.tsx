@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+<<<<<<< HEAD
 import { LoginForm } from '@/components/auth/sign-in'
 import { Button } from '@/components/ui/button'
 import { DropDownMenu } from '@/components/ui/dropDownMenu/DropDownMenu'
@@ -14,9 +15,14 @@ import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButt
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 
 function App() {
+  const [open, setOpen] = useState(false)
+=======
+import { DropDownMenu } from '@/components/ui/dropDownMenu/DropDownMenu'
+
+function App() {
   const [values, setValues] = useState([0, 20])
   const sliderCallback = (newValues: number[]) => setValues(newValues)
-  const [open, setOpen] = useState(false)
+>>>>>>> 433a9ebc8e1564ae3245f7a71a68a53c7f980787
 
   return (
     <div style={{ margin: '0 auto', width: '1200px' }}>

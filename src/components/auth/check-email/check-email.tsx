@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import EmailImage from '@/components/auth/check-email/checkEmailImage/emailImage'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -20,12 +22,10 @@ export const CheckEmail = ({ email }: EmailCheckingProps) => {
         <Typography className={s.inform} variant={'body2'}>
           We’ve sent an Email with instructions to <br /> {email}
         </Typography>
-        <Button as={'a'} className={s.backButton} fullWidth>
+        <Button as={Link} className={s.backButton} fullWidth to={'/login'}>
           Back to Sign In
         </Button>
       </div>
     </Card>
   )
 }
-
-/*после создания роутера заменить в Button as a-> Link*/
