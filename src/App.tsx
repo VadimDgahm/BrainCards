@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { Header } from '@/components/ui/header'
-import { Slider } from '@/components/ui/slider/slider'
+import { Router } from '@/router'
 
 function App() {
   const [values, setValues] = useState([0, 20])
@@ -9,8 +9,9 @@ function App() {
 
   return (
     <>
-      <Header isLoggedIn />
-      <Slider maxValue={30} updateValues={sliderCallback} values={values} />
+      <Header isLoggedIn={false} />
+      {/*<Slider maxValue={30} updateValues={sliderCallback} values={values} />*/}
+      <Router />
     </>
   )
 }

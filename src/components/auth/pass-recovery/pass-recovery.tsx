@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
 import { Button } from '@/components/ui/button'
@@ -47,19 +48,11 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
             Send Instructions
           </Button>
         </form>
-        <Typography
-          className={s.remember}
-          // as={Link} to={'/'}
-          variant={'body2'}
-        >
+        <Typography className={s.remember} variant={'body2'}>
           Did you remember your password?
         </Typography>
-        <Button as={'a'} variant={'link'}>
-          <Typography
-            className={s.signUp}
-            // as={Link} to={'/'}
-            variant={'link1'}
-          >
+        <Button as={Link} to={'/login'} variant={'link'}>
+          <Typography className={s.signUp} variant={'link1'}>
             Try loggin in
           </Typography>
         </Button>
@@ -67,6 +60,3 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
     </>
   )
 }
-
-/*строки 57, 60 - есть аккаунт, зарегистрироваться - заглушки для роутера*/
-/*после создания роутера заменить в Button as a-> Link*/
