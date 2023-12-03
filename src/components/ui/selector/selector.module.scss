@@ -1,8 +1,3 @@
-/* reset */
-button {
-  all: unset;
-}
-
 .SelectTrigger {
   cursor: pointer;
 
@@ -31,9 +26,15 @@ button {
 .pagination {
   width: 50px;
   height: 24px;
+  padding: 0 3px;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
 
   .icon {
     top: 15%;
+    right: 2px;
   }
 }
 
@@ -109,7 +110,7 @@ button {
 
 .icon {
   position: absolute;
-  top: 30%;
+  top: 25%;
   right: 12px;
   transition: 0.3s;
 

@@ -17,7 +17,7 @@ export const CheckboxView: Story = {
     checked: true,
     disabled: false,
     label: 'Check-box',
-    onChange: check => {
+    onValueChange: check => {
       alert(`the checkbox will want to change to "${check}"`)
     },
   },

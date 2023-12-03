@@ -3,13 +3,12 @@
 .container {
   display: flex;
   align-items: center;
-  width: 18px;
-  height: 18px;
 }
 
 .back {
   position: absolute;
-  z-index: 0;
+  z-index: -1;
+  right: 0;
 
   width: 40px;
   height: 40px;
@@ -44,14 +43,13 @@
 .button {
   cursor: pointer;
 
-  z-index: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 18px;
   height: 18px;
+  margin-right: 10px;
 
   background: none;
   border: 2px solid var(--color-light-900);
@@ -73,7 +71,6 @@
 }
 
 .indicator {
-  z-index: 1;
   width: 18px;
   height: 18px;
 }

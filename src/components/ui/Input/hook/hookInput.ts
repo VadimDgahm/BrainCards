@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from 'react'
 
 export const useInput = (type: string | undefined) => {
   const [isOpenEye, setIsOpenEye] = useState<boolean | undefined>(undefined)
-  const [isActiveInput, setIsActiveInput] = useState(false)
   const [typeInput, setTypeInput] = useState<string | undefined>('text')
   const rootInput = useRef(null)
 
@@ -11,7 +10,7 @@ export const useInput = (type: string | undefined) => {
     if (type === 'password') {
       setIsOpenEye(true)
     }
-    const onClick = (e: MouseEvent) => e.target !== rootInput.current && setIsActiveInput(false)
+    const onClick = (e: MouseEvent) => e.target !== rootInput.current
 
     document.addEventListener('click', onClick)
 
@@ -23,11 +22,9 @@ export const useInput = (type: string | undefined) => {
   }
 
   return {
-    isActiveInput,
     isOpenEye,
     onClickSvgEyeHandler,
     rootInput,
-    setIsActiveInput,
     typeInput,
   }
 }

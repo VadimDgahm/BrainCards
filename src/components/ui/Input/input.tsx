@@ -1,8 +1,9 @@
 import { ComponentPropsWithoutRef, forwardRef } from 'react'
 
 import { useInput } from '@/components/ui/Input/hook/hookInput'
-import SvgEyeInput from '@/components/ui/Input/svg/SvgEyeInput'
-import SvgSearchInput from '@/components/ui/Input/svg/SvgSearchInput'
+import { EyeOffOutline } from '@/components/ui/icons/eye-off-outline/EyeOffOutline'
+import { EyeOutline } from '@/components/ui/icons/eye-outline/EyeOutline'
+import { SearchIcon } from '@/components/ui/icons/search/SearchIcon'
 import { Typography } from '@/components/ui/typography'
 import clsx from 'clsx'
 
@@ -16,11 +17,9 @@ export type InputProps = {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ className, errorMessage, label, title, ...rest }, ref) => {
     const {
-      isActiveInput,
       isOpenEye,
       onClickSvgEyeHandler,
       // rootInput,
-      setIsActiveInput,
       typeInput,
     } = useInput(rest.type)
     const classNames = clsx(s.input, errorMessage && s.error, typeInput === 'search' && s.search)
@@ -28,7 +27,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={`${s.box} ${className}`}>
         {title && typeInput !== 'search' && <label>{title}</label>}
-        <div className={s.inputBox} onClick={() => setIsActiveInput(true)}>
+        <div className={s.inputBox}>
           {label}
           <div className={s.inputContainer}>
             <input
@@ -38,7 +37,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               {...rest}
               type={typeInput}
             />
-
+            {typeInput === 'search' && <SearchIcon className={s.searchIcon} width={20} />}
             {showEyeIcon(isOpenEye, onClickSvgEyeHandler)}
             {errorMessage && (
               <Typography className={s.errorMessage} variant={'caption'}>
@@ -46,8 +45,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               </Typography>
             )}
           </div>
-
-          {typeInput === 'search' && <SvgSearchInput isActive={isActiveInput} />}
         </div>
       </div>
     )
@@ -60,7 +57,7 @@ const showEyeIcon = (
 ) =>
   isOpenEye !== undefined && (
     <button className={s.buttonEye} onClick={() => onClickSvgEyeHandler(!isOpenEye)}>
-      <SvgEyeInput isOpen={isOpenEye} />
+      {isOpenEye ? <EyeOutline /> : <EyeOffOutline />}
     </button>
   )
 

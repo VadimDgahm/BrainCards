@@ -1,7 +1,8 @@
 .input {
   width: 100%;
-  padding: 6px 12px;
   margin-bottom: 3px;
+  padding: 6px 12px;
+
   font-size: var(--font-size-m);
 
   background: none;
@@ -9,8 +10,7 @@
   border-radius: 2px;
   outline: none;
 
-  transition: background-color 0.3s linear,
-  border 0.3s linear;
+  transition: background-color 0.3s linear, border 0.3s linear;
 
   &:focus {
     border: 1px solid var(--color-info-700);
@@ -33,8 +33,6 @@
 }
 
 input[type='search'] {
-  appearance: none;
-
   &::-webkit-search-cancel-button {
     cursor: pointer;
 
@@ -52,14 +50,17 @@ input[type='search'] {
 
 .buttonEye {
   all: unset;
+
+  cursor: pointer;
+
   position: absolute;
-  top: 20%;
+  top: 15%;
   right: 10px;
 }
 
 .inputContainer {
-  width: 100%;
   position: relative;
+  width: 100%;
 }
 
 .box {
@@ -67,6 +68,28 @@ input[type='search'] {
   flex-direction: column;
   width: 100%;
   font-size: var(--font-size-s);
+
+  .searchIcon path {
+    fill: var(--color-dark-100);
+  }
+
+  &:hover {
+    .searchIcon path {
+      fill: var(--color-light-300);
+    }
+  }
+
+  &:focus {
+    .searchIcon path {
+      fill: var(--color-light-300);
+    }
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  top: 5px;
+  left: 12px;
 }
 
 .box label {
@@ -75,8 +98,8 @@ input[type='search'] {
 }
 
 .inputBox {
-  width: 100%;
   display: block;
+  width: 100%;
 }
 
 .error {

@@ -11,10 +11,10 @@ type PropsType = {
   svgIcon: ReactNode
   title: string
 }
-export const MenuContent: FC<PropsType> = ({ isLine = false, onClick, svgIcon, title }) => {
+export const MenuContent: FC<PropsType> = ({ isLine = true, onClick, svgIcon, title }) => {
   return (
     <DropdownMenu.Item
-      className={` ${s.DropdownMenuItem} ${isLine && s.lastItem}`}
+      className={` ${s.DropdownMenuItem} ${!isLine && s.lastItem}`}
       onClick={onClick}
     >
       <div className={s.icon}>{svgIcon}</div>
