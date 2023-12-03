@@ -16,10 +16,10 @@
 
 .clickAvatar {
   cursor: pointer;
-  transition: outline 0.3s ease-in-out;
+  transition: 0.3s;
 
   &:hover {
-    outline: 1px solid var(--color-info-500);
+    border: 1px solid var(--color-info-500);
   }
 }
 

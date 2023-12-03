@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { EyeOutline } from '@/components/ui/icons/eye-outline/EyeOutline.tsx'
+
+import { EyeOutline } from '@/components/ui/icons/eye-outline/EyeOutline'
 
 const meta = {
   argTypes: {
@@ -19,7 +20,5 @@ type Story = StoryObj<typeof meta>
 export const Eye1: Story = {
   args: {
     onClick: () => alert('ку'),
-
-    color: '',
   },
 }

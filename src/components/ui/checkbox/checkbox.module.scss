@@ -3,13 +3,16 @@
 .container {
   display: flex;
   align-items: center;
-  width: 18px;
-  height: 18px;
 }
 
 .back {
   position: absolute;
+<<<<<<< HEAD
+  z-index: -1;
+  right: 0;
+=======
   z-index: 0;
+>>>>>>> 433a9ebc8e1564ae3245f7a71a68a53c7f980787
 
   width: 40px;
   height: 40px;
@@ -44,14 +47,21 @@
 .button {
   cursor: pointer;
 
+<<<<<<< HEAD
+=======
   z-index: 1;
 
+>>>>>>> 433a9ebc8e1564ae3245f7a71a68a53c7f980787
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 18px;
   height: 18px;
+<<<<<<< HEAD
+  margin-right: 10px;
+=======
+>>>>>>> 433a9ebc8e1564ae3245f7a71a68a53c7f980787
 
   background: none;
   border: 2px solid var(--color-light-900);
@@ -73,7 +83,6 @@
 }
 
 .indicator {
-  z-index: 1;
   width: 18px;
   height: 18px;
 }

@@ -1,6 +1,10 @@
 import { useState } from 'react'
 
-import { Pagination } from '@/components/ui/pagination/Pagination'
+import { Button } from '@/components/ui/button'
+import Modal, { ModalProps } from '@/components/ui/modal/modal'
+import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
+import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
+import { Pagination, PaginationProps } from '@/components/ui/pagination/Pagination'
 import { OptionsType } from '@/components/ui/selector/Selector'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -13,7 +17,8 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-export const PaginationComponent: Story = () => {
+
+export const PaginationComponent: Story = (args: PaginationProps) => {
   const [page, setPage] = useState<number>(1)
   const [pageSize, setPageSize] = useState(10)
   const options: OptionsType[] = [
@@ -25,14 +30,17 @@ export const PaginationComponent: Story = () => {
   ]
 
   return (
-    <Pagination
-      currentPage={page}
-      onChangePageSize={pageSize => setPageSize(+pageSize)}
-      onPageChange={(page: number | string) => setPage(+page)}
-      options={options}
-      pageSize={pageSize}
-      siblingCount={2}
-      totalCount={10000}
-    />
+    <>
+      <Pagination
+        {...args}
+        currentPage={page}
+        onChangePageSize={pageSize => setPageSize(+pageSize)}
+        onPageChange={(page: number | string) => setPage(+page)}
+        options={options}
+        pageSize={pageSize}
+        siblingCount={2}
+        totalCount={10000}
+      />
+    </>
   )
 }

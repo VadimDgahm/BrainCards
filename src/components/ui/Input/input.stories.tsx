@@ -28,7 +28,6 @@ export const InputPassword: Story = {
   args: {
     disabled: false,
     placeholder: 'Password',
-    title: 'Input',
     type: 'password',
   },
 }

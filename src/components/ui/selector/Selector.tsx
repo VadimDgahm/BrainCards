@@ -40,7 +40,7 @@ export const Selector = forwardRef<ElementRef<typeof Select.Root>, SelectorProps
             >
               <Select.Value placeholder={variant === 'pagination' ? options[0].title : ''} />
               <Select.Icon>
-                <ArrowDown className={s.icon} color={'white'} />
+                <ArrowDown className={s.icon} color={'white'} width={16} />
               </Select.Icon>
             </Select.Trigger>
             <Select.Portal>

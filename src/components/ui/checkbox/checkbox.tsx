@@ -38,11 +38,9 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             id={'checkbox'}
             onCheckedChange={onValueChange}
             ref={ref}
-            // onCheckedChange={onChange}
             {...rest}
           >
             <CheckboxRadix.Indicator className={s.indicator}>
-              {/* todo color={`${disabled ? 'var(--color-dark-100)' : 'white'}*/}
               <Check color={`${disabled ? 'var(--color-dark-100)' : 'white'}`} />
             </CheckboxRadix.Indicator>
           </CheckboxRadix.Root>

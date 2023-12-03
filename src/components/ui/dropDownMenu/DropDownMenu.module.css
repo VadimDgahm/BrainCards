@@ -1,6 +1,10 @@
-/* reset */
-button {
+.trigger {
   all: unset;
+  cursor: pointer;
+}
+
+.trigger:hover svg path {
+  fill: var(--color-info-700);
 }
 
 .DropdownMenuContent {
@@ -19,7 +23,7 @@ button {
 
 .triangle {
   position: absolute;
-  bottom: 5.1px;
+  bottom: 4px;
   transform: rotateZ(45deg);
 
   width: 12px;
