@@ -1,4 +1,4 @@
-import { ThemeApp } from '@/components/ui/icons/typeIcons.ts'
+import { ThemeApp } from '@/components/ui/icons/typeIcons'
 
 export const determineVersion = (version: ThemeApp) => {
   switch (version) {
