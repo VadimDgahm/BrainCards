@@ -1,12 +1,15 @@
 import { useState } from 'react'
 
+import { Header } from '@/components/ui/header'
 import { Router } from '@/router'
 
 function App() {
   const [open, setOpen] = useState(false)
 
   return (
-    <div style={{ margin: '0 auto', width: '1200px' }}>
+    <>
+      <Header isLoggedIn />
+      <Router />
       {/*<Button as={'button'} onClick={() => setOpen(true)} variant={'primary'}>*/}
       {/*  Open Modal*/}
       {/*</Button>*/}
@@ -44,8 +47,7 @@ function App() {
       {/*    />*/}
       {/*  </DropDownMenu>*/}
       {/*</div>*/}
-      <Router />
-    </div>
+    </>
   )
 }
 

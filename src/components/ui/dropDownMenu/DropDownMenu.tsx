@@ -10,7 +10,7 @@ export type DropDownProps = {
 } & ComponentPropsWithoutRef<typeof DropdownMenu.Root>
 export const DropDownMenu = forwardRef<ElementRef<'div'>, DropDownProps>(
   ({ children, trigger }, ref) => {
-    const [open, setOpen] = useState(true)
+    const [open, setOpen] = useState(false)
 
     return (
       <DropdownMenu.Root onOpenChange={setOpen} open={open}>
