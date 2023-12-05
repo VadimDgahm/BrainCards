@@ -1,17 +1,5 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-import { LoginForm } from '@/components/auth/sign-in'
-import { Button } from '@/components/ui/button'
-import { DropDownMenu } from '@/components/ui/dropDownMenu/DropDownMenu'
-import { MenuContent } from '@/components/ui/dropDownMenu/menuContent/MenuContent'
-import { MenuContentWithAvatar } from '@/components/ui/dropDownMenu/menuСontentWithAvatar/MenuContentWichAvatar'
-import { Calendar } from '@/components/ui/icons/calendar/Calendar'
-import { EditOutline } from '@/components/ui/icons/edit-outline/EditOutline'
-import { PlayCircleOutline } from '@/components/ui/icons/play-circle-outline/PlayCircleOutline'
-import { TrashOutline } from '@/components/ui/icons/trash-outline/TrashOutline'
-import Modal from '@/components/ui/modal/modal'
-import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
-import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 import { Router } from '@/router'
 
 function App() {
