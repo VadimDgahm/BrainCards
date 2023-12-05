@@ -1,12 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Route, Routes } from 'react-router-dom'
-
 import { SingUpForm } from '@/components/auth/sign-up/sign-up'
+import { reactRouterParameters, withRouter } from 'storybook-addon-react-router-v6'
 
 const meta = {
   component: SingUpForm,
-  decorators: [story => <Routes>{story()}</Routes>],
+  decorators: [withRouter],
+  parameters: {
+    reactRouter: reactRouterParameters({
+      routing: { path: '/sign-up' },
+    }),
+  },
   tags: ['autodocs'],
   title: 'Auth/SingUpForm',
 } satisfies Meta<typeof SingUpForm>
