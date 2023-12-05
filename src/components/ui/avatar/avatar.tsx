@@ -1,11 +1,25 @@
 import { FC } from 'react'
 
-import s from '@/components/ui/avatar/avatar.module.scss'
-
 type AvatarProps = {
+  className?: string
+  height?: string
   name: string
   src: string
+  width?: string
 }
-export const Avatar: FC<AvatarProps> = ({ name, src }) => {
-  return <img alt={name} className={s.Avatar} src={src} />
+export const Avatar: FC<AvatarProps> = ({ className, height, name, src, width }) => {
+  const avatarStyle = {
+    borderRadius: width && height ? '50%' : '2.25rem',
+    height: height ?? '2.25rem',
+    width: width ?? '2.25rem',
+  }
+
+  return (
+    <img
+      alt={name}
+      className={`${className ?? ''}`}
+      src={src}
+      style={className ? undefined : avatarStyle}
+    />
+  )
 }

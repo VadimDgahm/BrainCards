@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import { Header } from '@/components/ui/header'
+import { Profile } from '@/components/ui/profile'
 import { Router } from '@/router'
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <>
       <Header isLoggedIn />
       <Router />
+      <Profile email={'email'} name={'name'} />
       {/*<Button as={'button'} onClick={() => setOpen(true)} variant={'primary'}>*/}
       {/*  Open Modal*/}
       {/*</Button>*/}
