@@ -1,6 +1,6 @@
 import { FC } from 'react'
-// import { useNavigate } from 'react-router-dom'
 
+// import { useNavigate } from 'react-router-dom'
 import defaultAvatar from '@/components/img/avatar.png'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -28,7 +28,7 @@ export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
 
   const onSignOutClickHandler = () => {
     console.log('sign out')
-    // isLoggedIn = false
+    isLoggedIn = false
     // navigate('/login')
   }
   const onProfileClickHandler = () => {
@@ -70,7 +70,7 @@ export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
           </DropDownMenu>
         </div>
       ) : (
-        <Button className={s.SignButton} variant={'primary'}>
+        <Button className={s.SignButton} onClick={onSignOutClickHandler} variant={'primary'}>
           Sign in
         </Button>
       )}
