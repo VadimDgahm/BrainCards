@@ -16,3 +16,16 @@ export type AuthMeResponse = {
   name: string
   updated: string
 }
+export type SingUpResponse = {
+  avatar: string
+  created: string
+  email: string
+  id: string
+  isEmailVerified: boolean
+  name: string
+  updated: string
+}
+
+export type LoginResponse = {
+  accessToken: string
+}

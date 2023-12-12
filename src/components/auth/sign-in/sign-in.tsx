@@ -1,11 +1,10 @@
 import { useForm } from 'react-hook-form'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox'
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
-import { useGetMeQuery } from '@/src/services/auth/authService'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'

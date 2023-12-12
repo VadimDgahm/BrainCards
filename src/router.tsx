@@ -62,22 +62,19 @@ const router = createBrowserRouter([
 
 function useAuthenticationCheck() {
   const result = useGetMeQuery()
-
-  console.log(result)
-  const isAuthenticated = !!result.data
+  const isAuthenticated = !!result.error
 
   return isAuthenticated
 }
-
 function PrivateRoutes() {
   const isAuthenticated = useAuthenticationCheck()
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+  return !isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
 function PublicRoutes() {
   const isAuthenticated = useAuthenticationCheck()
 
-  return !isAuthenticated ? <Outlet /> : <Navigate to={'/'} />
+  return isAuthenticated ? <Outlet /> : <Navigate to={'/'} />
 }
 
 export const Router = () => {
