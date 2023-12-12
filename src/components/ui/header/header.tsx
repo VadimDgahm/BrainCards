@@ -1,6 +1,8 @@
 import { FC } from 'react'
 // import { useNavigate } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
+
 import defaultAvatar from '@/components/img/avatar.png'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -70,7 +72,7 @@ export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
           </DropDownMenu>
         </div>
       ) : (
-        <Button className={s.SignButton} variant={'primary'}>
+        <Button as={Link} className={s.SignButton} to={'/login'} variant={'primary'}>
           Sign in
         </Button>
       )}

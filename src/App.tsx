@@ -1,17 +1,19 @@
-import { useState } from 'react'
+import { Provider } from 'react-redux'
 
 import { Header } from '@/components/ui/header'
-import { Profile } from '@/components/ui/profile'
 import { Router } from '@/router'
+import { store } from '@/services/store'
 
 function App() {
-  const [open, setOpen] = useState(false)
+  // const [open, setOpen] = useState(false)
 
   return (
     <>
       <Header isLoggedIn />
-      <Router />
-      <Profile email={'email'} name={'name'} />
+      <Provider store={store}>
+        <Router />
+      </Provider>
+      {/*<Profile email={'email'} name={'name'} />*/}
       {/*<Button as={'button'} onClick={() => setOpen(true)} variant={'primary'}>*/}
       {/*  Open Modal*/}
       {/*</Button>*/}

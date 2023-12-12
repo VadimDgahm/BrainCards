@@ -11,6 +11,9 @@ import { CreatePass } from '@/components/auth/create-pass'
 import { ForgotPass } from '@/components/auth/pass-recovery'
 import { LoginForm } from '@/components/auth/sign-in'
 import { SingUpForm } from '@/components/auth/sign-up'
+import { Profile } from '@/components/ui/profile'
+import { Deck } from '@/pages/deck'
+import Decks from '@/pages/decks'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -37,8 +40,16 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <div>hello</div>,
+    element: (
+      <div>
+        <Decks />
+      </div>
+    ),
     path: '/',
+  },
+  {
+    element: <Profile email={''} name={''} onSubmit={() => {}} />,
+    path: '/profile',
   },
 ]
 
@@ -51,7 +62,7 @@ const router = createBrowserRouter([
 ])
 
 function PrivateRoutes() {
-  const isAuthenticated = false
+  const isAuthenticated = true
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
