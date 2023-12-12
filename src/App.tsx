@@ -1,13 +1,7 @@
-import { Header } from '@/components/ui/header'
 import { Router } from '@/router'
 
 function App() {
-  return (
-    <>
-      <Header isLoggedIn />
-      <Router />
-    </>
-  )
+  return <Router />
 }
 
 export default App
