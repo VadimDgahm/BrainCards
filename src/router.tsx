@@ -13,7 +13,9 @@ import { LoginForm } from '@/components/auth/sign-in'
 import { SingUpForm } from '@/components/auth/sign-up'
 import { Profile } from '@/components/ui/profile'
 import { Deck } from '@/pages/deck'
-import Decks from '@/pages/decks'
+import Decks from '@/pages/decks/Decks'
+import DecksBody from '@/pages/decks/decks-body/decksBody'
+import DecksHeader from '@/pages/decks/decks-header/decksHeader'
 
 const publicRoutes: RouteObject[] = [
   {

@@ -7,8 +7,8 @@ import {
   useCreateCardQuestionMutation,
   useGetCardsByDeckIdQuery,
   useGetCardsForLearnQuery,
-  useGetDecksByIDQuery,
-} from '@/services/decks.service'
+} from '@/services/cards.service'
+import { useGetDecksByIDQuery } from '@/services/decks.service'
 import { CardResponse } from '@/services/decks.types'
 
 export const Deck = () => {

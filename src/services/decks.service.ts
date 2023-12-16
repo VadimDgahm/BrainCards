@@ -1,44 +1,18 @@
 import { baseApi } from '@/services/base-api'
 import {
-  CardCreation,
   CreateDeckResponse,
   CreateDeckType,
   DeckDeleteResponse,
-  GetCardsByDeckId,
-  GetCardsForLearn,
-  GetCarsdByDeckResponse,
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
   GetDecksResponseItems,
-  GetLearnResponse,
-  RateSave,
   UpdateDeck,
 } from '@/services/decks.types'
 
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
-      createAndSaveRate: builder.mutation<void, RateSave>({
-        invalidatesTags: ['Decks'],
-        query: ({ id, ...body }) => {
-          return {
-            body,
-            method: 'POST',
-            url: `v1/decks/${id}/learn`,
-          }
-        },
-      }),
-      createCardQuestion: builder.mutation<void, CardCreation>({
-        invalidatesTags: ['Decks'],
-        query: ({ id, ...body }) => {
-          return {
-            body,
-            method: 'POST',
-            url: `v1/decks/${id}/cards`,
-          }
-        },
-      }),
       createDeck: builder.mutation<CreateDeckResponse, CreateDeckType>({
         invalidatesTags: ['Decks'],
         // onQueryStarted: async (_, { dispatch, getState, queryFulfilled }) => {
@@ -104,20 +78,6 @@ const decksService = baseApi.injectEndpoints({
           }
         },
       }),
-      getCardsByDeckId: builder.query<GetCarsdByDeckResponse, GetCardsByDeckId>({
-        query: ({ id }) => {
-          return {
-            url: `v1/decks/${id}/cards`,
-          }
-        },
-      }),
-      getCardsForLearn: builder.query<GetLearnResponse, GetCardsForLearn>({
-        query: ({ id }) => {
-          return {
-            url: `v1/decks/${id}/learn`,
-          }
-        },
-      }),
       getDecks: builder.query<GetDecksResponse, GetDecksArgs | void>({
         providesTags: ['Decks'],
         query: args => {
@@ -174,12 +134,8 @@ const decksService = baseApi.injectEndpoints({
 })
 
 export const {
-  useCreateAndSaveRateMutation,
-  useCreateCardQuestionMutation,
   useCreateDeckMutation,
   useDeleteDeckMutation,
-  useGetCardsByDeckIdQuery,
-  useGetCardsForLearnQuery,
   useGetDecksByIDQuery,
   useGetDecksQuery,
   useUpdateDeckMutation,
