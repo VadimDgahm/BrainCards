@@ -1,6 +1,8 @@
 import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import { Link } from 'react-router-dom'
+
 import defaultAvatar from '@/components/img/avatar.png'
 import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'

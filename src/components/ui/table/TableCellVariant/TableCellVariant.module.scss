@@ -11,6 +11,8 @@
 .attached,
 .icon {
   cursor: pointer;
+  display: flex;
+  justify-content: space-around;
 
   &:hover {
     path {

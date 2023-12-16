@@ -14,6 +14,7 @@ import { SingUpPages } from '@/pages/auth/singUpPages'
 import { Layout } from '@/pages/layout/layout'
 import { useGetMeQuery } from '@/src/services/auth/authService'
 
+
 const publicRoutes: RouteObject[] = [
   {
     element: <SingInPages />,
@@ -39,8 +40,16 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <div>hello</div>,
+    element: (
+      <div>
+        <Decks />
+      </div>
+    ),
     path: '/',
+  },
+  {
+    element: <Profile email={''} name={''} onSubmit={() => {}} />,
+    path: '/profile',
   },
 ]
 
@@ -67,12 +76,14 @@ function useAuthenticationCheck() {
   return isAuthenticated
 }
 function PrivateRoutes() {
+
   const isAuthenticated = useAuthenticationCheck()
 
   return !isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
 function PublicRoutes() {
   const isAuthenticated = useAuthenticationCheck()
+
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/'} />
 }
