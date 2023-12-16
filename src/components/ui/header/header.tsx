@@ -14,27 +14,25 @@ import { Typography } from '@/components/ui/typography'
 import { useLogOutMutation } from '@/src/services/auth/authService'
 
 import s from './header.module.scss'
-
+export type ProfileInfoType = {
+  avatar?: null | string
+  email: string
+  name: string
+} | null
 type HeaderProps = {
   isLoggedIn: boolean
-  profileInfo?: {
-    avatar?: string
-    email: string
-    name: string
-  } | null
+  profileInfo?: ProfileInfoType
 }
 
 export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
   const navigate = useNavigate()
   const [logout] = useLogOutMutation()
   const onSignOutClickHandler = async () => {
-    console.log('sign out')
     await logout()
     navigate('/login')
   }
   const onProfileClickHandler = () => {
-    console.log('profile')
-    // navigate('/profile')
+    navigate('/profile')
   }
 
   const onLogoClickHandler = () => {

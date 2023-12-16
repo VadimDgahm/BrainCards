@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useRef, useState } from 'react'
+import { ChangeEvent, forwardRef, useState } from 'react'
 
 import defaultAvatar from '@/components/img/avatar.png'
 import { Avatar } from '@/components/ui/avatar'
@@ -8,86 +8,110 @@ import { Card } from '@/components/ui/card'
 import { EditOutline } from '@/components/ui/icons/edit-outline/EditOutline'
 import NameEditor, { FormValues } from '@/components/ui/profile/nameEditor/nameEditor'
 import { Typography } from '@/components/ui/typography'
+import { useGetMeQuery } from '@/src/services/auth/authService'
 
 import s from './profile.module.scss'
 
+export type UpdateDataProfileType =
+  | {
+      name?: string
+    }
+  | FormData
 type ProfileProps = {
-  avatar?: string
-  email: string
-  name: string
-  onSubmit: (data: FormValues) => void
+  onSubmit: (data: UpdateDataProfileType) => void
 }
 
-export const Profile = forwardRef<HTMLInputElement, ProfileProps>(
-  ({ avatar, email, name, onSubmit }, ref) => {
-    const [modeOn, setModeOn] = useState(false)
-    const [avatarImg, setAvatar] = useState(avatar)
-    const fileInputRef = useRef<HTMLInputElement>(null)
-
-    const handleIconClick = () => {
-      if (fileInputRef.current) {
-        fileInputRef.current.click()
-      }
-    }
-
-    const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-      const selectedFile = event.target.files?.[0]
-
-      if (selectedFile) {
-        const fileURL = URL.createObjectURL(selectedFile)
-
-        setAvatar(fileURL)
-      }
-    }
-
-    return (
-      <>
-        <Card className={s.card}>
-          <div className={s.wrapper}>
-            <Typography className={s.title} variant={'large'}>
-              Personal Information
-            </Typography>
-            <div className={s.avatarGroup}>
-              <Avatar className={s.customAvatar} name={name} src={avatarImg ?? defaultAvatar} />
-              {!modeOn && (
-                <>
-                  {<EditOutline className={s.iconImage} onClick={handleIconClick} />}
-                  <input
-                    className={s.avatarEditor}
-                    onChange={handleFileInputChange}
-                    ref={fileInputRef}
-                    type={'file'}
-                  />
-                </>
-              )}
-            </div>
-            <div className={s.nameGroup}>
-              {!modeOn && (
-                <>
-                  <Typography variant={'h1'}>{name}</Typography>
-                  <EditOutline
-                    className={s.iconName}
-                    onDoubleClick={() => {
-                      setModeOn(true)
-                    }}
-                  />
-                </>
-              )}
-              {modeOn && <NameEditor name={name} onSubmit={onSubmit} />}
-            </div>
-            {!modeOn && (
-              <>
-                <Typography className={s.email} variant={'body2'}>
-                  {email}
-                </Typography>
-                <Button className={s.button} variant={'secondary'}>
-                  {<SvgButton />}Logout
-                </Button>
-              </>
-            )}
-          </div>
-        </Card>
-      </>
-    )
+export const Profile = forwardRef<HTMLInputElement, ProfileProps>(({ onSubmit }, ref) => {
+  const { data } = useGetMeQuery()
+  const [modeOn, setModeOn] = useState(false)
+  const onSubmitHandler = (data: FormValues) => {
+    onSubmit(data)
+    setModeOn(false)
   }
-)
+
+  const handleFileInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      const formData = new FormData()
+
+      formData.append('avatar', event.target.files[0])
+
+      onSubmit(formData)
+    }
+  }
+
+  return (
+    <Card className={s.card}>
+      <Typography className={s.title} variant={'large'}>
+        Personal Information
+      </Typography>
+      <AvatarEdit
+        avatar={data?.avatar}
+        modeOn={modeOn}
+        name={data?.name}
+        onChange={handleFileInputChange}
+      />
+      <div className={s.nameGroup}>
+        {!modeOn ? (
+          <FieldWithName email={data?.email} name={data?.name} setModeOn={setModeOn} />
+        ) : (
+          <NameEditor name={data?.name} onSubmit={onSubmitHandler} />
+        )}
+      </div>
+    </Card>
+  )
+})
+
+type FieldWithNameType = {
+  email?: string
+  name?: string
+  setModeOn: (isOn: boolean) => void
+}
+const FieldWithName = ({ email, name = 'User', setModeOn }: FieldWithNameType) => {
+  return (
+    <>
+      <div className={s.editName}>
+        <Typography variant={'h1'}>{name}</Typography>
+
+        <EditOutline
+          className={s.iconName}
+          onClick={() => {
+            setModeOn(true)
+          }}
+          width={16}
+        />
+      </div>
+
+      <Typography className={s.email} variant={'body2'}>
+        {email || ''}
+      </Typography>
+      <div>
+        <Button className={s.button} variant={'secondary'}>
+          {<SvgButton />}Logout
+        </Button>
+      </div>
+    </>
+  )
+}
+
+type AvatarEditType = {
+  avatar?: null | string
+  modeOn: boolean
+  name?: string
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void
+}
+const AvatarEdit = ({ avatar, modeOn, name = 'User', onChange }: AvatarEditType) => {
+  return (
+    <div className={s.avatarGroup}>
+      <Avatar className={s.customAvatar} name={name} src={avatar ?? defaultAvatar} />
+      {!modeOn && (
+        <label htmlFor={'avatarId'}>
+          <span className={s.iconImage}>
+            <EditOutline width={16} />{' '}
+          </span>
+
+          <input className={s.avatarEditor} id={'avatarId'} onChange={onChange} type={'file'} />
+        </label>
+      )}
+    </div>
+  )
+}

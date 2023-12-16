@@ -9,6 +9,7 @@ import {
 import { CheckEmail } from '@/components/auth/check-email'
 import { CreatePass } from '@/components/auth/create-pass'
 import { ForgotPass } from '@/components/auth/pass-recovery'
+import { PageProfile } from '@/pages/PageProfile'
 import { SingInPages } from '@/pages/auth/singInPages'
 import { SingUpPages } from '@/pages/auth/singUpPages'
 import { Layout } from '@/pages/layout/layout'
@@ -41,6 +42,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <div>hello</div>,
     path: '/',
+  },
+  {
+    element: <PageProfile />,
+    path: '/profile',
   },
 ]
 

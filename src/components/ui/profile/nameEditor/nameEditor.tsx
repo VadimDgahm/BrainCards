@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 
 import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
 import { Button } from '@/components/ui/button'
-import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -19,11 +18,11 @@ const nameSchema = z.object({
 export type FormValues = z.infer<typeof nameSchema>
 
 type EditorProps = {
-  name: string
+  name?: string
   onSubmit: (data: FormValues) => void
 }
 
-const NameEditor: FC<EditorProps> = ({ name, onSubmit }) => {
+const NameEditor: FC<EditorProps> = ({ name = 'User', onSubmit }) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       name: name,
@@ -34,15 +33,8 @@ const NameEditor: FC<EditorProps> = ({ name, onSubmit }) => {
 
   return (
     <>
-      <DevTool control={control} />
       <form className={s.signUpForm} onSubmit={handleSubmit(onSubmit)}>
-        <ControlledInput
-          className={s.input}
-          control={control}
-          label={'Nickname'}
-          name={'name'}
-          placeholder={name}
-        />
+        <ControlledInput className={s.input} control={control} label={'Nickname'} name={'name'} />
         <Button className={s.submitButton} fullWidth type={'submit'}>
           Save Changes
         </Button>

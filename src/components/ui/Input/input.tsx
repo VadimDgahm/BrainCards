@@ -28,7 +28,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       <div className={`${s.box} ${className}`}>
         {title && typeInput !== 'search' && <label>{title}</label>}
         <div className={s.inputBox}>
-          {label}
+          <div className={s.label}>{label}</div>
           <div className={s.inputContainer}>
             <input
               className={classNames}

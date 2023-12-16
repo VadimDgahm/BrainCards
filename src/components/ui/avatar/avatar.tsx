@@ -3,11 +3,11 @@ import { FC } from 'react'
 type AvatarProps = {
   className?: string
   height?: string
-  name: string
+  name?: string
   src: string
   width?: string
 }
-export const Avatar: FC<AvatarProps> = ({ className, height, name, src, width }) => {
+export const Avatar: FC<AvatarProps> = ({ className, height, name = 'User', src, width }) => {
   const avatarStyle = {
     borderRadius: width && height ? '50%' : '2.25rem',
     height: height ?? '2.25rem',

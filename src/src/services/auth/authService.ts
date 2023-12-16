@@ -8,6 +8,14 @@ import { baseApi } from '@/src/services/base-api'
 
 export const authService = baseApi.injectEndpoints({
   endpoints: builder => ({
+    editProfile: builder.mutation<any, any>({
+      invalidatesTags: ['Auth'],
+      query: profileData => ({
+        body: profileData,
+        method: 'PATCH',
+        url: `auth/me`,
+      }),
+    }),
     getMe: builder.query<AuthMeResponse, void>({
       extraOptions: { maxRetries: 1 },
       providesTags: ['Auth'],
@@ -44,4 +52,10 @@ export const authService = baseApi.injectEndpoints({
     }),
   }),
 })
-export const { useGetMeQuery, useLogOutMutation, useLoginMutation, useSignUpMutation } = authService
+export const {
+  useEditProfileMutation,
+  useGetMeQuery,
+  useLogOutMutation,
+  useLoginMutation,
+  useSignUpMutation,
+} = authService
