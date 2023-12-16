@@ -1,0 +1,96 @@
+.windowEdit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 33px;
+}
+
+.title {
+  margin-bottom: 27px;
+}
+
+.editNameBox {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.avatarBox {
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.name {
+  margin-right: 9px;
+}
+
+.editNameIcon {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+
+  &:hover {
+    svg path {
+      fill: var(--color-accent-300);
+    }
+  }
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+}
+
+.editAvatarIcon {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  text-align: center;
+
+  background-color: var(--color-dark-300);
+  border-radius: 4px;
+  box-shadow: 0 0 2px 0 var(--color-dark-500);
+
+  transition: 0.3s;
+
+  &:hover {
+    box-shadow: 0 0 2px 0 var(--color-accent-100);
+
+    svg path {
+      fill: var(--color-accent-300);
+    }
+  }
+}
+
+.linkEmail {
+  margin-bottom: 13px;
+  text-decoration: none;
+}
+
+.textLink {
+  color: var(--color-dark-100);
+}
+
+.buttonLogout {
+  display: flex;
+  align-items: center;
+  width: 122px;
+}
+
+.iconLogOut {
+  display: flex;
+  margin-right: 6px;
+}

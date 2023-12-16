@@ -9,21 +9,19 @@ import {
 import { CheckEmail } from '@/components/auth/check-email'
 import { CreatePass } from '@/components/auth/create-pass'
 import { ForgotPass } from '@/components/auth/pass-recovery'
-import { LoginForm } from '@/components/auth/sign-in'
-import { SingUpForm } from '@/components/auth/sign-up'
-import { Profile } from '@/components/ui/profile'
-import { Deck } from '@/pages/deck'
-import Decks from '@/pages/decks/Decks'
-import DecksBody from '@/pages/decks/decks-body/decksBody'
-import DecksHeader from '@/pages/decks/decks-header/decksHeader'
+import { SingInPages } from '@/pages/auth/singInPages'
+import { SingUpPages } from '@/pages/auth/singUpPages'
+import { Layout } from '@/pages/layout/layout'
+import { useGetMeQuery } from '@/src/services/auth/authService'
+
 
 const publicRoutes: RouteObject[] = [
   {
-    element: <LoginForm onSubmit={() => {}} />,
+    element: <SingInPages />,
     path: '/login',
   },
   {
-    element: <SingUpForm onSubmit={() => {}} />,
+    element: <SingUpPages />,
     path: '/sign-up',
   },
   {
@@ -57,16 +55,37 @@ const privateRoutes: RouteObject[] = [
 
 const router = createBrowserRouter([
   {
-    children: privateRoutes,
-    element: <PrivateRoutes />,
+    children: [
+      {
+        children: privateRoutes,
+        element: <PrivateRoutes />,
+      },
+      {
+        children: publicRoutes,
+        element: <PublicRoutes />,
+      },
+    ],
+    element: <Layout />,
   },
-  ...publicRoutes,
 ])
 
-function PrivateRoutes() {
-  const isAuthenticated = true
+function useAuthenticationCheck() {
+  const result = useGetMeQuery()
+  const isAuthenticated = !!result.error
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+  return isAuthenticated
+}
+function PrivateRoutes() {
+
+  const isAuthenticated = useAuthenticationCheck()
+
+  return !isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+}
+function PublicRoutes() {
+  const isAuthenticated = useAuthenticationCheck()
+
+
+  return isAuthenticated ? <Outlet /> : <Navigate to={'/'} />
 }
 
 export const Router = () => {

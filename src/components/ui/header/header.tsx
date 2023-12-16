@@ -1,5 +1,5 @@
 import { FC } from 'react'
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 import { Link } from 'react-router-dom'
 
@@ -13,6 +13,7 @@ import Logo from '@/components/ui/header/logo/logo'
 import { LogOut } from '@/components/ui/icons/log-out/LogOut'
 import { PersonIcon } from '@/components/ui/icons/person/PersonIcon'
 import { Typography } from '@/components/ui/typography'
+import { useLogOutMutation } from '@/src/services/auth/authService'
 
 import s from './header.module.scss'
 
@@ -26,12 +27,12 @@ type HeaderProps = {
 }
 
 export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
-  // const navigate = useNavigate()
-
-  const onSignOutClickHandler = () => {
+  const navigate = useNavigate()
+  const [logout] = useLogOutMutation()
+  const onSignOutClickHandler = async () => {
     console.log('sign out')
-    // isLoggedIn = false
-    // navigate('/login')
+    await logout()
+    navigate('/login')
   }
   const onProfileClickHandler = () => {
     console.log('profile')
@@ -72,7 +73,7 @@ export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
           </DropDownMenu>
         </div>
       ) : (
-        <Button as={Link} className={s.SignButton} to={'/login'} variant={'primary'}>
+        <Button className={s.SignButton} onClick={onSignOutClickHandler} variant={'primary'}>
           Sign in
         </Button>
       )}
