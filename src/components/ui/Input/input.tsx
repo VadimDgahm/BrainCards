@@ -60,6 +60,3 @@ const showEyeIcon = (
       {isOpenEye ? <EyeOutline /> : <EyeOffOutline />}
     </button>
   )
-
-/*обернуто forwardRef, ref = {ref}, ref = {rootInput} и rootInput в пропсах закоменчено, errorMessage обернуто
- типографией, чтобы задать стили*/

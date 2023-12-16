@@ -12,6 +12,7 @@ import { ForgotPass } from '@/components/auth/pass-recovery'
 import { PageProfile } from '@/pages/PageProfile'
 import { SingInPages } from '@/pages/auth/singInPages'
 import { SingUpPages } from '@/pages/auth/singUpPages'
+import Decks from '@/pages/decks/Decks'
 import { Layout } from '@/pages/layout/layout'
 import { useGetMeQuery } from '@/src/services/auth/authService'
 
@@ -40,11 +41,16 @@ const publicRoutes: RouteObject[] = [
 
 const privateRoutes: RouteObject[] = [
   {
-    element: <div>hello</div>,
+    element: (
+      <div>
+        <Decks />
+      </div>
+    ),
     path: '/',
   },
   {
     element: <PageProfile />,
+
     path: '/profile',
   },
 ]
@@ -67,9 +73,8 @@ const router = createBrowserRouter([
 
 function useAuthenticationCheck() {
   const result = useGetMeQuery()
-  const isAuthenticated = !!result.error
 
-  return isAuthenticated
+  return !!result.error
 }
 function PrivateRoutes() {
   const isAuthenticated = useAuthenticationCheck()

@@ -34,10 +34,18 @@ const Head: FC<HeadProps> = ({ ...rest }) => {
   return <thead {...rest} />
 }
 
+type HeadRowProps = ComponentProps<'tr'>
+const HeadRow: FC<HeadRowProps> = ({ className, ...rest }) => {
+  const classNames = clsx(className, s.headRow)
+
+  return <tr className={classNames} {...rest} />
+}
+
 export const Table = {
   Body,
   Cell,
   Head,
+  HeadRow,
   Root,
   Row,
 }

@@ -14,6 +14,7 @@ import { Typography } from '@/components/ui/typography'
 import { useLogOutMutation } from '@/src/services/auth/authService'
 
 import s from './header.module.scss'
+
 export type ProfileInfoType = {
   avatar?: null | string
   email: string
