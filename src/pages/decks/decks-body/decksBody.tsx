@@ -5,6 +5,7 @@ import { Selector } from '@/components/ui/selector/Selector'
 import { Table } from '@/components/ui/table/Table'
 import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { Typography } from '@/components/ui/typography'
+import { DeleteDeck } from '@/pages/deck-modals/delete-deck/deleteDeck'
 import { EditDeck } from '@/pages/deck-modals/edit-deck/editDeck'
 import { useGetMeQuery } from '@/src/services/auth/authService'
 import { useDeleteDeckMutation, useGetDecksQuery } from '@/src/services/decks.service'
@@ -95,19 +96,16 @@ export default DecksBody
 
 const CellWithIcon = ({ ...deck }: GetDecksResponseItems) => {
   const [openEditModal, setOpenEditModal] = useState(false)
-  const [removeDeck] = useDeleteDeckMutation()
-  const removeDeckHandler = async (idDeck: string) => {
-    await removeDeck({ id: idDeck })
-    toast.success('success')
-  }
+  const [openRemoveModal, setOpenRemoveModal] = useState(false)
 
   return (
     <>
       <CellVariant.PlayEditAndTrash
         className={s.icons}
         onChangeEdit={() => setOpenEditModal(true)}
-        onChangeTrash={() => removeDeckHandler(deck.id)}
+        onChangeTrash={() => setOpenRemoveModal(true)}
       />
+      <DeleteDeck idDeck={deck.id} open={openRemoveModal} setOpen={setOpenRemoveModal} />
       <EditDeck
         idDeck={deck.id}
         isPrivate={deck.isPrivate}
