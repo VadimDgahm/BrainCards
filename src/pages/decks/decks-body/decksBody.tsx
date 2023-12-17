@@ -5,8 +5,10 @@ import { Selector } from '@/components/ui/selector/Selector'
 import { Table } from '@/components/ui/table/Table'
 import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { Typography } from '@/components/ui/typography'
+import { EditDeck } from '@/pages/deck-modals/edit-deck/editDeck'
 import { useGetMeQuery } from '@/src/services/auth/authService'
 import { useDeleteDeckMutation, useGetDecksQuery } from '@/src/services/decks.service'
+import { GetDecksResponseItems } from '@/src/services/decks.types'
 
 import s from './decksBody.module.scss'
 
@@ -18,12 +20,8 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const { data, error, isError, isLoading } = useGetDecksQuery({ currentPage })
-  const [removeDeck] = useDeleteDeckMutation()
+
   const { data: userData } = useGetMeQuery()
-  const removeDeckHandler = async (idDeck: string) => {
-    await removeDeck({ id: idDeck })
-    toast.success('success')
-  }
 
   if (error) {
     return (
@@ -43,6 +41,7 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
   // const onCardsNavigate = (id: string) => {
   //   navigate(`cards/${id}`)
   // }
+
   return (
     <div className={s.body}>
       <Table.Root className={s.root}>
@@ -81,12 +80,7 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
                 </Table.Cell>
                 <Table.Cell>{deck?.author?.name}</Table.Cell>
                 <Table.Cell>
-                  {deck.author.id === userData.id && (
-                    <CellVariant.PlayEditAndTrash
-                      className={s.icons}
-                      onChangeTrash={() => removeDeckHandler(deck.id)}
-                    />
-                  )}
+                  {deck.author.id === userData.id && <CellWithIcon {...deck} />}
                 </Table.Cell>
               </Table.Row>
             )
@@ -98,3 +92,29 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
 }
 
 export default DecksBody
+
+const CellWithIcon = ({ ...deck }: GetDecksResponseItems) => {
+  const [openEditModal, setOpenEditModal] = useState(false)
+  const [removeDeck] = useDeleteDeckMutation()
+  const removeDeckHandler = async (idDeck: string) => {
+    await removeDeck({ id: idDeck })
+    toast.success('success')
+  }
+
+  return (
+    <>
+      <CellVariant.PlayEditAndTrash
+        className={s.icons}
+        onChangeEdit={() => setOpenEditModal(true)}
+        onChangeTrash={() => removeDeckHandler(deck.id)}
+      />
+      <EditDeck
+        idDeck={deck.id}
+        isPrivate={deck.isPrivate}
+        name={deck.name}
+        open={openEditModal}
+        setOpen={setOpenEditModal}
+      />
+    </>
+  )
+}

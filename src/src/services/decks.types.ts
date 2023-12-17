@@ -74,6 +74,7 @@ export type CreateDeckType = {
 export type UpdateDeck = {
   cover?: string
   id: string
+  isPrivate?: boolean
   name?: string
 }
 export type DeckDeleteResponse = {
