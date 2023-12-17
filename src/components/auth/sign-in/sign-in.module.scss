@@ -39,9 +39,14 @@
 }
 
 .repairPassword {
-  cursor: default;
+  cursor: pointer;
   margin-bottom: 66px;
   margin-left: auto;
+  transition: 0.3s;
+
+  &:hover {
+    color: var(--color-info-500);
+  }
 }
 
 .account {

@@ -8,7 +8,7 @@ import { Card } from '@/components/ui/card'
 import { EditOutline } from '@/components/ui/icons/edit-outline/EditOutline'
 import NameEditor, { FormValues } from '@/components/ui/profile/nameEditor/nameEditor'
 import { Typography } from '@/components/ui/typography'
-import { useGetMeQuery } from '@/src/services/auth/authService'
+import { useGetMeQuery, useLogOutMutation } from '@/src/services/auth/authService'
 
 import s from './profile.module.scss'
 
@@ -23,6 +23,7 @@ type ProfileProps = {
 
 export const Profile = forwardRef<HTMLInputElement, ProfileProps>(({ onSubmit }, ref) => {
   const { data } = useGetMeQuery()
+  const [logOut] = useLogOutMutation()
   const [modeOn, setModeOn] = useState(false)
   const onSubmitHandler = (data: FormValues) => {
     onSubmit(data)
@@ -52,7 +53,12 @@ export const Profile = forwardRef<HTMLInputElement, ProfileProps>(({ onSubmit },
       />
       <div className={s.nameGroup}>
         {!modeOn ? (
-          <FieldWithName email={data?.email} name={data?.name} setModeOn={setModeOn} />
+          <FieldWithName
+            email={data?.email}
+            logOut={() => logOut()}
+            name={data?.name}
+            setModeOn={setModeOn}
+          />
         ) : (
           <NameEditor name={data?.name} onSubmit={onSubmitHandler} />
         )}
@@ -63,10 +69,11 @@ export const Profile = forwardRef<HTMLInputElement, ProfileProps>(({ onSubmit },
 
 type FieldWithNameType = {
   email?: string
+  logOut: () => void
   name?: string
   setModeOn: (isOn: boolean) => void
 }
-const FieldWithName = ({ email, name = 'User', setModeOn }: FieldWithNameType) => {
+const FieldWithName = ({ email, logOut, name = 'User', setModeOn }: FieldWithNameType) => {
   return (
     <>
       <div className={s.editName}>
@@ -85,7 +92,7 @@ const FieldWithName = ({ email, name = 'User', setModeOn }: FieldWithNameType) =
         {email || ''}
       </Typography>
       <div>
-        <Button className={s.button} variant={'secondary'}>
+        <Button className={s.button} onClick={() => logOut()} variant={'secondary'}>
           {<SvgButton />}Logout
         </Button>
       </div>

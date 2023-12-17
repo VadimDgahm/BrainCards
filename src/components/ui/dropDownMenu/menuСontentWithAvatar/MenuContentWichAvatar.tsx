@@ -7,7 +7,7 @@ import s from './MenuContentWichAvatar.module.css'
 import defaultAvatar from '../../../img/avatar.png'
 
 type PropsType = {
-  avatar?: string
+  avatar?: null | string
   isLine?: boolean
   name: string
   onClickAvatar?: () => void
@@ -26,7 +26,7 @@ export const MenuContentWithAvatar: FC<PropsType> = ({
         alt={''}
         className={`${s.avatar} ${!!onClickAvatar && s.clickAvatar}`}
         onClick={onClickAvatar}
-        src={avatar ? avatar : defaultAvatar}
+        src={avatar ?? defaultAvatar}
       />
       <div className={s.info}>
         <h4 className={`${s.name} `} onClick={onClickAvatar}>

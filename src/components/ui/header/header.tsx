@@ -1,4 +1,3 @@
-import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import defaultAvatar from '@/components/img/avatar.png'
@@ -11,7 +10,7 @@ import Logo from '@/components/ui/header/logo/logo'
 import { LogOut } from '@/components/ui/icons/log-out/LogOut'
 import { PersonIcon } from '@/components/ui/icons/person/PersonIcon'
 import { Typography } from '@/components/ui/typography'
-import { useLogOutMutation } from '@/src/services/auth/authService'
+import { useGetMeQuery, useLogOutMutation } from '@/src/services/auth/authService'
 
 import s from './header.module.scss'
 
@@ -20,16 +19,14 @@ export type ProfileInfoType = {
   email: string
   name: string
 } | null
-type HeaderProps = {
-  isLoggedIn: boolean
-  profileInfo?: ProfileInfoType
-}
 
-export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
+export const Header = () => {
+  const { data, error } = useGetMeQuery()
+
   const navigate = useNavigate()
   const [logout] = useLogOutMutation()
-  const onSignOutClickHandler = async () => {
-    await logout()
+  const onSignOutClickHandler = () => {
+    logout()
     navigate('/login')
   }
   const onProfileClickHandler = () => {
@@ -41,33 +38,36 @@ export const Header: FC<HeaderProps> = ({ isLoggedIn, profileInfo }) => {
     // navigate('/')
   }
 
+  console.log(error)
+
   return (
     <div className={s.HeaderRoot}>
       <Logo onClick={onLogoClickHandler} />
-      {isLoggedIn ? (
+      {!error ? (
         <div className={s.SignedUser}>
-          <DropDownMenu
-            trigger={
-              <span className={s.dropDownGroup}>
-                <Typography variant={'subtitle1'}>{profileInfo?.name ?? 'user'}</Typography>
-                <Avatar
-                  name={profileInfo?.name ?? 'user'}
-                  src={profileInfo?.avatar ?? defaultAvatar}
-                />
-              </span>
-            }
-          >
-            <MenuContentWithAvatar
-              name={profileInfo?.name ?? 'user'}
-              url={profileInfo?.email ?? 'user@mail.ru'}
-            />
-            <MenuContent
-              onClick={onProfileClickHandler}
-              svgIcon={<PersonIcon />}
-              title={'MyProfile'}
-            />
-            <MenuContent onClick={onSignOutClickHandler} svgIcon={<LogOut />} title={'Sign Out'} />
-          </DropDownMenu>
+          <span className={s.dropDownGroup}>
+            <Typography variant={'subtitle1'}>{data?.name ?? 'user'}</Typography>
+            <DropDownMenu
+              trigger={<Avatar name={data?.name ?? 'user'} src={data?.avatar ?? defaultAvatar} />}
+            >
+              <MenuContentWithAvatar
+                avatar={data?.avatar}
+                name={data?.name ?? 'user'}
+                url={data?.email ?? 'user@mail.ru'}
+              />
+              <MenuContent
+                onClick={onProfileClickHandler}
+                svgIcon={<PersonIcon />}
+                title={'MyProfile'}
+              />
+              <MenuContent
+                isLine={false}
+                onClick={onSignOutClickHandler}
+                svgIcon={<LogOut />}
+                title={'Sign Out'}
+              />
+            </DropDownMenu>
+          </span>
         </div>
       ) : (
         <Button className={s.SignButton} onClick={onSignOutClickHandler} variant={'primary'}>

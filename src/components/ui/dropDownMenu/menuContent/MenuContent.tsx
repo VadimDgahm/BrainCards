@@ -14,7 +14,7 @@ type PropsType = {
 export const MenuContent: FC<PropsType> = ({ isLine = true, onClick, svgIcon, title }) => {
   return (
     <DropdownMenu.Item
-      className={` ${s.DropdownMenuItem} ${!isLine && s.lastItem}`}
+      className={` ${s.DropdownMenuItem} ${!isLine ? s.lastItem : s.item}`}
       onClick={onClick}
     >
       <div className={s.icon}>{svgIcon}</div>

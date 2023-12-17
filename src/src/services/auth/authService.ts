@@ -16,6 +16,16 @@ export const authService = baseApi.injectEndpoints({
         url: `auth/me`,
       }),
     }),
+    forgotPasswordEmail: builder.mutation<any, any>({
+      query: ({ email }) => ({
+        body: {
+          email,
+          html: ' <a href="http://localhost:5173/create-password/##token##">here</a> ',
+        },
+        method: 'POST',
+        url: `/auth/recover-password`,
+      }),
+    }),
     getMe: builder.query<AuthMeResponse, void>({
       extraOptions: { maxRetries: 1 },
       providesTags: ['Auth'],
@@ -40,6 +50,15 @@ export const authService = baseApi.injectEndpoints({
         url: `auth/login`,
       }),
     }),
+    resetPassword: builder.mutation<any, any>({
+      query: ({ password, token }) => ({
+        body: {
+          password,
+        },
+        method: 'POST',
+        url: `/auth/reset-password/${token}`,
+      }),
+    }),
     signUp: builder.mutation<SingUpResponse, any>({
       query: ({ email, password }) => ({
         body: {
@@ -54,8 +73,10 @@ export const authService = baseApi.injectEndpoints({
 })
 export const {
   useEditProfileMutation,
+  useForgotPasswordEmailMutation,
   useGetMeQuery,
   useLogOutMutation,
   useLoginMutation,
+  useResetPasswordMutation,
   useSignUpMutation,
 } = authService

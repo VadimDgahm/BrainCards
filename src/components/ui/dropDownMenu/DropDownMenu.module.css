@@ -23,7 +23,7 @@
 
 .triangle {
   position: absolute;
-  bottom: 4px;
+  bottom: 5px;
   transform: rotateZ(45deg);
 
   width: 12px;

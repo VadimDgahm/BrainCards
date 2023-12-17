@@ -15,7 +15,7 @@ const passRecoverySchema = z.object({
   email: z.string().min(1, 'Enter email address').email({ message: 'Invalid email address' }),
 })
 
-type FormValues = z.infer<typeof passRecoverySchema>
+export type FormValues = z.infer<typeof passRecoverySchema>
 
 export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void }) => {
   const { control, handleSubmit } = useForm<FormValues>({
