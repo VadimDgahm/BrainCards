@@ -59,7 +59,7 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
             type={'password'}
           />
           <ControlledCheckbox
-            containerClassName={s.checkbox}
+            className={s.checkbox}
             control={control}
             label={'remember Me'}
             name={'rememberMe'}

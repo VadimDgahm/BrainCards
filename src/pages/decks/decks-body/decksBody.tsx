@@ -1,10 +1,12 @@
 import { FC, useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { Selector } from '@/components/ui/selector/Selector'
 import { Table } from '@/components/ui/table/Table'
 import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { Typography } from '@/components/ui/typography'
-import { useGetDecksQuery } from '@/src/services/decks.service'
+import { useGetMeQuery } from '@/src/services/auth/authService'
+import { useDeleteDeckMutation, useGetDecksQuery } from '@/src/services/decks.service'
 
 import s from './decksBody.module.scss'
 
@@ -16,6 +18,12 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
   const [currentPage, setCurrentPage] = useState(1)
 
   const { data, error, isError, isLoading } = useGetDecksQuery({ currentPage })
+  const [removeDeck] = useDeleteDeckMutation()
+  const { data: userData } = useGetMeQuery()
+  const removeDeckHandler = async (idDeck: string) => {
+    await removeDeck({ id: idDeck })
+    toast.success('success')
+  }
 
   if (error) {
     return (
@@ -25,7 +33,7 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
       </>
     )
   }
-
+  console.log(data)
   if (isLoading) {
     return <>{/*<Typography variant={'large'}>is Loading</Typography>*/}</>
   }
@@ -35,7 +43,6 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
   // const onCardsNavigate = (id: string) => {
   //   navigate(`cards/${id}`)
   // }
-
   return (
     <div className={s.body}>
       <Table.Root className={s.root}>
@@ -74,7 +81,12 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
                 </Table.Cell>
                 <Table.Cell>{deck?.author?.name}</Table.Cell>
                 <Table.Cell>
-                  <CellVariant.PlayEditAndTrash className={s.icons} />
+                  {deck.author.id === userData.id && (
+                    <CellVariant.PlayEditAndTrash
+                      className={s.icons}
+                      onChangeTrash={() => removeDeckHandler(deck.id)}
+                    />
+                  )}
                 </Table.Cell>
               </Table.Row>
             )

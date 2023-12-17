@@ -8,7 +8,7 @@ import Check from './check'
 
 export type CheckboxProps = {
   checked?: boolean
-  containerClassName?: string
+  className?: string
   disabled?: boolean
   label?: string
   // onChange?: (checked: boolean) => void
@@ -19,7 +19,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
   (
     {
       checked,
-      containerClassName,
+      className,
       disabled = false,
       label,
       onValueChange,
@@ -29,7 +29,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
     ref
   ) => {
     return (
-      <div className={`${s.container} ${containerClassName || ''}`}>
+      <div className={`${s.container} ${className || ''}`}>
         <div className={`${s.buttonContainer} ${disabled && s.disabled}`}>
           <CheckboxRadix.Root
             checked={checked}

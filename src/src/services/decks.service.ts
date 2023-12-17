@@ -41,7 +41,7 @@ const decksService = baseApi.injectEndpoints({
           return {
             body: arg,
             method: 'POST',
-            url: `v1/decks`,
+            url: `decks`,
           }
         },
       }),

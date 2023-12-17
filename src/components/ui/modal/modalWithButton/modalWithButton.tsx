@@ -7,12 +7,16 @@ import s from './modalWithButton.module.scss'
 type ModalWithButtonProps = {
   className?: string
   isSecondary?: boolean
+  onClickPrimaryButton?: () => void
+  onClickSecondaryButton?: () => void
   secondaryTitle?: boolean
   titleButton: string
 }
 const ModalWithButton: FC<ModalWithButtonProps> = ({
   className,
   isSecondary = true,
+  onClickPrimaryButton,
+  onClickSecondaryButton,
   secondaryTitle = 'Cancel',
   titleButton,
 }) => {
@@ -20,13 +24,19 @@ const ModalWithButton: FC<ModalWithButtonProps> = ({
     <div className={`${s.content} ${className}`}>
       {isSecondary && (
         <div>
-          <Button className={s.buttonSecondary} variant={'secondary'}>
+          <Button
+            className={s.buttonSecondary}
+            onClick={onClickSecondaryButton}
+            variant={'secondary'}
+          >
             {secondaryTitle}
           </Button>
         </div>
       )}
       <div>
-        <Button className={s.button}>{titleButton}</Button>
+        <Button className={s.button} onClick={onClickPrimaryButton} type={'submit'}>
+          {titleButton}
+        </Button>
       </div>
     </div>
   )

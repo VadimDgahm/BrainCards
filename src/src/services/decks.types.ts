@@ -67,7 +67,7 @@ export type GetDeckByIdArgs = {
 
 export type CreateDeckType = {
   cover?: string
-  isPrivate?: string
+  isPrivate?: boolean
   name: string
 }
 
