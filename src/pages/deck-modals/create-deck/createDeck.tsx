@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -22,7 +22,11 @@ const loginSchema = z.object({
     .min(3, 'Password has to be at least 3 characters long')
     .max(30, 'Password should be less than' + ' 30 characters'),
 })
-const CreateDeck = () => {
+
+type CreateProps = {
+  disabled?: boolean
+}
+const CreateDeck: FC<CreateProps> = ({ disabled }) => {
   const [createDeck] = useCreateDeckMutation()
   const [open, setOpen] = useState(false)
   const { control, handleSubmit } = useForm<CreateDeckType>({
@@ -40,8 +44,9 @@ const CreateDeck = () => {
   }
 
   return (
-    <>
+    <section>
       <Button
+        disabled={disabled}
         onClick={() => {
           setOpen(true)
         }}
@@ -68,7 +73,7 @@ const CreateDeck = () => {
           </form>
         </Modal>
       </div>
-    </>
+    </section>
   )
 }
 

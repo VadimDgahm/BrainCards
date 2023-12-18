@@ -1,4 +1,5 @@
-import { ComponentPropsWithoutRef, forwardRef } from 'react'
+import { ChangeEvent, ComponentPropsWithoutRef, forwardRef } from 'react'
+import { toast } from 'react-toastify'
 
 import { useInput } from '@/components/ui/Input/hook/hookInput'
 import { EyeOffOutline } from '@/components/ui/icons/eye-off-outline/EyeOffOutline'
@@ -9,13 +10,16 @@ import clsx from 'clsx'
 
 import s from './input.module.scss'
 
+import onChange = toast.onChange
+
 export type InputProps = {
   errorMessage?: string
   label?: string
+  onValueChange?: (value: string) => void
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, errorMessage, label, title, ...rest }, ref) => {
+  ({ className, errorMessage, label, onValueChange, title, ...rest }, ref) => {
     const {
       isOpenEye,
       onClickSvgEyeHandler,
@@ -23,6 +27,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       typeInput,
     } = useInput(rest.type)
     const classNames = clsx(s.input, errorMessage && s.error, typeInput === 'search' && s.search)
+
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e)
+      onValueChange?.(e.target.value)
+    }
 
     return (
       <div className={`${s.box} ${className}`}>
@@ -32,10 +41,11 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           <div className={s.inputContainer}>
             <input
               className={classNames}
+              onChange={handleChange}
               // ref={rootInput}
               ref={ref}
-              {...rest}
               type={typeInput}
+              {...rest}
             />
             {typeInput === 'search' && <SearchIcon className={s.searchIcon} width={20} />}
             {showEyeIcon(isOpenEye, onClickSvgEyeHandler)}
