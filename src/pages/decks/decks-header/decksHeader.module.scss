@@ -1,12 +1,18 @@
 .body {
-  width: 100%;
+  min-width: 1280px;
   margin: 33px auto;
   padding: 0 136px;
 }
 
 .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.loading {
+  margin: 170px auto;
 }
 
 .addButton {
@@ -16,6 +22,7 @@
 .searchFields {
   display: flex;
   flex-direction: row;
+  gap: 24px;
   align-items: center;
   justify-content: space-between;
 
