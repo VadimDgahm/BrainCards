@@ -1,11 +1,13 @@
 import { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { PlayCircleOutline } from '@/components/ui/icons/play-circle-outline/PlayCircleOutline'
 import { Selector } from '@/components/ui/selector/Selector'
 import { Table } from '@/components/ui/table/Table'
 import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { Typography } from '@/components/ui/typography'
-import { DeleteDeck } from '@/pages/deck-modals/delete-deck/deleteDeck'
+import { DeleteModal } from '@/pages/deck-modals/delete-module/deleteModal'
 import { EditDeck } from '@/pages/deck-modals/edit-deck/editDeck'
 import { useGetMeQuery } from '@/src/services/auth/authService'
 import { useDeleteDeckMutation, useGetDecksQuery } from '@/src/services/decks.service'
@@ -19,20 +21,23 @@ type DeckBodyProps = {
 
 const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
   const [currentPage, setCurrentPage] = useState(1)
+  const navigate = useNavigate()
 
   const { data, error, isError, isLoading } = useGetDecksQuery({ currentPage })
 
   const { data: userData } = useGetMeQuery()
+  const onChangePlay = (idDeck: string) => {
+    navigate(`/cards/${idDeck}`)
+  }
 
   if (error) {
     return (
       <>
         <Typography variant={'large'}>Some error has occured</Typography>
-        <Typography variant={'large'}>{error.data.message}</Typography>
+        <Typography variant={'large'}>{error.data?.message}</Typography>
       </>
     )
   }
-  console.log(data)
   if (isLoading) {
     return <>{/*<Typography variant={'large'}>is Loading</Typography>*/}</>
   }
@@ -81,7 +86,11 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
                 </Table.Cell>
                 <Table.Cell>{deck?.author?.name}</Table.Cell>
                 <Table.Cell>
-                  {deck.author.id === userData.id && <CellWithIcon {...deck} />}
+                  {deck.author.id === userData?.id ? (
+                    <CellWithIcon onChangePlay={() => onChangePlay(deck.id)} {...deck} />
+                  ) : (
+                    <PlayCircleOutline onClick={() => onChangePlay(deck.id)} />
+                  )}
                 </Table.Cell>
               </Table.Row>
             )
@@ -93,19 +102,33 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed }) => {
 }
 
 export default DecksBody
-
-const CellWithIcon = ({ ...deck }: GetDecksResponseItems) => {
+type CellWithIconType = {
+  onChangePlay: () => void
+} & GetDecksResponseItems
+const CellWithIcon = ({ onChangePlay, ...deck }: CellWithIconType) => {
   const [openEditModal, setOpenEditModal] = useState(false)
   const [openRemoveModal, setOpenRemoveModal] = useState(false)
+  const [removeDeck] = useDeleteDeckMutation()
+  const removeDeckHandler = async () => {
+    await removeDeck({ id: deck.id })
+    toast.success('success')
+  }
 
   return (
     <>
       <CellVariant.PlayEditAndTrash
         className={s.icons}
         onChangeEdit={() => setOpenEditModal(true)}
+        onChangePlay={onChangePlay}
         onChangeTrash={() => setOpenRemoveModal(true)}
       />
-      <DeleteDeck idDeck={deck.id} open={openRemoveModal} setOpen={setOpenRemoveModal} />
+      <DeleteModal
+        nameDeleteObj={deck.name}
+        open={openRemoveModal}
+        removeHandler={removeDeckHandler}
+        setOpen={setOpenRemoveModal}
+        title={'Delete Pack'}
+      />
       <EditDeck
         idDeck={deck.id}
         isPrivate={deck.isPrivate}

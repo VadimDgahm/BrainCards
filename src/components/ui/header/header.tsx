@@ -38,8 +38,6 @@ export const Header = () => {
     // navigate('/')
   }
 
-  console.log(error)
-
   return (
     <div className={s.HeaderRoot}>
       <Logo onClick={onLogoClickHandler} />

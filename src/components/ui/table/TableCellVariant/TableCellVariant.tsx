@@ -25,9 +25,9 @@ const Stars: FC<StarsProps> = ({ className, numberStar = 5, value, ...rest }) =>
     <div className={classNames} {...rest}>
       {starsArrNumber.map(n =>
         n <= value ? (
-          <StarIcon className={s.star} color={'#E5AC39'} key={n} />
+          <StarIcon className={s.star} color={'#E5AC39'} key={n} width={16} />
         ) : (
-          <StarOutline className={s.star} color={'#E5AC39'} key={n} />
+          <StarOutline className={s.star} color={'#E5AC39'} key={n} width={16} />
         )
       )}
     </div>
@@ -35,15 +35,15 @@ const Stars: FC<StarsProps> = ({ className, numberStar = 5, value, ...rest }) =>
 }
 
 type EditAndTrashProps = {
-  onChangeEdit?: () => void
-  onChangeTrash?: () => void
-  title: string
+  onClickEdit?: () => void
+  onClickTrash?: () => void
+  title?: string
 } & ComponentProps<'div'>
 const EditAndTrash: FC<EditAndTrashProps> = ({
   className,
-  onChangeEdit,
-  onChangeTrash,
-  title,
+  onClickEdit,
+  onClickTrash,
+  title = '',
   ...rest
 }) => {
   const classNames = clsx(className, s.cell)
@@ -55,8 +55,8 @@ const EditAndTrash: FC<EditAndTrashProps> = ({
         <Typography variant={'body2'}>{title}</Typography>
       </div>
 
-      <EditOutline className={classNamesIcon} onChange={onChangeEdit} />
-      <TrashOutline className={s.icon} onChange={onChangeTrash} />
+      <EditOutline className={classNamesIcon} onClick={onClickEdit} />
+      <TrashOutline className={s.icon} onClick={onClickTrash} />
     </div>
   )
 }
@@ -86,20 +86,15 @@ const PlayEditAndTrash: FC<PlayEditAndTrashProps> = ({
 }
 
 type WithImageProps = {
-  src?: string
+  src?: null | string
   title: string
 } & ComponentProps<'div'>
-const WithImage: FC<WithImageProps> = ({
-  className,
-  src = 'https://via.placeholder.com/118x48',
-  title,
-  ...rest
-}) => {
+const WithImage: FC<WithImageProps> = ({ className, src, title, ...rest }) => {
   const classNames = clsx(className, s.cell)
 
   return (
     <div className={classNames} {...rest}>
-      <img className={s.indentation} src={src} />
+      {src && <img className={`${s.indentation} ${s.img}`} src={src} />}
       <div className={s.indentation}>
         <Typography variant={'body2'}>{title}</Typography>
       </div>

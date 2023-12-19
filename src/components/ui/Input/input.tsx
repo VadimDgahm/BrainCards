@@ -33,8 +33,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             <input
               className={classNames}
               // ref={rootInput}
-              ref={ref}
               {...rest}
+              ref={ref}
               type={typeInput}
             />
             {typeInput === 'search' && <SearchIcon className={s.searchIcon} width={20} />}

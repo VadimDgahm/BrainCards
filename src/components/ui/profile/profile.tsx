@@ -113,7 +113,7 @@ const AvatarEdit = ({ avatar, modeOn, name = 'User', onChange }: AvatarEditType)
       {!modeOn && (
         <label htmlFor={'avatarId'}>
           <span className={s.iconImage}>
-            <EditOutline width={16} />{' '}
+            <EditOutline width={16} />
           </span>
 
           <input className={s.avatarEditor} id={'avatarId'} onChange={onChange} type={'file'} />

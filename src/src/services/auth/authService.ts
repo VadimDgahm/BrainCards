@@ -27,7 +27,6 @@ export const authService = baseApi.injectEndpoints({
       }),
     }),
     getMe: builder.query<AuthMeResponse, void>({
-      extraOptions: { maxRetries: 1 },
       providesTags: ['Auth'],
       query: () => `auth/me`,
     }),

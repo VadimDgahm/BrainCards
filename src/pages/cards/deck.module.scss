@@ -1,0 +1,53 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  text-align: start;
+}
+
+.linkBack {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+
+  margin-top: 24px;
+  margin-bottom: 33px;
+
+  color: var(--color-light-100);
+}
+
+.table {
+  width: 100%;
+}
+
+.search {
+  margin-bottom: 24px;
+}
+
+.iconBack {
+  margin-right: 4px;
+}
+
+.nameDeck {
+  margin-bottom: 69px;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleText {
+  margin-bottom: 30px;
+  color: var(--color-dark-100);
+}
+
+.btnBox {
+  display: flex;
+  justify-content: center;
+  max-width: 146px;
+}

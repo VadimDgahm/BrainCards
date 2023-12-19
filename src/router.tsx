@@ -12,6 +12,7 @@ import { ForgotPassPage } from '@/pages/ForgotPassPage'
 import { PageProfile } from '@/pages/PageProfile'
 import { SingInPages } from '@/pages/auth/singInPages'
 import { SingUpPages } from '@/pages/auth/singUpPages'
+import { PageCards } from '@/pages/cards/pageCards'
 import Decks from '@/pages/decks/Decks'
 import { Layout } from '@/pages/layout/layout'
 import { useGetMeQuery } from '@/src/services/auth/authService'
@@ -50,8 +51,11 @@ const privateRoutes: RouteObject[] = [
   },
   {
     element: <PageProfile />,
-
     path: '/profile',
+  },
+  {
+    element: <PageCards />,
+    path: '/cards/:id',
   },
 ]
 

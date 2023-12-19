@@ -12,6 +12,16 @@ import { baseApi } from './base-api'
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
+      addCardByDeckId: builder.mutation<any, any>({
+        invalidatesTags: ['Cards'],
+        query: ({ body, id }) => {
+          return {
+            body,
+            method: 'POST',
+            url: `decks/${id}/cards`,
+          }
+        },
+      }),
       createAndSaveRate: builder.mutation<void, RateSave>({
         invalidatesTags: ['Decks'],
         query: ({ id, ...body }) => {
@@ -22,17 +32,16 @@ const decksService = baseApi.injectEndpoints({
           }
         },
       }),
-      createCardQuestion: builder.mutation<void, CardCreation>({
-        invalidatesTags: ['Decks'],
-        query: ({ id, ...body }) => {
+      getCardById: builder.query<any, any>({
+        providesTags: ['Cards'],
+        query: ({ id }) => {
           return {
-            body,
-            method: 'POST',
-            url: `decks/${id}/cards`,
+            url: `cards/${id}`,
           }
         },
       }),
       getCardsByDeckId: builder.query<GetCarsdByDeckResponse, GetCardsByDeckId>({
+        providesTags: ['Cards'],
         query: ({ id }) => {
           return {
             url: `decks/${id}/cards`,
@@ -46,13 +55,35 @@ const decksService = baseApi.injectEndpoints({
           }
         },
       }),
+      removeCardByDeckId: builder.mutation<any, any>({
+        invalidatesTags: ['Cards'],
+        query: ({ id }) => {
+          return {
+            method: 'DELETE',
+            url: `cards/${id}`,
+          }
+        },
+      }),
+      updateCardByDeckId: builder.mutation<any, any>({
+        invalidatesTags: ['Cards'],
+        query: ({ body, id }) => {
+          return {
+            body: body,
+            method: 'PATCH',
+            url: `cards/${id}`,
+          }
+        },
+      }),
     }
   },
 })
 
 export const {
+  useAddCardByDeckIdMutation,
   useCreateAndSaveRateMutation,
-  useCreateCardQuestionMutation,
+  useGetCardByIdQuery,
   useGetCardsByDeckIdQuery,
   useGetCardsForLearnQuery,
+  useRemoveCardByDeckIdMutation,
+  useUpdateCardByDeckIdMutation,
 } = decksService
