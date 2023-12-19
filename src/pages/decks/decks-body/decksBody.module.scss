@@ -16,3 +16,12 @@
 .selsectorCell {
   padding-left: 35px;
 }
+
+.cell {
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    color: var(--color-info-300);
+  }
+}

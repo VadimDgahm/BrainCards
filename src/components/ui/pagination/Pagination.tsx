@@ -15,7 +15,7 @@ export type PaginationProps = {
   options: OptionsType[]
   pageSize: number
   siblingCount?: number
-  totalCount: number
+  totalCount: number | undefined
 }
 
 export const Pagination: FC<PaginationProps> = ({

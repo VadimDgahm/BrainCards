@@ -2,14 +2,13 @@ import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { PlayCircleOutline } from '@/components/ui/icons/play-circle-outline/PlayCircleOutline'
 import { Pagination } from '@/components/ui/pagination'
 import { Selector } from '@/components/ui/selector/Selector'
 import { Table } from '@/components/ui/table/Table'
+import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { Typography } from '@/components/ui/typography'
 import { DeleteModal } from '@/pages/deck-modals/delete-module/deleteModal'
 import { EditDeck } from '@/pages/deck-modals/edit-deck/editDeck'
-import { CellWithIcon } from '@/pages/decks/cellWithIcon'
 import { options, selectOptions } from '@/pages/decks/decks-body/selectorConstants.types'
 import { SliderCardsValuesType } from '@/pages/decks/decks-header/decksHeader'
 import {
@@ -26,7 +25,8 @@ import {
   setOrderBy,
   setSelectedSortOption,
 } from '@/src/services/deck.slice'
-import { useGetDecksQuery } from '@/src/services/decks.service'
+import { useDeleteDeckMutation, useGetDecksQuery } from '@/src/services/decks.service'
+import { GetDecksResponseItems } from '@/src/services/decks.types'
 import { useAppDispatch, useAppSelector } from '@/src/services/hooks'
 
 import s from './decksBody.module.scss'
@@ -39,9 +39,7 @@ type DeckBodyProps = {
 const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed, sliderCardsValues }) => {
   const navigate = useNavigate()
 
-  const onChangePlay = (idDeck: string) => {
-    navigate(`/cards/${idDeck}`)
-  }
+  const onChangePlay = (idDeck: string) => {}
 
   const currentPage = useAppSelector(selectCurrentPage)
   const itemsPerPage = useAppSelector(selectItemsPerPage)
@@ -98,11 +96,11 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed, sliderCardsValues }) 
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Cards</Table.Cell>
                 <Table.Cell>
-                  {deck.author.id === userData?.id ? (
-                    <CellWithIcon onChangePlay={() => onChangePlay(deck.id)} {...deck} />
-                  ) : (
-                    <PlayCircleOutline onClick={() => onChangePlay(deck.id)} />
-                  )}
+                  {/*{deck.author.id === userData?.id ? (*/}
+                  {/*  <CellWithIcon onChangePlay={() => onChangePlay(deck.id)} {...deck} />*/}
+                  {/*) : (*/}
+                  {/*  <PlayCircleOutline onClick={() => onChangePlay(deck.id)} />*/}
+                  {/*)}*/}
                   <Selector
                     defaultValue={'Last Updated'}
                     onValueChange={handleSortOptionChange}
@@ -121,14 +119,18 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed, sliderCardsValues }) 
                 .map(deck => {
                   return (
                     <Table.Row key={deck?.id}>
-                      <Table.Cell>{deck?.name}</Table.Cell>
+                      <Table.Cell className={s.cell} onClick={() => navigate(`/cards/${deck.id}`)}>
+                        {deck?.name}
+                      </Table.Cell>
                       <Table.Cell>{deck?.cardsCount}</Table.Cell>
                       <Table.Cell className={s.selsectorCell}>
                         {new Date(deck?.updated).toLocaleDateString()}
                       </Table.Cell>
                       <Table.Cell>{deck?.author?.name}</Table.Cell>
                       <Table.Cell>
-                        {deck.author.id === userData?.id && <CellWithIcon {...deck} />}
+                        {deck.author.id === userData?.id && (
+                          <CellWithIcon onChangePlay={() => onChangePlay(deck.id)} {...deck} />
+                        )}
                       </Table.Cell>
                     </Table.Row>
                   )
