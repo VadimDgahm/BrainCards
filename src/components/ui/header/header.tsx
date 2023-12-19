@@ -34,8 +34,7 @@ export const Header = () => {
   }
 
   const onLogoClickHandler = () => {
-    console.log('to homepage')
-    // navigate('/')
+    navigate('/')
   }
 
   return (

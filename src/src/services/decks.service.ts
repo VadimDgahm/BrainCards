@@ -10,33 +10,40 @@ import {
 } from '@/src/services/decks.types'
 
 import { baseApi } from './base-api'
+import { RootState } from './store'
 
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
       createDeck: builder.mutation<CreateDeckResponse, CreateDeckType>({
         invalidatesTags: ['Decks'],
-        // onQueryStarted: async (_, { dispatch, getState, queryFulfilled }) => {
-        //   const state = getState() as RootState
-        //   // const currentPage = state.decks.currentPage
-        //   // const name = state.decks.search
-        //   // const minCards = state.decks.minCards
-        //   // const maxCards = state.decks.maxCards
-        //   const res = await queryFulfilled
-        //
-        //   dispatch(
-        //     decksService.util.updateQueryData(
-        //       'getDecks',
-        //       {
-        //         // currentPage,
-        //         // maxCards, minCards, name
-        //       },
-        //       draft => {
-        //         draft.items.unshift(res.data)
-        //       }
-        //     )
-        //   )
-        // },
+        onQueryStarted: async (_, { dispatch, getState, queryFulfilled }) => {
+          const state = getState() as RootState
+          const currentPage = state.decksReducer.currentPage
+          const itemsPerPage = state.decksReducer.itemsPerPage
+          const orderBy = state.decksReducer.orderBy
+          const minCardsCount = state.decksReducer.sliderValues.minCardsCount
+          const maxCardsCount = state.decksReducer.sliderValues.maxCardsCount
+          const name = state.decksReducer.searchField
+          const res = await queryFulfilled
+
+          dispatch(
+            decksService.util.updateQueryData(
+              'getDecks',
+              {
+                currentPage,
+                itemsPerPage,
+                maxCardsCount,
+                minCardsCount,
+                name,
+                orderBy,
+              },
+              draft => {
+                draft.items.unshift(res.data)
+              }
+            )
+          )
+        },
         query: arg => {
           return {
             body: arg,
@@ -49,17 +56,23 @@ const decksService = baseApi.injectEndpoints({
         invalidatesTags: ['Decks'],
         // onQueryStarted: async ({ id, ...body }, { dispatch, getState, queryFulfilled }) => {
         //   const state = getState() as RootState
-        //   // const currentPage = state.decks.currentPage
-        //   // const name = state.decks.search
-        //   // const minCards = state.decks.minCards
-        //   // const maxCards = state.decks.maxCards
+        //   const currentPage = state.decksReducer.currentPage
+        //   const itemsPerPage = state.decksReducer.itemsPerPage
+        //   const orderBy = state.decksReducer.orderBy
+        //   const minCardsCount = state.decksReducer.sliderValues.minCardsCount
+        //   const maxCardsCount = state.decksReducer.sliderValues.maxCardsCount
+        //   const name = state.decksReducer.searchField
         //
         //   dispatch(
         //     decksService.util.updateQueryData(
         //       'getDecks',
         //       {
-        //         // currentPage,
-        //         // maxCards, minCards, name
+        //         currentPage,
+        //         itemsPerPage,
+        //         maxCardsCount,
+        //         minCardsCount,
+        //         name,
+        //         orderBy,
         //       },
         //       draft => {
         //         const deck = draft.items.find(item => item.id === id)
@@ -97,31 +110,6 @@ const decksService = baseApi.injectEndpoints({
       }),
       updateDeck: builder.mutation<GetDecksResponseItems, UpdateDeck>({
         invalidatesTags: ['Decks'],
-        // onQueryStarted: async ({ id, ...body }, { dispatch, getState, queryFulfilled }) => {
-        //   const state = getState() as RootState
-        //   const currentPage = state.decks.currentPage
-        //   // const name = state.decks.search
-        //   // const minCards = state.decks.minCards
-        //   // const maxCards = state.decks.maxCards
-        //
-        //   dispatch(
-        //     decksService.util.updateQueryData(
-        //       'getDecks',
-        //       {
-        //         currentPage,
-        //         // maxCards, minCards, name
-        //       },
-        //       draft => {
-        //         const deck = draft.items.find(item => item.id === id)
-        //
-        //         if (deck) {
-        //           Object.assign(deck, { ...deck, ...body })
-        //         }
-        //       }
-        //     )
-        //   )
-        //   await queryFulfilled
-        // },
         query: ({ id, ...body }) => {
           return {
             body,
