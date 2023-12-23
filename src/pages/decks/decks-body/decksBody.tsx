@@ -96,11 +96,6 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed, sliderCardsValues }) 
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Cards</Table.Cell>
                 <Table.Cell>
-                  {/*{deck.author.id === userData?.id ? (*/}
-                  {/*  <CellWithIcon onChangePlay={() => onChangePlay(deck.id)} {...deck} />*/}
-                  {/*) : (*/}
-                  {/*  <PlayCircleOutline onClick={() => onChangePlay(deck.id)} />*/}
-                  {/*)}*/}
                   <Selector
                     defaultValue={'Last Updated'}
                     onValueChange={handleSortOptionChange}
