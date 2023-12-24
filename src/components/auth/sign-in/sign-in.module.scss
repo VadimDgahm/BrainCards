@@ -1,4 +1,7 @@
 .signInWrapper {
+  display: flex;
+  flex-direction: column;
+
   width: 420px;
   height: 528px;
   margin: 36px auto;
@@ -6,6 +9,10 @@
 
   border: 1px solid var(--color-dark-500);
   border-radius: 5px;
+}
+
+.submitButton {
+  width: 100%;
 }
 
 .signInForm {
@@ -29,9 +36,6 @@
 }
 
 .checkbox {
-  display: flex;
-  gap: 10px;
-
   width: 140px;
   height: 36px;
   margin-right: auto;
@@ -40,8 +44,12 @@
 
 .repairPassword {
   cursor: pointer;
+
   margin-bottom: 66px;
   margin-left: auto;
+
+  text-decoration: none;
+
   transition: 0.3s;
 
   &:hover {

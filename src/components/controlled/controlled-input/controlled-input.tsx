@@ -26,19 +26,10 @@ export const ControlledInput = <T extends FieldValues>({
     shouldUnregister,
   })
 
-  return defaultValue ? (
+  return (
     <Input
       {...rest}
       defaultValue={defaultValue}
-      errorMessage={error?.message}
-      label={label}
-      name={name}
-      onChange={onChange}
-      ref={ref}
-    />
-  ) : (
-    <Input
-      {...rest}
       errorMessage={error?.message}
       label={label}
       name={name}

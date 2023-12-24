@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-import { Deck } from '@/pages/cards/deck'
+import { Cards } from '@/pages/cards/cards'
 
 export const PageCards = () => {
   const params = useParams()
@@ -10,5 +10,5 @@ export const PageCards = () => {
     deckID = params.id
   }
 
-  return <Deck idDeck={deckID} />
+  return <Cards idDeck={deckID} />
 }

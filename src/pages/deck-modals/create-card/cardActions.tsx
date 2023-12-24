@@ -1,12 +1,13 @@
 import Modal from '@/components/ui/modal/modal'
-import ModalTitle from '@/components/ui/modal/modalTitle/modalTitle'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
-import { Selector } from '@/components/ui/selector/Selector'
-import { FormWithImg } from '@/pages/deck-modals/create-card/FormWithImg/FormWithImg'
-import { FormWithText } from '@/pages/deck-modals/create-card/FormWithText/FormWithText'
+import { Select } from '@/components/ui/select/select'
+import { FormWithImg } from '@/pages/deck-modals/create-card/formWithImg/FormWithImg'
+import { FormWithText } from '@/pages/deck-modals/create-card/formWithText/formWithText'
 import { useCardActions } from '@/pages/deck-modals/create-card/useCardActions'
 import { CardResponse } from '@/src/services/decks.types'
+
+import s from './cardActions.module.scss'
 
 type CardActionsProps = {
   card?: CardResponse
@@ -26,25 +27,21 @@ export const CardActions = ({ card, onSubmit, open, setOpen, title = '' }: CardA
     onSubmitHandler,
     setVariantCard,
     variantCard,
-  } = useCardActions({ onSubmit, setOpen })
+  } = useCardActions({ answer: card?.answer, onSubmit, question: card?.question, setOpen })
 
   return (
-    <Modal open={open} setOpen={setOpen}>
-      <ModalTitle setOpen={setOpen} title={title} />
+    <Modal onOpenChange={setOpen} open={open} title={title}>
       <form onSubmit={handleSubmit(onSubmitHandler)}>
         <ModalWithContent>
-          <Selector
+          <Select
+            className={s.selector}
+            label={'Choose a question format'}
             onValueChange={setVariantCard}
             options={arrTypesForm}
-            title={'Choose a question format'}
             value={variantCard}
           />
           {variantCard === 'Text' ? (
-            <FormWithText
-              answer={card && card.answer}
-              control={control}
-              question={card && card.question}
-            />
+            <FormWithText control={control} />
           ) : (
             <FormWithImg
               answerImg={card?.answerImg}

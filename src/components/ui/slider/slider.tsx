@@ -9,18 +9,18 @@ export const Slider = forwardRef<
   ElementRef<typeof SliderRadix.Root>,
   ComponentPropsWithoutRef<typeof SliderRadix.Root> & {
     maxValue: number
-    updateValues: (values: number[]) => void
+    onValueChange: (values: number[]) => void
     values: number[]
   }
->(({ maxValue, updateValues, values, ...rest }, ref) => {
+>(({ maxValue, onValueChange, values, ...rest }, ref) => {
   const onValueChangeHandler = (numbers: number[]) => {
-    updateValues(numbers)
+    onValueChange(numbers)
   }
 
   return (
-    <form className={s.SliderStyle}>
-      <Typography variant={'body1'}>
-        <span className={s.SliderNumbers}>{values[0]}</span>
+    <div className={s.SliderStyle}>
+      <Typography className={s.SliderNumbers} variant={'body1'}>
+        {values[0]}
       </Typography>
       <SliderRadix.Root
         className={s.SliderRoot}
@@ -35,13 +35,13 @@ export const Slider = forwardRef<
           <SliderRadix.Range className={s.SliderRange} />
         </SliderRadix.Track>
 
-        <SliderRadix.Thumb aria-label={'Volume1'} className={s.SliderThumb} />
+        <SliderRadix.Thumb className={s.SliderThumb} />
 
-        <SliderRadix.Thumb aria-label={'Volume2'} className={s.SliderThumb} />
+        <SliderRadix.Thumb className={s.SliderThumb} />
       </SliderRadix.Root>
-      <Typography variant={'body1'}>
-        <span className={s.SliderNumbers}>{values[1]}</span>
+      <Typography className={s.SliderNumbers} variant={'body1'}>
+        {values[1]}
       </Typography>
-    </form>
+    </div>
   )
 })

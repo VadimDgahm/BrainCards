@@ -35,7 +35,6 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             checked={checked}
             className={`${s.button} ${checked ? s.checked : s.unchecked} `}
             disabled={disabled}
-            id={'checkbox'}
             onCheckedChange={onValueChange}
             ref={ref}
             {...rest}

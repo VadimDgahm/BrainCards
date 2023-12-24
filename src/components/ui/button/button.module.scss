@@ -5,7 +5,6 @@
   align-items: center;
   justify-content: center;
 
-  width: 100%;
   padding: 6px 28px;
 
   font-size: var(--font-size-s);
@@ -117,8 +116,4 @@
   &:disabled {
     color: #382766;
   }
-}
-
-.fullWidth {
-  width: 100%;
 }

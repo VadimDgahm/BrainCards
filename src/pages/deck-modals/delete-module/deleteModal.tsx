@@ -3,7 +3,7 @@ import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButt
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 
 type PropsType = {
-  nameDeleteObj: string
+  nameDeleteObj: string | undefined
   open: boolean
   removeHandler: () => void
   setOpen: (isOpen: boolean) => void
@@ -11,7 +11,7 @@ type PropsType = {
 }
 export const DeleteModal = ({ nameDeleteObj, open, removeHandler, setOpen, title }: PropsType) => {
   return (
-    <Modal open={open} setOpen={setOpen} title={title}>
+    <Modal onOpenChange={setOpen} open={open} title={title}>
       <ModalWithContent>
         Do you really want to remove {nameDeleteObj}? All cards will be deleted.
       </ModalWithContent>

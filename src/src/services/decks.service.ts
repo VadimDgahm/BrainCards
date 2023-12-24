@@ -102,6 +102,7 @@ const decksService = baseApi.injectEndpoints({
         },
       }),
       getDecksByID: builder.query<GetDecksResponseItems, GetDeckByIdArgs>({
+        providesTags: ['Decks'],
         query: ({ id }) => {
           return {
             url: `decks/${id}`,

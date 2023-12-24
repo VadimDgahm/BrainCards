@@ -72,7 +72,7 @@ export const LoginForm = ({ onSubmit }: { onSubmit: (data: FormValues) => void }
           >
             Forgot Password?
           </Typography>
-          <Button className={s.submitButton} fullWidth type={'submit'}>
+          <Button className={s.submitButton} type={'submit'}>
             Sign In
           </Button>
         </form>

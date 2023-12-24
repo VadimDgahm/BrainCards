@@ -19,13 +19,8 @@ export type InputProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, errorMessage, label, onValueChange, title, ...rest }, ref) => {
-    const {
-      isOpenEye,
-      onClickSvgEyeHandler,
-      // rootInput,
-      typeInput,
-    } = useInput(rest.type)
+  ({ className, errorMessage, label, onValueChange, ...rest }, ref) => {
+    const { isOpenEye, onClickSvgEye, typeInput } = useInput(rest.type)
     const classNames = clsx(s.input, errorMessage && s.error, typeInput === 'search' && s.search)
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -35,20 +30,22 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={`${s.box} ${className}`}>
-        {title && typeInput !== 'search' && <label>{title}</label>}
         <div className={s.inputBox}>
-          <div className={s.label}>{label}</div>
           <div className={s.inputContainer}>
+            <label>{label}</label>
             <input
               className={classNames}
               onChange={handleChange}
               // ref={rootInput}
               ref={ref}
-              type={typeInput}
               {...rest}
+              type={typeInput}
             />
+
             {typeInput === 'search' && <SearchIcon className={s.searchIcon} width={20} />}
-            {showEyeIcon(isOpenEye, onClickSvgEyeHandler)}
+            {isOpenEye !== undefined && (
+              <EyeIcon isOpenEye={isOpenEye} onClickSvgEye={onClickSvgEye} />
+            )}
             {errorMessage && (
               <Typography className={s.errorMessage} variant={'caption'}>
                 {errorMessage}
@@ -60,13 +57,14 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
-
-const showEyeIcon = (
-  isOpenEye: boolean | undefined,
-  onClickSvgEyeHandler: (isOpen: boolean) => void
-) =>
-  isOpenEye !== undefined && (
-    <button className={s.buttonEye} onClick={() => onClickSvgEyeHandler(!isOpenEye)}>
-      {isOpenEye ? <EyeOutline /> : <EyeOffOutline />}
+type EyeIconProps = {
+  isOpenEye: boolean | undefined
+  onClickSvgEye: (isOpen: boolean) => void
+}
+const EyeIcon = ({ isOpenEye, onClickSvgEye }: EyeIconProps) => {
+  return (
+    <button className={s.buttonEye} onClick={() => onClickSvgEye(!isOpenEye)} type={'button'}>
+      {!isOpenEye ? <EyeOutline /> : <EyeOffOutline />}
     </button>
   )
+}

@@ -7,9 +7,9 @@ import s from '../Icons.module.scss'
 
 export const EyeOutline: FC<IconProps> = ({
   color = '',
-  height = '24',
+  height = '20',
   version = 'dark',
-  width = '24',
+  width = '20',
   ...rest
 }) => {
   return (

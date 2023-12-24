@@ -8,23 +8,18 @@ export const useInput = (type: string | undefined) => {
   useEffect(() => {
     setTypeInput(type)
     if (type === 'password') {
-      setIsOpenEye(true)
+      setIsOpenEye(false)
     }
-    const onClick = (e: MouseEvent) => e.target !== rootInput.current
+  }, [])
 
-    document.addEventListener('click', onClick)
-
-    return () => document.removeEventListener('click', onClick)
-  }, [type])
-
-  const onClickSvgEyeHandler = (isOpen: boolean) => {
-    !isOpen ? setTypeInput('text') : setTypeInput('password')
+  const onClickSvgEye = (isOpen: boolean) => {
+    isOpen ? setTypeInput('text') : setTypeInput('password')
     setIsOpenEye(isOpen)
   }
 
   return {
     isOpenEye,
-    onClickSvgEyeHandler,
+    onClickSvgEye,
     rootInput,
     typeInput,
   }

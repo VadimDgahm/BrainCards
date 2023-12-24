@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { Pagination } from '@/components/ui/pagination'
-import { Selector } from '@/components/ui/selector/Selector'
+import { Select } from '@/components/ui/select/select'
 import { Table } from '@/components/ui/table/Table'
 import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVariant'
 import { Typography } from '@/components/ui/typography'
@@ -96,7 +96,7 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed, sliderCardsValues }) 
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Cards</Table.Cell>
                 <Table.Cell>
-                  <Selector
+                  <Select
                     defaultValue={'Last Updated'}
                     onValueChange={handleSortOptionChange}
                     options={selectOptions}
@@ -133,12 +133,12 @@ const DecksBody: FC<DeckBodyProps> = ({ isMyButtonPressed, sliderCardsValues }) 
             </Table.Body>
           </Table.Root>
           <Pagination
+            availablePageSizes={options}
             currentPage={currentPage}
             onChangePageSize={handleItemsPerPageSet}
             onPageChange={handleCurrentPageSet}
-            options={options}
             pageSize={itemsPerPage}
-            totalCount={data?.pagination.totalItems}
+            totalCount={data?.pagination.totalItems || 0}
           />
         </>
       )}

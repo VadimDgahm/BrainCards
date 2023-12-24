@@ -4,25 +4,24 @@ import { ArrowBack } from '@/components/ui/icons/arrow-back/ArrowBack'
 import { ArrowForward } from '@/components/ui/icons/arrow-forward/ArrowForward'
 import { PaginationControls } from '@/components/ui/pagination/PaginationControls/PaginationControls'
 import { usePagination } from '@/components/ui/pagination/usePagination'
-import { OptionsType } from '@/components/ui/selector/Selector'
 
 import s from './Pagination.module.scss'
 
 export type PaginationProps = {
+  availablePageSizes: number[]
   currentPage: number
   onChangePageSize: (pageSize: number | string) => void
   onPageChange: (page: number | string) => void
-  options: OptionsType[]
   pageSize: number
   siblingCount?: number
-  totalCount: number | undefined
+  totalCount: number
 }
 
 export const Pagination: FC<PaginationProps> = ({
+  availablePageSizes,
   currentPage,
   onChangePageSize,
   onPageChange,
-  options,
   pageSize,
   siblingCount,
   totalCount,
@@ -45,7 +44,7 @@ export const Pagination: FC<PaginationProps> = ({
     onPageChange(currentPage - 1)
   }
   const lastPage = paginationRange[paginationRange.length - 1]
-  const currentOptions = options.filter(el => totalCount / +el.title > 1)
+  const currentOptions = availablePageSizes.filter(el => totalCount / el > 1)
 
   return (
     <div className={s.container}>

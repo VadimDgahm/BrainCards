@@ -1,18 +1,18 @@
 import Modal from '@/components/ui/modal/modal'
-import ModalTitle from '@/components/ui/modal/modalTitle/modalTitle'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
-import { Selector } from '@/components/ui/selector/Selector'
+import { Select } from '@/components/ui/select/select'
 import { useChangeCard } from '@/pages/deck-modals/change-card/useChangeCard'
-import { FormWithImg } from '@/pages/deck-modals/create-card/FormWithImg/FormWithImg'
-import { FormWithText } from '@/pages/deck-modals/create-card/FormWithText/FormWithText'
+import { FormWithImg } from '@/pages/deck-modals/create-card/formWithImg/FormWithImg'
+import { FormWithText } from '@/pages/deck-modals/create-card/formWithText/formWithText'
+
 type CreateCardProps = {
   idDeck: string
   open: boolean
   setOpen: (isOpen: boolean) => void
 }
 
-export const ChangeCard = ({ id, open, setOpen }: CreateCardProps) => {
+export const ChangeCard = ({ idDeck, open, setOpen }: CreateCardProps) => {
   const {
     arrTypesForm,
     control,
@@ -22,17 +22,16 @@ export const ChangeCard = ({ id, open, setOpen }: CreateCardProps) => {
     onSubmit,
     setVariantCard,
     variantCard,
-  } = useChangeCard({ id, setOpen })
+  } = useChangeCard({ idDeck, setOpen })
 
   return (
-    <Modal open={open} setOpen={setOpen}>
-      <ModalTitle setOpen={setOpen} title={'Add New Card'} />
+    <Modal onOpenChange={setOpen} open={open} title={'Add New Card'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalWithContent>
-          <Selector
+          <Select
+            label={'Choose a question format'}
             onValueChange={setVariantCard}
             options={arrTypesForm}
-            title={'Choose a question format'}
             value={variantCard}
           />
           {variantCard === 'Text' ? (

@@ -42,10 +42,7 @@ export const useChangeCard = ({ idDeck, setOpen }: TypeProps) => {
     reset()
     setOpen(false)
   }
-  const arrTypesForm = [
-    { title: 'Text', value: 'Text' },
-    { title: 'Picture', value: 'Picture' },
-  ]
+  const arrTypesForm = ['Text', 'Picture']
 
   return {
     arrTypesForm,

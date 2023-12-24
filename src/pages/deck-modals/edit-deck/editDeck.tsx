@@ -23,8 +23,8 @@ const loginSchema = z.object({
 
 type PropsType = {
   idDeck: string
-  isPrivate: boolean
-  name: string
+  isPrivate: boolean | undefined
+  name: string | undefined
   open: boolean
   setOpen: (isOpen: boolean) => void
 }
@@ -32,8 +32,8 @@ export const EditDeck = ({ idDeck, isPrivate, name, open, setOpen }: PropsType) 
   const [updateDeck] = useUpdateDeckMutation()
   const { control, handleSubmit } = useForm<UpdateDeck>({
     defaultValues: {
-      isPrivate: isPrivate,
-      name: name,
+      isPrivate: isPrivate || false,
+      name: name || '',
     },
     mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
@@ -45,7 +45,7 @@ export const EditDeck = ({ idDeck, isPrivate, name, open, setOpen }: PropsType) 
   }
 
   return (
-    <Modal open={open} setOpen={setOpen} title={'Edit Pack'}>
+    <Modal onOpenChange={setOpen} open={open} title={'Edit Pack'}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalWithContent>
           <ControlledInput

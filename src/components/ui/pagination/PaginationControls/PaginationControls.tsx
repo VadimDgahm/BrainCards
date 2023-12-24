@@ -1,12 +1,12 @@
 import { FC } from 'react'
 
-import { OptionsType, Selector } from '@/components/ui/selector/Selector'
+import { Select } from '@/components/ui/select/select'
 import { Typography } from '@/components/ui/typography'
 
 import s from './PaginationControls.module.scss'
 
 export type PaginationControlsProps = {
-  currentOptions: OptionsType[]
+  currentOptions: number[]
   onChangePageSize: (pageSize: number | string) => void
 }
 
@@ -19,7 +19,7 @@ export const PaginationControls: FC<PaginationControlsProps> = ({
       <Typography className={s.text} variant={'body2'}>
         Показать
       </Typography>
-      <Selector onValueChange={onChangePageSize} options={currentOptions} variant={'pagination'} />
+      <Select onValueChange={onChangePageSize} options={currentOptions} variant={'pagination'} />
       <Typography className={s.text} variant={'body2'}>
         на странице
       </Typography>

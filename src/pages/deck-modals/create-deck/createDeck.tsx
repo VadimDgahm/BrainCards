@@ -54,7 +54,7 @@ const CreateDeck: FC<CreateProps> = ({ disabled }) => {
         Add New Pack
       </Button>
       <div>
-        <Modal open={open} setOpen={setOpen} title={'Add New Pack'}>
+        <Modal onOpenChange={setOpen} open={open} title={'Add New Pack'}>
           <form onSubmit={handleSubmit(onSubmit)}>
             <ModalWithContent>
               <ControlledInput className={s.input} control={control} label={'Name'} name={'name'} />

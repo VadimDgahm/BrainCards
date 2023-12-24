@@ -6,14 +6,16 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 type CardActionsType = {
+  answer?: string
   onSubmit: (body: FormData) => void
+  question?: string
   setOpen: (isOpen: boolean) => void
 }
-export const useCardActions = ({ onSubmit, setOpen }: CardActionsType) => {
+export const useCardActions = ({ answer, onSubmit, question, setOpen }: CardActionsType) => {
   const { control, handleSubmit, reset } = useForm<FormDataAddCards>({
     defaultValues: {
-      answer: '',
-      question: '',
+      answer: answer || '',
+      question: question || '',
     },
     mode: 'onSubmit',
     resolver: zodResolver(loginSchema),
@@ -40,10 +42,7 @@ export const useCardActions = ({ onSubmit, setOpen }: CardActionsType) => {
     reset()
     setOpen(false)
   }
-  const arrTypesForm = [
-    { title: 'Text', value: 'Text' },
-    { title: 'Picture', value: 'Picture' },
-  ]
+  const arrTypesForm: string[] = ['Text', 'Picture']
 
   return {
     arrTypesForm,

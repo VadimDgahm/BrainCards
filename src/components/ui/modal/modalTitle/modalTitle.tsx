@@ -7,17 +7,21 @@ import s from './modalTitle.module.scss'
 
 type ModalTitleProps = {
   className?: string
-  setOpen: (isOpen: boolean) => void
+  onOpenChange: ((open: boolean) => void) | undefined
   title: string
 }
-const ModalTitle: FC<ModalTitleProps> = ({ className, setOpen, title }) => {
+const ModalTitle: FC<ModalTitleProps> = ({ className, onOpenChange, title }) => {
   return (
     <div className={`${s.DialogTitle} ${className}`}>
       <Typography as={'h2'} variant={'h2'}>
         {title}
       </Typography>
 
-      <button aria-label={'Close'} className={`${s.IconButton}`} onClick={() => setOpen(false)}>
+      <button
+        aria-label={'Close'}
+        className={`${s.IconButton}`}
+        onClick={() => onOpenChange && onOpenChange(false)}
+      >
         <Close width={'30'} />
       </button>
     </div>

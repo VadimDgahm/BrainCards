@@ -16,6 +16,28 @@
   margin-bottom: 33px;
 
   color: var(--color-light-100);
+
+  transition: 0.2s ease-out;
+
+  &:hover {
+    color: var(--color-info-300);
+
+    svg path {
+      fill: var(--color-info-300);
+    }
+  }
+}
+
+.nameCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconMore {
+  cursor: pointer;
+  margin-top: 4px;
+  margin-left: 16px;
 }
 
 .table {
@@ -31,7 +53,6 @@
 }
 
 .nameDeck {
-  margin-bottom: 69px;
 }
 
 .title {
@@ -39,6 +60,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.emptyDeckName {
+  display: flex;
+  margin-bottom: 69px;
 }
 
 .titleText {

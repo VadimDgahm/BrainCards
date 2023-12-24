@@ -10,7 +10,8 @@
   background-color: var(--black-a9);
 
   animation-name: overlay-show;
-  animation-duration: 0.3s;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
 }
 
 .borderTitle {
@@ -34,7 +35,7 @@
   box-shadow: hsl(206deg 22% 7% / 35%) 0 10px 38px -10px, hsl(206deg 22% 7% / 20%) 0 10px 20px -15px;
 
   animation-name: content-show;
-  animation-duration: 0.3s;
+  animation-duration: 0.5s;
 }
 
 .DialogContent:focus {
@@ -42,20 +43,18 @@
 }
 
 @keyframes overlay-show {
-  from {
-    transform: translate(-50%, -48%) scale(0.96);
+  0% {
     opacity: 0;
   }
 
-  to {
-    transform: translate(-50%, -50%) scale(1);
+  100% {
     opacity: 1;
   }
 }
 
 @keyframes content-show {
   from {
-    transform: translate(-50%, -48%) scale(0.96);
+    transform: translate(-50%, -48%) scale(0.9);
     opacity: 0;
   }
 
