@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
-import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
+import { ControlledInput } from '@/components/controlled/controlledInput/controlledInput'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'

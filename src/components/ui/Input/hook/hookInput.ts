@@ -17,7 +17,8 @@ export const useInput = (type: string | undefined) => {
     return () => document.removeEventListener('click', onClick)
   }, [type])
   const onClickSvgEyeHandler = (isOpen: boolean) => {
-    !isOpen ? setTypeInput('text') : setTypeInput('password')
+    isOpen ? setTypeInput('text') : setTypeInput('password')
+    // isOpen ? setTypeInput('text') : setTypeInput('password')
     setIsOpenEye(isOpen)
   }
 

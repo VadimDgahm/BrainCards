@@ -1,5 +1,5 @@
-import { baseApi } from '@/src/services/base-api'
-import { decksReducer } from '@/src/services/deck.slice'
+import { baseApi } from '@/services/base-api'
+import { decksReducer } from '@/services/decks/deck.slice'
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({

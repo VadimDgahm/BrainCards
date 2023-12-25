@@ -1,11 +1,10 @@
 import {
-  CardCreation,
   GetCardsByDeckId,
   GetCardsForLearn,
   GetCarsdByDeckResponse,
   GetLearnResponse,
   RateSave,
-} from '@/src/services/decks.types'
+} from '@/services/decks/decks.types'
 
 import { baseApi } from './base-api'
 
@@ -84,6 +83,7 @@ export const {
   useGetCardByIdQuery,
   useGetCardsByDeckIdQuery,
   useGetCardsForLearnQuery,
+  useLazyGetCardsForLearnQuery,
   useRemoveCardByDeckIdMutation,
   useUpdateCardByDeckIdMutation,
 } = decksService

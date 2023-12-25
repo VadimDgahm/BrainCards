@@ -1,16 +1,18 @@
 import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
-import ModalTitle from '@/components/ui/modal/modalTitle/modalTitle'
 import * as Dialog from '@radix-ui/react-dialog'
 
 import s from './modal.module.scss'
 
+import ModalTitle from './modalTitle/modalTitle'
+
 export type ModalProps = {
-  children?: ReactNode
+  children: ReactNode
   className?: string
   setOpen: (isOpen: boolean) => void
   title?: string
-} & ComponentPropsWithoutRef<typeof Dialog.Root>
+} & Omit<ComponentPropsWithoutRef<typeof Dialog.Root>, 'children'>
+
 const Modal = forwardRef<ElementRef<'div'>, ModalProps>(
   ({ children, className, open, setOpen, title, ...rest }, ref) => {
     return (

@@ -1,4 +1,4 @@
-import { ElementRef, forwardRef } from 'react'
+import { ElementRef, forwardRef, useId } from 'react'
 
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 
@@ -28,6 +28,8 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
     },
     ref
   ) => {
+    const id = useId()
+
     return (
       <div className={`${s.container} ${className || ''}`}>
         <div className={`${s.buttonContainer} ${disabled && s.disabled}`}>
@@ -35,7 +37,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             checked={checked}
             className={`${s.button} ${checked ? s.checked : s.unchecked} `}
             disabled={disabled}
-            id={'checkbox'}
+            id={id}
             onCheckedChange={onValueChange}
             ref={ref}
             {...rest}
@@ -46,7 +48,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
           </CheckboxRadix.Root>
           <div className={s.back} />
         </div>
-        <label className={`${disabled && s.disabled}`} htmlFor={'checkbox'}>
+        <label className={`${disabled && s.disabled}`} htmlFor={id}>
           {label}
         </label>
       </div>

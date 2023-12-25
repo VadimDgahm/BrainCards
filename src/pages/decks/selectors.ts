@@ -1,4 +1,4 @@
-import { RootState } from '@/src/services/store'
+import { RootState } from '@/services/store'
 
 export const selectCurrentPage = (state: RootState) => state.decksReducer.currentPage
 export const selectItemsPerPage = (state: RootState) => state.decksReducer.itemsPerPage

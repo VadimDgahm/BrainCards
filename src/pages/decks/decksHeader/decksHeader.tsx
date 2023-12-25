@@ -4,25 +4,22 @@ import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/button'
 import { TrashOutline } from '@/components/ui/icons/trash-outline/TrashOutline'
 import { Slider } from '@/components/ui/slider/slider'
+import { TabSwitcher } from '@/components/ui/tabSwitcher'
 import { Typography } from '@/components/ui/typography'
 import CreateDeck from '@/pages/deck-modals/create-deck/createDeck'
+import { collection } from '@/pages/decks/decksHeader/constants'
 import { selectSearchFieldSetting, selectSliderValues } from '@/pages/decks/selectors'
-import {
-  setCurrentPage,
-  setOrderBy,
-  setSearchField,
-  setSelectedSortOption,
-} from '@/src/services/deck.slice'
-import { useGetDecksQuery } from '@/src/services/decks.service'
-import { useAppDispatch, useAppSelector } from '@/src/services/hooks'
+import { setCurrentPage, setOrderBy, setSearchField } from '@/services/decks/deck.slice'
+import { useGetDecksQuery } from '@/services/decks/decks.service'
+import { useAppDispatch, useAppSelector } from '@/services/hooks'
 
 import s from './decksHeader.module.scss'
 
 type DeckHeaderType = {
-  isMyButtonPressed: boolean
-  setIsMyButtonPressed: (isMyButtonPressed: boolean) => void
   setSliderCardsValues: (sliderCardsValues: SliderCardsValuesType) => void
+  setTabSwitcherPosition: (tabSwitcherPosition: string) => void
   sliderCardsValues: SliderCardsValuesType
+  tabSwitcherPosition: string
 }
 
 export type SliderCardsValuesType = {
@@ -31,18 +28,15 @@ export type SliderCardsValuesType = {
 }
 
 const DecksHeader: FC<DeckHeaderType> = ({
-  isMyButtonPressed,
-  setIsMyButtonPressed,
   setSliderCardsValues,
+  setTabSwitcherPosition,
   sliderCardsValues,
+  tabSwitcherPosition,
 }) => {
   const { data, error, isError, isLoading } = useGetDecksQuery({})
   const searchField = useAppSelector(selectSearchFieldSetting)
   const dispatch = useAppDispatch()
   const { maxCardsCount, minCardsCount } = useAppSelector(selectSliderValues)
-  const handleButtonClick = () => {
-    setIsMyButtonPressed(!isMyButtonPressed)
-  }
 
   const handleSliderChange = (values: number[]) => {
     setSliderCardsValues({ maxCardsCount: values[1], minCardsCount: values[0] })
@@ -55,10 +49,9 @@ const DecksHeader: FC<DeckHeaderType> = ({
   const handlerFilterClean = () => {
     dispatch(setSearchField({ searchField: '' }))
     dispatch(setOrderBy({ orderBy: 'updated-desc' }))
-    setIsMyButtonPressed(false)
+    setTabSwitcherPosition('right')
     setSliderCardsValues({ maxCardsCount: maxCardsCount, minCardsCount })
     dispatch(setCurrentPage({ currentPage: 1 }))
-    dispatch(setSelectedSortOption({ selectedSortOption: 'Last Updated' }))
   }
 
   if (error) {
@@ -92,28 +85,17 @@ const DecksHeader: FC<DeckHeaderType> = ({
           />
           <div className={s.buttons}>
             <Typography variant={'body2'}>Show packs cards</Typography>
-            <span className={s.buttonGroup}>
-              <Button
-                className={s.myCards}
-                onClick={handleButtonClick}
-                variant={isMyButtonPressed ? 'primary' : 'secondary'}
-              >
-                My Cards
-              </Button>
-              <Button
-                className={s.allCards}
-                onClick={handleButtonClick}
-                variant={!isMyButtonPressed ? 'primary' : 'secondary'}
-              >
-                All Cards
-              </Button>
-            </span>
+            <TabSwitcher
+              onValueChange={value => setTabSwitcherPosition(value)}
+              value={tabSwitcherPosition}
+              valuesCollection={collection}
+            />
           </div>
           <div className={s.sliderGroup}>
             <Typography variant={'body2'}>Number of cards</Typography>
             <Slider
               maxValue={Number(data?.maxCardsCount)}
-              updateValues={handleSliderChange}
+              onSliderValuesChange={handleSliderChange}
               values={[sliderCardsValues.minCardsCount, sliderCardsValues.maxCardsCount]}
             />
           </div>

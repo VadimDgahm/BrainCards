@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ForgotPass, FormValues } from '@/components/auth/pass-recovery'
-import { useForgotPasswordEmailMutation, useGetMeQuery } from '@/src/services/auth/authService'
+import { useForgotPasswordEmailMutation, useGetMeQuery } from '@/services/auth/authService'
 
 export const ForgotPassPage = () => {
   const navigate = useNavigate()

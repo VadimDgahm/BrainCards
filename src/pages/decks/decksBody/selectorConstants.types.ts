@@ -1,4 +1,4 @@
-import { OptionsType } from '@/components/ui/selector/Selector'
+import { OptionsType } from '@/components/ui/select/Select'
 
 export const options: OptionsType[] = [
   { title: '10', value: '10' },

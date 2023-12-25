@@ -13,5 +13,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const CardView: Story = {
-  args: {},
+  args: {
+    children: 'hello',
+  },
 }

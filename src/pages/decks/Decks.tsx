@@ -1,24 +1,24 @@
 import { useState } from 'react'
 
-import DecksBody from '@/pages/decks/decks-body/decksBody'
-import DecksHeader from '@/pages/decks/decks-header/decksHeader'
+import { DecksBody } from '@/pages/decks/decksBody/decksBody'
+import DecksHeader from '@/pages/decks/decksHeader/decksHeader'
 import { selectSliderValues } from '@/pages/decks/selectors'
-import { useAppSelector } from '@/src/services/hooks'
+import { useAppSelector } from '@/services/hooks'
 
 const Decks = () => {
-  const [isMyButtonPressed, setIsMyButtonPressed] = useState(false)
+  const [tabSwitcherPosition, setTabSwitcherPosition] = useState('right')
   const sliderValues = useAppSelector(selectSliderValues)
   const [sliderCardsValues, setSliderCardsValues] = useState(sliderValues)
 
   return (
     <>
       <DecksHeader
-        isMyButtonPressed={isMyButtonPressed}
-        setIsMyButtonPressed={setIsMyButtonPressed}
         setSliderCardsValues={setSliderCardsValues}
+        setTabSwitcherPosition={setTabSwitcherPosition}
         sliderCardsValues={sliderCardsValues}
+        tabSwitcherPosition={tabSwitcherPosition}
       />
-      <DecksBody isMyButtonPressed={isMyButtonPressed} sliderCardsValues={sliderCardsValues} />
+      <DecksBody sliderCardsValues={sliderCardsValues} tabSwitcherPosition={tabSwitcherPosition} />
     </>
   )
 }

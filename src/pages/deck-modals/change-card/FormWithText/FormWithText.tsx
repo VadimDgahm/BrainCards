@@ -1,6 +1,6 @@
 import { Control } from 'react-hook-form'
 
-import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
+import { ControlledInput } from '@/components/controlled/controlledInput/controlledInput'
 import { FormDataAddCards } from '@/pages/deck-modals/create-card/useCardActions'
 
 import s from './FormWithText.module.scss'

@@ -4,7 +4,6 @@ import s from './typography.module.scss'
 
 export type TypographyProps<T extends ElementType> = {
   as?: T
-  brightTheme?: boolean
   children: ReactNode
   className?: string
   variant?:
@@ -25,14 +24,13 @@ export type TypographyProps<T extends ElementType> = {
 export const Typography = <T extends ElementType = 'p'>(
   props: TypographyProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof TypographyProps<T>>
 ) => {
-  const { as, brightTheme, className, variant = 'body1', ...rest } = props
+  const { as, className, variant = 'body1', ...rest } = props
 
   const ComponentElement = as || 'p'
 
   return (
     <ComponentElement
       className={`${className} ${s[variant]} 
-      ${brightTheme ? s.brightTheme : ''} 
       `}
       {...rest}
     />

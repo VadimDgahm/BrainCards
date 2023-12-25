@@ -10,16 +10,16 @@ import { CellVariant } from '@/components/ui/table/TableCellVariant/TableCellVar
 import { Typography } from '@/components/ui/typography'
 import { CardActions } from '@/pages/deck-modals/create-card/cardActions'
 import { DeleteModal } from '@/pages/deck-modals/delete-module/deleteModal'
-import { useGetMeQuery } from '@/src/services/auth/authService'
+import { useGetMeQuery } from '@/services/auth/authService'
 import {
   useAddCardByDeckIdMutation,
   useGetCardByIdQuery,
   useGetCardsByDeckIdQuery,
   useRemoveCardByDeckIdMutation,
   useUpdateCardByDeckIdMutation,
-} from '@/src/services/cards.service'
-import { useGetDecksByIDQuery } from '@/src/services/decks.service'
-import { CardResponse } from '@/src/services/decks.types'
+} from '@/services/cards.service'
+import { useGetDecksByIDQuery } from '@/services/decks/decks.service'
+import { CardResponse } from '@/services/decks/decks.types'
 
 import s from './deck.module.scss'
 
@@ -85,7 +85,7 @@ type EmptyDeckProps = {
   isMyDeck: boolean
   openCreateCard: (isOpen: boolean) => void
 }
-const EmptyDeck = ({ deckName = '', isMyDeck, openCreateCard }: EmptyDeckProps) => {
+export const EmptyDeck = ({ deckName = '', isMyDeck, openCreateCard }: EmptyDeckProps) => {
   return (
     <>
       <div>

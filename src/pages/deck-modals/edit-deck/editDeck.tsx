@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox'
-import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
+import { ControlledCheckbox } from '@/components/controlled/controlledCheckbox/controlledCheckbox'
+import { ControlledInput } from '@/components/controlled/controlledInput/controlledInput'
 import Modal from '@/components/ui/modal/modal'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
-import { useUpdateDeckMutation } from '@/src/services/decks.service'
-import { UpdateDeck } from '@/src/services/decks.types'
+import { useUpdateDeckMutation } from '@/services/decks/decks.service'
+import { UpdateDeck } from '@/services/decks/decks.types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 

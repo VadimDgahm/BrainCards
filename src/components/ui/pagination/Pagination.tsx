@@ -4,7 +4,7 @@ import { ArrowBack } from '@/components/ui/icons/arrow-back/ArrowBack'
 import { ArrowForward } from '@/components/ui/icons/arrow-forward/ArrowForward'
 import { PaginationControls } from '@/components/ui/pagination/PaginationControls/PaginationControls'
 import { usePagination } from '@/components/ui/pagination/usePagination'
-import { OptionsType } from '@/components/ui/selector/Selector'
+import { OptionsType } from '@/components/ui/select/Select'
 
 import s from './Pagination.module.scss'
 
