@@ -7,9 +7,9 @@ import s from '../Icons.module.scss'
 
 export const ArrowDown: FC<IconProps> = ({
   color = '',
-  height = '24',
+  height = '16',
   version = 'dark',
-  width = '24',
+  width = '16',
   ...rest
 }) => {
   return (

@@ -15,7 +15,7 @@ export type OptionsType = {
 type SelectorPropsType = {
   className?: string
   label?: string
-  options: number[] | string[]
+  options: (number | string)[]
   variant?: 'default' | 'pagination'
 } & SelectRadix.SelectProps
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectorPropsType>(

@@ -8,7 +8,7 @@ import { usePagination } from '@/components/ui/pagination/usePagination'
 import s from './Pagination.module.scss'
 
 export type PaginationProps = {
-  availablePageSizes: number[]
+  availablePageSizes: (number | string)[]
   currentPage: number
   onChangePageSize: (pageSize: number | string) => void
   onPageChange: (page: number | string) => void
@@ -44,7 +44,7 @@ export const Pagination: FC<PaginationProps> = ({
     onPageChange(currentPage - 1)
   }
   const lastPage = paginationRange[paginationRange.length - 1]
-  const currentOptions = availablePageSizes.filter(el => totalCount / el > 1)
+  const currentOptions = availablePageSizes.filter(el => totalCount / +el > 1)
 
   return (
     <div className={s.container}>

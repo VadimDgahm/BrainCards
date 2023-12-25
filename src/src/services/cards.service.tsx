@@ -1,5 +1,4 @@
 import {
-  CardCreation,
   GetCardsByDeckId,
   GetCardsForLearn,
   GetCarsdByDeckResponse,
@@ -42,8 +41,9 @@ const decksService = baseApi.injectEndpoints({
       }),
       getCardsByDeckId: builder.query<GetCarsdByDeckResponse, GetCardsByDeckId>({
         providesTags: ['Cards'],
-        query: ({ id }) => {
+        query: ({ id, ...args }) => {
           return {
+            params: args || {},
             url: `decks/${id}/cards`,
           }
         },
