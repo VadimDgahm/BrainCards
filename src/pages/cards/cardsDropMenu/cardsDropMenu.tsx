@@ -9,7 +9,7 @@ import { PlayCircleOutline } from '@/components/ui/icons/play-circle-outline/Pla
 import { TrashIcon } from '@/components/ui/icons/trash/TrashIcon'
 import { DeleteModal } from '@/pages/deck-modals/delete-module/deleteModal'
 import { EditDeck } from '@/pages/deck-modals/edit-deck/editDeck'
-import { useDeleteDeckMutation, useGetDecksByIDQuery } from '@/src/services/decks.service'
+import { useDeleteDeckMutation, useGetDecksByIDQuery } from '@/services/decks/decks.service'
 
 import s from './cardsDropMenu.module.scss'
 

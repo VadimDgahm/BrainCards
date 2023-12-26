@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { setSearchFieldCards } from '@/src/services/card.slice'
-import { useAppDispatch } from '@/src/services/hooks'
+import { setSearchFieldCards } from '@/services/cards/card.slice'
+import { useAppDispatch } from '@/services/hooks'
 
 type PropsType = {
   paramsUrl: URLSearchParams

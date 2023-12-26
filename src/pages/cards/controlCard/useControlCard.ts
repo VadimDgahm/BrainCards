@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import {
   useRemoveCardByDeckIdMutation,
   useUpdateCardByDeckIdMutation,
-} from '@/src/services/cards.service'
+} from '@/services/cards/cards.service'
 
 type PropsType = {
   idCard: string

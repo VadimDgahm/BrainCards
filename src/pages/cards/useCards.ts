@@ -6,15 +6,19 @@ import {
   selectOrderByCards,
   selectSearchFieldSettingCards,
 } from '@/pages/decks/selectors'
-import { useGetMeQuery } from '@/src/services/auth/authService'
+import { useGetMeQuery } from '@/services/auth/authService'
 import {
   setCurrentPageCards,
   setItemsPerPageCards,
   setOrderByCards,
-} from '@/src/services/card.slice'
-import { useAddCardByDeckIdMutation, useGetCardsByDeckIdQuery } from '@/src/services/cards.service'
-import { useGetDecksByIDQuery } from '@/src/services/decks.service'
-import { useAppDispatch, useAppSelector } from '@/src/services/hooks'
+} from '@/services/cards/card.slice'
+import {
+  useAddCardByDeckIdMutation,
+  useGetCardsByDeckIdQuery,
+} from '@/services/cards/cards.service'
+import { useGetDecksByIDQuery } from '@/services/decks/decks.service'
+import { useAppDispatch, useAppSelector } from '@/services/hooks'
+
 type PropsType = {
   idDeck: string
 }

@@ -1,3 +1,4 @@
+import { baseApi } from '@/services/base-api'
 import {
   GetCardsByDeckId,
   GetCardsForLearn,
@@ -5,8 +6,6 @@ import {
   GetLearnResponse,
   RateSave,
 } from '@/services/decks/decks.types'
-
-import { baseApi } from './base-api'
 
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {

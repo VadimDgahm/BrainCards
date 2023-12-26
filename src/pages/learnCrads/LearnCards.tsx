@@ -6,13 +6,13 @@ import { Card } from '@/components/ui/card'
 import { ArrowBackOutLine } from '@/components/ui/icons/arrow-back-outline/ArrowBackOutline'
 import { RadioWithRating } from '@/components/ui/radioWithRating'
 import { Typography } from '@/components/ui/typography'
-import { EmptyDeck } from '@/pages/cards/deck'
+import { EmptyDeck } from '@/pages/cards/emptyDeck/emptyDeck'
 import { useGetMeQuery } from '@/services/auth/authService'
 import {
   useCreateAndSaveRateMutation,
   useGetCardsForLearnQuery,
   useLazyGetCardsForLearnQuery,
-} from '@/services/cards.service'
+} from '@/services/cards/cards.service'
 import { useGetDecksByIDQuery } from '@/services/decks/decks.service'
 import { RateSave } from '@/services/decks/decks.types'
 
