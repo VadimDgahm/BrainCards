@@ -6,20 +6,16 @@ import * as SelectRadix from '@radix-ui/react-select'
 
 import '@radix-ui/themes/styles.css'
 
-import s from './selector.module.scss'
+import s from './select.module.scss'
 
-export type OptionsType = {
-  title: string
-  value: string
-}
 type SelectorPropsType = {
   className?: string
-  label?: string
   options: (number | string)[]
+  title?: string
   variant?: 'default' | 'pagination'
 } & SelectRadix.SelectProps
 export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectorPropsType>(
-  ({ className, label, options, variant = 'default', ...rest }, ref) => {
+  ({ className, options, title, variant = 'default', ...rest }, ref) => {
     const optionsItem = options.map((op, i) => (
       <SelectRadix.Item className={s.SelectItem} key={i} value={op.toString()}>
         <SelectRadix.ItemText>{op}</SelectRadix.ItemText>
@@ -27,14 +23,14 @@ export const Select = forwardRef<ElementRef<typeof SelectRadix.Root>, SelectorPr
     ))
 
     return (
-      <div className={className || ''}>
-        {label && (
+      <div>
+        {title && (
           <Typography className={s.title} variant={'body2'}>
-            {label}
+            {title}
           </Typography>
         )}
         <SelectRadix.Root {...rest}>
-          <div className={s.back}>
+          <div className={`${s.back} ${className}`}>
             <SelectRadix.Trigger
               className={`${s.SelectTrigger} ${variant === 'pagination' && s.pagination}`}
               ref={ref}

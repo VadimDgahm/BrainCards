@@ -22,3 +22,14 @@ export const CheckboxView: Story = {
     },
   },
 }
+
+export const TwoCheckboxes: Story = {
+  render: () => {
+    return (
+      <div>
+        <Checkbox label={'check1'} />
+        <Checkbox label={'check2'} />
+      </div>
+    )
+  },
+}

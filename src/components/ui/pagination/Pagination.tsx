@@ -14,7 +14,7 @@ export type PaginationProps = {
   onPageChange: (page: number | string) => void
   pageSize: number
   siblingCount?: number
-  totalCount: number
+  totalCount: number | undefined
 }
 
 export const Pagination: FC<PaginationProps> = ({

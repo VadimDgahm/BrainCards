@@ -7,10 +7,10 @@ import {
   GetDecksResponse,
   GetDecksResponseItems,
   UpdateDeck,
-} from '@/src/services/decks.types'
+} from '@/services/decks/decks.types'
 
-import { baseApi } from './base-api'
-import { RootState } from './store'
+import { baseApi } from '../base-api'
+import { RootState } from '../store'
 
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {

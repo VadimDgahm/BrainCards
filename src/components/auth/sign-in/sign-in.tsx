@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 
-import { ControlledCheckbox } from '@/components/controlled/controlled-checkbox/controlled-checkbox'
-import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
+import { ControlledCheckbox } from '@/components/controlled/controlledCheckbox/controlledCheckbox'
+import { ControlledInput } from '@/components/controlled/controlledInput/controlledInput'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { DevTool } from '@hookform/devtools'

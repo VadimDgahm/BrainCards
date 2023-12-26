@@ -5,7 +5,6 @@ export const initialState: initialDeckStateType = {
   itemsPerPage: 10,
   orderBy: 'updated-desc',
   searchField: '',
-  selectedSortOption: 'Last Updated',
   sliderValues: {
     maxCardsCount: 61,
     minCardsCount: 0,
@@ -17,7 +16,6 @@ export type initialDeckStateType = {
   itemsPerPage: number
   orderBy: string
   searchField: string
-  selectedSortOption: string
   sliderValues: SliderValuesType
 }
 
@@ -42,17 +40,8 @@ const slice = createSlice({
     setSearchField: (state, action: PayloadAction<{ searchField: string }>) => {
       state.searchField = action.payload.searchField
     },
-    setSelectedSortOption: (state, action: PayloadAction<{ selectedSortOption: string }>) => {
-      state.selectedSortOption = action.payload.selectedSortOption
-    },
   },
 })
 
 export const decksReducer = slice.reducer
-export const {
-  setCurrentPage,
-  setItemsPerPage,
-  setOrderBy,
-  setSearchField,
-  setSelectedSortOption,
-} = slice.actions
+export const { setCurrentPage, setItemsPerPage, setOrderBy, setSearchField } = slice.actions

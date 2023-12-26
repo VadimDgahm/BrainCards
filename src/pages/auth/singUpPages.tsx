@@ -1,6 +1,6 @@
 import { SingUpForm } from '@/components/auth/sign-up'
-import { useSignUpMutation } from '@/src/services/auth/authService'
-import { SingUpResponse } from '@/src/services/auth/authServiceType'
+import { useSignUpMutation } from '@/services/auth/authService'
+import { SingUpResponse } from '@/services/auth/authServiceType'
 import { showResultToast } from '@/uttils/commonFunctions'
 
 export const SingUpPages = () => {

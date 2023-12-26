@@ -11,19 +11,6 @@
   color: var(--color-light-100);
 }
 
-.brightTheme {
-  // удалить background-color после реализации светлой темы
-  color: var(--color-dark-700) !important;
-  background-color: var(--color-light-100) !important;
-}
-
-.link1.brightTheme,
-.link2.brightTheme {
-  // удалить background-color после реализации светлой темы
-  color: var(--color-info-500) !important;
-  background-color: black;
-}
-
 .body1 {
   @include base-styles(var(--font-size-m), var(--line-height-m), var(--font-weight-regular));
 }

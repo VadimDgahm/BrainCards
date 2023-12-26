@@ -2,10 +2,10 @@ import Modal from '@/components/ui/modal/modal'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 import { Select } from '@/components/ui/select/select'
+import { FormWithText } from '@/pages/deck-modals/create-card/FormWithText/FormWithText'
 import { FormWithImg } from '@/pages/deck-modals/create-card/formWithImg/FormWithImg'
-import { FormWithText } from '@/pages/deck-modals/create-card/formWithText/formWithText'
 import { useCardActions } from '@/pages/deck-modals/create-card/useCardActions'
-import { CardResponse } from '@/src/services/decks.types'
+import { CardResponse } from '@/services/decks/decks.types'
 
 import s from './cardActions.module.scss'
 
@@ -35,9 +35,9 @@ export const CardActions = ({ card, onSubmit, open, setOpen, title = '' }: CardA
         <ModalWithContent>
           <Select
             className={s.selector}
-            label={'Choose a question format'}
             onValueChange={setVariantCard}
             options={arrTypesForm}
+            title={'Choose a question format'}
             value={variantCard}
           />
           {variantCard === 'Text' ? (

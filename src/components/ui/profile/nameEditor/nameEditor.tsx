@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { ControlledInput } from '@/components/controlled/controlled-input/controlled-input'
+import { ControlledInput } from '@/components/controlled/controlledInput/controlledInput'
 import { Button } from '@/components/ui/button'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -22,7 +22,7 @@ type EditorProps = {
   onSubmit: (data: FormValues) => void
 }
 
-const NameEditor: FC<EditorProps> = ({ name = 'User', onSubmit }) => {
+const NameEditor: FC<EditorProps> = ({ name, onSubmit }) => {
   const { control, handleSubmit } = useForm<FormValues>({
     defaultValues: {
       name: name,

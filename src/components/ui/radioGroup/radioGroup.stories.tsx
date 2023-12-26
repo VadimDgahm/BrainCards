@@ -1,8 +1,17 @@
 import { Meta, StoryObj } from '@storybook/react'
 
-import { RadioGroup } from './radioGroup'
+import { RadioGroup, RadioValues } from './radioGroup'
 
-const options = ['one', 'two', 'three', 'four']
+const options: RadioValues[] = [
+  { grade: 1, value: 'Did not know' },
+  { grade: 2, value: 'Forgot' },
+  { grade: 3, value: 'A lot of though' },
+  {
+    grade: 4,
+    value: 'Confused',
+  },
+  { grade: 5, value: 'Knew the answer' },
+]
 
 const meta = {
   argTypes: {

@@ -3,8 +3,8 @@ import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButt
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 import { Select } from '@/components/ui/select/select'
 import { useChangeCard } from '@/pages/deck-modals/change-card/useChangeCard'
+import { FormWithText } from '@/pages/deck-modals/create-card/FormWithText/FormWithText'
 import { FormWithImg } from '@/pages/deck-modals/create-card/formWithImg/FormWithImg'
-import { FormWithText } from '@/pages/deck-modals/create-card/formWithText/formWithText'
 
 type CreateCardProps = {
   idDeck: string
@@ -29,9 +29,9 @@ export const ChangeCard = ({ idDeck, open, setOpen }: CreateCardProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalWithContent>
           <Select
-            label={'Choose a question format'}
             onValueChange={setVariantCard}
             options={arrTypesForm}
+            title={'Choose a question format'}
             value={variantCard}
           />
           {variantCard === 'Text' ? (
