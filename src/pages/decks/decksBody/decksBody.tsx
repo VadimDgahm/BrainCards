@@ -126,7 +126,7 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
             currentPage={currentPage}
             onChangePageSize={handleItemsPerPageSet}
             onPageChange={handleCurrentPageSet}
-            pageSize={itemsPersPage}
+            pageSize={itemsPerPage}
             totalCount={data?.pagination.totalItems}
           />
         </>
