@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { Provider } from 'react-redux'
 
 import App from '@/App'
-import { store } from '@/src/services/store'
+import { store } from '@/services/store'
 import ReactDOM from 'react-dom/client'
 
 import './styles/index.scss'

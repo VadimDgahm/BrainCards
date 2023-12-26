@@ -5,7 +5,7 @@ import Modal, { ModalProps } from '@/components/ui/modal/modal'
 import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
 import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 import { Pagination, PaginationProps } from '@/components/ui/pagination/Pagination'
-import { OptionsType } from '@/components/ui/select/Select'
+import { OptionsType } from '@/components/ui/select/select'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

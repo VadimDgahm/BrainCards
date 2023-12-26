@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 
 import { LoginForm } from '@/components/auth/sign-in'
-import { useGetMeQuery, useLoginMutation } from '@/src/services/auth/authService'
-import { LoginResponse } from '@/src/services/auth/authServiceType'
+import { useGetMeQuery, useLoginMutation } from '@/services/auth/authService'
+import { LoginResponse } from '@/services/auth/authServiceType'
 import { showResultToast } from '@/uttils/commonFunctions'
 
 export const SingInPages = () => {

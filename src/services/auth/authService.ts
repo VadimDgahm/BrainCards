@@ -3,8 +3,8 @@ import {
   LoginRequest,
   LoginResponse,
   SingUpResponse,
-} from '@/src/services/auth/authServiceType'
-import { baseApi } from '@/src/services/base-api'
+} from '@/services/auth/authServiceType'
+import { baseApi } from '@/services/base-api'
 
 export const authService = baseApi.injectEndpoints({
   endpoints: builder => ({

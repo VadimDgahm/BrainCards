@@ -15,7 +15,8 @@ import { SingUpPages } from '@/pages/auth/singUpPages'
 import { PageCards } from '@/pages/cards/pageCards'
 import Decks from '@/pages/decks/Decks'
 import { Layout } from '@/pages/layout/layout'
-import { useGetMeQuery } from '@/src/services/auth/authService'
+import { LearnCards } from '@/pages/learnCrads/LearnCards'
+import { useGetMeQuery } from '@/services/auth/authService'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -56,6 +57,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <PageCards />,
     path: '/cards/:id',
+  },
+  {
+    element: <LearnCards />,
+    path: '/decks/learn/:cardsId?',
   },
 ]
 

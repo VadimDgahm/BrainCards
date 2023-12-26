@@ -33,9 +33,10 @@ export const ControlledRadio = <T extends FieldValues>({
       disabled={disabled}
       errorMessage={error?.message}
       name={name}
-      onChange={onChange}
+      onValueChange={onChange}
       options={options}
       ref={ref}
+      value={value}
     />
   )
 }

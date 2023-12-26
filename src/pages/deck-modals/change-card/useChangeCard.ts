@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
-import { useAddCardByDeckIdMutation } from '@/src/services/cards.service'
+import { useAddCardByDeckIdMutation } from '@/services/cards.service'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 

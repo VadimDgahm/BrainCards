@@ -9,12 +9,13 @@ export const Slider = forwardRef<
   ElementRef<typeof SliderRadix.Root>,
   ComponentPropsWithoutRef<typeof SliderRadix.Root> & {
     maxValue: number
-    onValueChange: (values: number[]) => void
+
+    onSliderValuesChange: (values: number[]) => void
     values: number[]
   }
->(({ maxValue, onValueChange, values, ...rest }, ref) => {
+>(({ maxValue, onSliderValuesChange, values, ...rest }, ref) => {
   const onValueChangeHandler = (numbers: number[]) => {
-    onValueChange(numbers)
+    onSliderValuesChange(numbers)
   }
 
   return (

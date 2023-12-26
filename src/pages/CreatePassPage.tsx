@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom'
 
 import { CreatePass } from '@/components/auth/create-pass'
-import { useResetPasswordMutation } from '@/src/services/auth/authService'
+import { useResetPasswordMutation } from '@/services/auth/authService'
 
 export const CreatePassPage = () => {
   const navigate = useNavigate()

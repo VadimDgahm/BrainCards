@@ -15,12 +15,23 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const SliderView: Story = {
+  args: {
+    maxValue: 15,
+    values: [0, 15],
+  },
   render: () => {
-    const [values, setValues] = useState([0, 10])
+    const [values, setValues] = useState({ max: 15, min: 0 })
+    const onChangeHandler = (newValues: number[]) => {
+      setValues({ max: newValues[1], min: newValues[0] })
+    }
 
     return (
       <>
-        <Slider maxValue={10} updateValues={numbers => setValues(numbers)} values={values} />
+        <Slider
+          maxValue={15}
+          onSliderValuesChange={onChangeHandler}
+          values={[values.min, values.max]}
+        />
       </>
     )
   },

@@ -85,6 +85,20 @@ const PlayEditAndTrash: FC<PlayEditAndTrashProps> = ({
   )
 }
 
+type PlayProps = {
+  onChangePlay?: () => void
+} & ComponentProps<'div'>
+const Play: FC<PlayProps> = ({ className, onChangePlay, ...rest }) => {
+  const classNames = clsx(className, s.cell)
+  const classNamesIcon = clsx(s.icon, s.indentation)
+
+  return (
+    <div className={classNames} {...rest}>
+      <PlayCircleOutline className={classNamesIcon} onClick={onChangePlay} />
+    </div>
+  )
+}
+
 type WithImageProps = {
   src?: null | string
   title: string
@@ -121,6 +135,7 @@ const WithSort: FC<WithSortProps> = ({ className, sort = 'down', title, ...rest 
 
 export const CellVariant = {
   EditAndTrash,
+  Play,
   PlayEditAndTrash,
   Stars,
   WithImage,

@@ -29,9 +29,9 @@ export const ChangeCard = ({ idDeck, open, setOpen }: CreateCardProps) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <ModalWithContent>
           <Select
-            label={'Choose a question format'}
             onValueChange={setVariantCard}
             options={arrTypesForm}
+            title={'Choose a question format'}
             value={variantCard}
           />
           {variantCard === 'Text' ? (

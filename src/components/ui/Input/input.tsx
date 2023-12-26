@@ -1,5 +1,4 @@
 import { ChangeEvent, ComponentPropsWithoutRef, forwardRef } from 'react'
-import { toast } from 'react-toastify'
 
 import { useInput } from '@/components/ui/Input/hook/hookInput'
 import { EyeOffOutline } from '@/components/ui/icons/eye-off-outline/EyeOffOutline'
@@ -10,8 +9,6 @@ import clsx from 'clsx'
 
 import s from './input.module.scss'
 
-import onChange = toast.onChange
-
 export type InputProps = {
   errorMessage?: string
   label?: string
@@ -19,7 +16,7 @@ export type InputProps = {
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ className, errorMessage, label, onValueChange, ...rest }, ref) => {
+  ({ className, errorMessage, label, onChange, onValueChange, ...rest }, ref) => {
     const { isOpenEye, onClickSvgEye, typeInput } = useInput(rest.type)
     const classNames = clsx(s.input, errorMessage && s.error, typeInput === 'search' && s.search)
 
@@ -57,6 +54,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
+
 type EyeIconProps = {
   isOpenEye: boolean | undefined
   onClickSvgEye: (isOpen: boolean) => void

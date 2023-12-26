@@ -20,6 +20,8 @@
 }
 
 .RadioGroupItem {
+  cursor: pointer;
+
   position: relative;
 
   display: flex;
@@ -31,7 +33,6 @@
   border: 2px solid var(--color-accent-500);
   border-radius: 50%;
 
-  &:hover::before,
   &:active::before,
   &:focus::before {
     content: '';
@@ -63,17 +64,10 @@
   opacity: 0.3;
   background-color: var(--color-accent-500);
   border-radius: 50%;
-
-  &:hover {
-    opacity: 0.5;
-  }
-
-  &:focus {
-    opacity: 0.2;
-  }
 }
 
 .RadioLabel {
+  //cursor: pointer;
   color: var(--color-light-100);
 }
 

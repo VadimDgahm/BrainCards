@@ -10,7 +10,7 @@ export const useInput = (type: string | undefined) => {
     if (type === 'password') {
       setIsOpenEye(false)
     }
-  }, [])
+  }, [type])
 
   const onClickSvgEye = (isOpen: boolean) => {
     isOpen ? setTypeInput('text') : setTypeInput('password')

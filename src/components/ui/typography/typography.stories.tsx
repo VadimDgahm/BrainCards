@@ -37,15 +37,6 @@ export const Large: Story = {
     variant: 'large',
   },
 }
-
-export const LargeInBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'large',
-  },
-}
-
 export const H1: Story = {
   args: {
     brightTheme: false,
@@ -53,15 +44,6 @@ export const H1: Story = {
     variant: 'h1',
   },
 }
-
-export const H1InBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'h1',
-  },
-}
-
 export const H2: Story = {
   args: {
     brightTheme: false,
@@ -69,26 +51,9 @@ export const H2: Story = {
     variant: 'h2',
   },
 }
-
-export const H2InBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'h2',
-  },
-}
-
 export const H3: Story = {
   args: {
     brightTheme: false,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'h3',
-  },
-}
-
-export const H3InBright: Story = {
-  args: {
-    brightTheme: true,
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
     variant: 'h3',
   },
@@ -101,26 +66,9 @@ export const Body1: Story = {
     variant: 'body1',
   },
 }
-
-export const Body1InBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'body1',
-  },
-}
-
 export const Body2: Story = {
   args: {
     brightTheme: false,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'body2',
-  },
-}
-
-export const Body2InBright: Story = {
-  args: {
-    brightTheme: true,
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
     variant: 'body2',
   },
@@ -134,25 +82,9 @@ export const Subtitle1: Story = {
   },
 }
 
-export const Subtitle1InBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'subtitle1',
-  },
-}
-
 export const Subtitle2: Story = {
   args: {
     brightTheme: false,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'subtitle2',
-  },
-}
-
-export const Subtitle2InBright: Story = {
-  args: {
-    brightTheme: true,
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
     variant: 'subtitle2',
   },
@@ -166,25 +98,9 @@ export const Overline: Story = {
   },
 }
 
-export const OverlineInBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'overline',
-  },
-}
-
 export const Caption: Story = {
   args: {
     brightTheme: false,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'caption',
-  },
-}
-
-export const CaptionInBright: Story = {
-  args: {
-    brightTheme: true,
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
     variant: 'caption',
   },
@@ -198,25 +114,9 @@ export const Link1: Story = {
   },
 }
 
-export const Link1InBright: Story = {
-  args: {
-    brightTheme: true,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'link1',
-  },
-}
-
 export const Link2: Story = {
   args: {
     brightTheme: false,
-    children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
-    variant: 'link2',
-  },
-}
-
-export const Link2InBright: Story = {
-  args: {
-    brightTheme: true,
     children: 'Carosserie Test Zürich\n' + 'Stauffacherstrasse 31\n' + '8004 Zürich, ZH, CH',
     variant: 'link2',
   },
