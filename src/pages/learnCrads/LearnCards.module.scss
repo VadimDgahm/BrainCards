@@ -38,11 +38,23 @@
   cursor: pointer;
 
   display: flex;
-  flex-direction: row;
-  gap: 6px;
   align-items: center;
+  justify-content: start;
 
   margin-top: 24px;
+  margin-bottom: 33px;
+
+  color: var(--color-light-100);
+
+  transition: 0.2s ease-out;
+
+  &:hover {
+    color: var(--color-info-300);
+
+    svg path {
+      fill: var(--color-info-300);
+    }
+  }
 }
 
 .iconBack {

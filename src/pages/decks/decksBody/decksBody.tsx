@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { ArrowDown } from '@/components/ui/icons/arrowDown/ArrowDown'
@@ -15,7 +15,6 @@ import {
   selectItemsPerPage,
   selectOrderBy,
   selectSearchFieldSetting,
-  selectTabSwitcherValues,
 } from '@/pages/decks/selectors'
 import { useGetMeQuery } from '@/services/auth/authService'
 import { setCurrentPage, setItemsPerPage, setOrderBy } from '@/services/decks/deck.slice'
@@ -38,9 +37,10 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
   const orderBy = useAppSelector(selectOrderBy)
   const dispatch = useAppDispatch()
   const { data: userData } = useGetMeQuery()
+  const currentPageValue = tabSwitcherPosition === 'left' ? 1 : currentPage
   const { data, error, isError, isLoading } = useGetDecksQuery({
     authorId: tabSwitcherPosition === 'left' ? userData?.id : undefined,
-    currentPage,
+    currentPage: currentPageValue,
     itemsPerPage,
     maxCardsCount: sliderCardsValues.maxCardsCount,
     minCardsCount: sliderCardsValues.minCardsCount,
@@ -81,7 +81,9 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
                 <Table.Cell>Name</Table.Cell>
                 <Table.Cell>Cards</Table.Cell>
                 <Table.Cell className={s.updatedGroup} onClick={handleSortOptionChange}>
-                  <Typography variant={'body1'}>Last Updated</Typography>
+                  <Typography className={s.updateTitle} variant={'body1'}>
+                    Last Updated
+                  </Typography>
                   {orderBy === 'updated-asc' ? (
                     <ArrowUp className={s.arrowIcon} />
                   ) : (
