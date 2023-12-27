@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import { TabSwitcher } from '@/components/ui/tabSwitcher/tabSwitcher'
 import { Meta, StoryObj } from '@storybook/react'
 
@@ -28,11 +30,35 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const DefaultSwitcher: Story = {
-  args: {
-    disable: false,
-    value: 'left',
-  },
+type DefaultSwitcherArgs = {
+  disable: boolean
+  value: string
+  valuesCollection: { location: string; value: string }[]
+}
+
+type DefaultSwitcherStory = StoryObj<DefaultSwitcherArgs>
+
+export const DefaultSwitcher: DefaultSwitcherStory = args => {
+  const [value, setValue] = useState(args?.value || '')
+
+  const handleValueChange = (newValue: string) => {
+    setValue(newValue)
+  }
+
+  return (
+    <TabSwitcher
+      disable={args.disable}
+      onValueChange={handleValueChange}
+      value={value}
+      valuesCollection={args.valuesCollection}
+    />
+  )
+}
+
+DefaultSwitcher.args = {
+  disable: false,
+  value: 'left',
+  valuesCollection: collection,
 }
 
 export const DisabledSwitcher: Story = {
