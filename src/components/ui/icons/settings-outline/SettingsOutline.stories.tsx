@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SettingsOutline } from '@/components/ui/icons/settings-outline/SettingsOutline.tsx'
+
+import { SettingsOutline } from './SettingsOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Settings1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

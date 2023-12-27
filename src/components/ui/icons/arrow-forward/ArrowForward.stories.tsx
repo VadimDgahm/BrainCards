@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ArrowForward } from '@/components/ui/icons/arrow-forward/ArrowForward.tsx'
+
+import { ArrowForward } from './ArrowForward'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const ArrowForwardIcon: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StarIcon } from '@/components/ui/icons/star/StarIcon.tsx'
+
+import { StarIcon } from './StarIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Star2: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

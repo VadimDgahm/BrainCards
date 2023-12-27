@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { TrashOutline } from '@/components/ui/icons/trash-outline/TrashOutline.tsx'
+
+import { TrashOutline } from './TrashOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Trash1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

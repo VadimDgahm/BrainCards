@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CreditCardOutline } from '@/components/ui/icons/credit-card-outline/CreditCardOutline.tsx'
+
+import { CreditCardOutline } from './CreditCardOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const CreditCard1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

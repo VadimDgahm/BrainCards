@@ -1,8 +1,10 @@
 import { FC } from 'react'
 
 import { Input } from '@/components/ui/Input'
+import { Loader } from '@/components/ui/Loader/Loader'
 import { Button } from '@/components/ui/button'
 import { TrashOutline } from '@/components/ui/icons/trash-outline/TrashOutline'
+import { Preloader } from '@/components/ui/preloader'
 import { Slider } from '@/components/ui/slider/slider'
 import { TabSwitcher } from '@/components/ui/tabSwitcher'
 import { Typography } from '@/components/ui/typography'
@@ -73,7 +75,7 @@ const DecksHeader: FC<DeckHeaderType> = ({
       </div>
       {isLoading ? (
         <Typography className={s.loading} variant={'large'}>
-          is Loading
+          <Preloader />
         </Typography>
       ) : (
         <div className={s.searchFields}>

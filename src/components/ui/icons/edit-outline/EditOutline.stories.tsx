@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { EditOutline } from '@/components/ui/icons/edit-outline/EditOutline.tsx'
+
+import { EditOutline } from './EditOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Edit1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

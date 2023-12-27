@@ -26,7 +26,11 @@ export const CellWithIcon = ({ onChangePlay, ...deck }: CellWithIconType) => {
   const navigate = useNavigate()
 
   const handleClick = () => {
-    navigate(`/decks/learn/${deck.id}`)
+    if (deck?.cardsCount) {
+      navigate(`/decks/learn/${deck.id}`)
+    } else {
+      toast.success('No cards in this deck')
+    }
   }
 
   return (

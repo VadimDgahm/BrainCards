@@ -96,6 +96,7 @@ const decksService = baseApi.injectEndpoints({
         providesTags: ['Decks'],
         query: args => {
           return {
+            // force: Boolean(args?.authorId === 'id'),
             params: args ?? {},
             url: `decks`,
           }

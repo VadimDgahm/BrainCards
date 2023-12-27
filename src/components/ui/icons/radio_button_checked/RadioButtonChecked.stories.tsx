@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RadioButtonCheckedIcon } from '@/components/ui/icons/radio_button_checked/RadioButtonCheckedIcon.tsx'
+
+import { RadioButtonCheckedIcon } from './RadioButtonCheckedIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const RadioButtonChecked: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

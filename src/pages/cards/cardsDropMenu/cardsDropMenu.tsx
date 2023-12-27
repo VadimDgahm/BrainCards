@@ -32,7 +32,7 @@ export const CardsDropMenu = ({ idDeck }: CardDropMenu) => {
     <>
       <DropDownMenu open={false} trigger={<MoreVerticalOutline className={s.iconMore} />}>
         <MenuContent
-          onClick={() => alert('learn')}
+          onClick={() => navigate(`/decks/learn/${idDeck}`)}
           svgIcon={<PlayCircleOutline />}
           title={'Learn'}
         />

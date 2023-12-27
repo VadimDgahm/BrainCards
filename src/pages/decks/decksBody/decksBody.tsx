@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { ArrowDown } from '@/components/ui/icons/arrowDown/ArrowDown'
@@ -15,6 +15,7 @@ import {
   selectItemsPerPage,
   selectOrderBy,
   selectSearchFieldSetting,
+  selectTabSwitcherValues,
 } from '@/pages/decks/selectors'
 import { useGetMeQuery } from '@/services/auth/authService'
 import { setCurrentPage, setItemsPerPage, setOrderBy } from '@/services/decks/deck.slice'
@@ -82,9 +83,9 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
                 <Table.Cell className={s.updatedGroup} onClick={handleSortOptionChange}>
                   <Typography variant={'body1'}>Last Updated</Typography>
                   {orderBy === 'updated-asc' ? (
-                    <ArrowDown className={s.arrowIcon} />
-                  ) : (
                     <ArrowUp className={s.arrowIcon} />
+                  ) : (
+                    <ArrowDown className={s.arrowIcon} />
                   )}
                 </Table.Cell>
                 <Table.Cell>Created by</Table.Cell>
@@ -105,15 +106,9 @@ export const DecksBody: FC<DeckBodyProps> = ({ sliderCardsValues, tabSwitcherPos
                     <Table.Cell>{deck?.author?.name}</Table.Cell>
                     <Table.Cell>
                       {deck.author.id === userData?.id ? (
-                        <CellWithIcon
-                          {...deck}
-                          onClick={() => navigate(`/decks/learn/${deck.id}`)}
-                        />
+                        <CellWithIcon {...deck} />
                       ) : (
-                        <CellWithPlayIcon
-                          id={deck.id}
-                          onClick={() => navigate(`/decks/learn/${deck.id}`)}
-                        />
+                        <CellWithPlayIcon {...deck} />
                       )}
                     </Table.Cell>
                   </Table.Row>

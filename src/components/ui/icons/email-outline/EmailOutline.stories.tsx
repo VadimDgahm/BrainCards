@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { EmailOutline } from '@/components/ui/icons/email-outline/EmailOutline.tsx'
+
+import { EmailOutline } from './EmailOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Email1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

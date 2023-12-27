@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { PauseCircleOutline } from '@/components/ui/icons/pause-circle-outline/PauseCircleOutline.tsx'
+
+import { PauseCircleOutline } from './PauseCircleOutline'
 // import { _ } from '@/components/ui/icons/home/HomeIcon.tsx'
 
 const meta = {

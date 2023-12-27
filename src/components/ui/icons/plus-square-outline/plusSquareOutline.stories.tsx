@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { PlusSquareOutline } from '@/components/ui/icons/plus-square-outline/PlusSquareOutline'
+import { PlusSquareOutline } from './PlusSquareOutline'
 
 const meta = {
   argTypes: {
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const PlusSquare1: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

@@ -4,10 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { ArrowBackOutLine } from '@/components/ui/icons/arrow-back-outline/ArrowBackOutline'
+import { Preloader } from '@/components/ui/preloader'
 import { RadioWithRating } from '@/components/ui/radioWithRating'
 import { Typography } from '@/components/ui/typography'
-import { EmptyDeck } from '@/pages/cards/emptyDeck/emptyDeck'
-import { useGetMeQuery } from '@/services/auth/authService'
 import {
   useCreateAndSaveRateMutation,
   useGetCardsForLearnQuery,
@@ -24,11 +23,9 @@ export const LearnCards = () => {
   const { data: learnData } = useGetCardsForLearnQuery({ id: params?.cardsId })
 
   const [saveRate] = useCreateAndSaveRateMutation()
-  const { data } = useGetDecksByIDQuery({ id: params?.cardsId })
+  const { data, isLoading } = useGetDecksByIDQuery({ id: params?.cardsId })
   const [getNextCard] = useLazyGetCardsForLearnQuery()
-  const { data: myData } = useGetMeQuery()
   const navigate = useNavigate()
-  const [isOpenModuleCreateCard, setIsOpenModuleCreateCard] = useState(false)
   const handleShowAnswer = () => {
     setShowAnswer(!showAnswer)
   }
@@ -46,19 +43,17 @@ export const LearnCards = () => {
     setShowAnswer(true)
   }
 
-  const handleOpenCreateCard = () => {
-    myData?.id === learnData?.userId
-      ? setIsOpenModuleCreateCard(true)
-      : setIsOpenModuleCreateCard(false)
-  }
-
   return (
     <>
-      <Typography className={s.linkBack} onClick={() => navigate('/')} variant={'body2'}>
+      <Typography
+        className={s.linkBack}
+        onClick={() => navigate(`/cards/${learnData?.deckId}`)}
+        variant={'body2'}
+      >
         <ArrowBackOutLine className={s.iconBack} />
-        Back to Packs List
+        Back to {data?.name} cards
       </Typography>
-      {data?.cardsCount ? (
+      {!isLoading ? (
         <Card className={s.learnCard}>
           <Typography className={s.title} variant={'large'}>
             Learn {data?.name}
@@ -94,11 +89,9 @@ export const LearnCards = () => {
           )}
         </Card>
       ) : (
-        <EmptyDeck
-          deckName={data?.name}
-          isMyDeck={myData?.id === learnData?.userId}
-          openCreateCard={handleOpenCreateCard}
-        />
+        <div className={s.learnPreloader}>
+          <Preloader />
+        </div>
       )}
     </>
   )

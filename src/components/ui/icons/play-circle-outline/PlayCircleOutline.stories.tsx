@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { PlayCircleOutline } from '@/components/ui/icons/play-circle-outline/PlayCircleOutline.tsx'
+
+import { PlayCircleOutline } from './PlayCircleOutline'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const PlayCircle1: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

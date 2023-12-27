@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import ModalWithContent from '@/components/ui/modal/modalWithContent/modalWithContent'
 import { Typography } from '@/components/ui/typography'
+
+import ModalWithContent from './modalWithContent'
 
 const meta = {
   component: ModalWithContent,

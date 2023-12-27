@@ -42,7 +42,7 @@ export const HeaderCards = ({
             (isMyDeck ? (
               <Button onClick={() => setIsOpenModuleCreateCard(true)}>Add New Card</Button>
             ) : (
-              <Button>Learn to Pack</Button>
+              <Button onClick={() => navigate(`/decks/learn/${idDeck}`)}>Learn to Pack</Button>
             ))}
         </div>
       </div>

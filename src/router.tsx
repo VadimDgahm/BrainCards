@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { NotFoundPage } from '@/pages/404Page'
 import { CheckEmailPage } from '@/pages/CheckEmailPage'
 import { CreatePassPage } from '@/pages/CreatePassPage'
 import { ForgotPassPage } from '@/pages/ForgotPassPage'
@@ -38,6 +39,10 @@ const publicRoutes: RouteObject[] = [
   {
     element: <CheckEmailPage />,
     path: '/check-email/:email',
+  },
+  {
+    element: <NotFoundPage />,
+    path: '/*',
   },
 ]
 

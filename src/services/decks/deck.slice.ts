@@ -9,6 +9,10 @@ export const initialState: initialDeckStateType = {
     maxCardsCount: 61,
     minCardsCount: 0,
   },
+  // tabSwitcherValue: {
+  //   location: 'right',
+  //   value: 'All Cards',
+  // },
 }
 
 export type initialDeckStateType = {
@@ -17,6 +21,7 @@ export type initialDeckStateType = {
   orderBy: string
   searchField: string
   sliderValues: SliderValuesType
+  // tabSwitcherValue: ValuesPosition
 }
 
 export type SliderValuesType = {
