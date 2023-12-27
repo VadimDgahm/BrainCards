@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import NameEditor from '@/components/ui/profile/nameEditor/nameEditor'
+import NameEditor from './nameEditor'
 
 const meta = {
   component: NameEditor,

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { PaidIcon } from '@/components/ui/icons/paid/PaidIcon.tsx'
+
+import { PaidIcon } from './PaidIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Paid: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

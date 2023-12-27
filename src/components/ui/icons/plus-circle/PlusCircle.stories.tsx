@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { PlusCircle } from '@/components/ui/icons/plus-circle/PlusCircle.tsx'
+
+import { PlusCircle } from './PlusCircle'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const PlusCircle2: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

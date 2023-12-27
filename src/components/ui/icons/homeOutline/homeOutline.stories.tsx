@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { HomeOutline } from '@/components/ui/icons/homeOutline/HomeOutline'
+import { HomeOutline } from './HomeOutline'
 
 const meta = {
   argTypes: {

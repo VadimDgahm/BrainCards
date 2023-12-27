@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { MicIcon } from '@/components/ui/icons/mic/MicIcon.tsx'
+
+import { MicIcon } from './MicIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Mic2: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

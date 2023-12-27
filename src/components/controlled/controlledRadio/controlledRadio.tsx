@@ -31,7 +31,7 @@ export const ControlledRadio = <T extends FieldValues>({
     <RadioGroup
       {...rest}
       disabled={disabled}
-      errorMessage={error?.message}
+      errorMessage={error?.message ? 'Please, choose a grade' : ''}
       name={name}
       onValueChange={onChange}
       options={options}

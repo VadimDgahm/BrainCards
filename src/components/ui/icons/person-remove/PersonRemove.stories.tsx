@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { PersonRemove } from '@/components/ui/icons/person-remove/PersonRemove.tsx'
+
+import { PersonRemove } from './PersonRemove'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const PersonRemove2: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

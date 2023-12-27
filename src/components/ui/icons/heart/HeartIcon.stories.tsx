@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { HeartIcon } from '@/components/ui/icons/heart/HeartIcon.tsx'
+
+import { HeartIcon } from './HeartIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Heart2: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

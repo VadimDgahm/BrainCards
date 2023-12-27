@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CopyOutline } from '@/components/ui/icons/copy-outline/CopyOutline'
+
+import { CopyOutline } from './CopyOutline'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Copy1: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

@@ -12,7 +12,7 @@ type TabSwitcherProps = {
   valuesCollection: ValuesPosition[]
 }
 
-type ValuesPosition = {
+export type ValuesPosition = {
   location: string
   value: string
 }

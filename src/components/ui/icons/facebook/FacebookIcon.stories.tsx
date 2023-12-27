@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { FacebookIcon } from '@/components/ui/icons/facebook/FacebookIcon.tsx'
+
+import { FacebookIcon } from './FacebookIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Facebook: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

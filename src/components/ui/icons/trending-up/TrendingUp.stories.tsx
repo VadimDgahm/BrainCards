@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { TrendingUp } from '@/components/ui/icons/trending-up/TrendingUp.tsx'
+
+import { TrendingUp } from './TrendingUp'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const TrendingUpSvg: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

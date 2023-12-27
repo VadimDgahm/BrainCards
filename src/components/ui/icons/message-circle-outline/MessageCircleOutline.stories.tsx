@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { MessageCircleOutline } from '@/components/ui/icons/message-circle-outline/MessageCircleOutline.tsx'
+
+import { MessageCircleOutline } from './MessageCircleOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const MessageCircle1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

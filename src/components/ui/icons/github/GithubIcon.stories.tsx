@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { GithubIcon } from '@/components/ui/icons/github/GithubIcon.tsx'
+
+import { GithubIcon } from './GithubIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Github: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { CalendarOutline } from '@/components/ui/icons/calendar-outline/CalendarOutline.tsx'
+
+import { CalendarOutline } from './CalendarOutline'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Calendar1: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

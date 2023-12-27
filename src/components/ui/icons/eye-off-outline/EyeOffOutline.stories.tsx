@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { EyeOffOutline } from '@/components/ui/icons/eye-off-outline/EyeOffOutline.tsx'
+
+import { EyeOffOutline } from './EyeOffOutline'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const EyeOff1: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

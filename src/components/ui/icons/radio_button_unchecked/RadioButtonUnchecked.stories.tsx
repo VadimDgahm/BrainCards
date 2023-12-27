@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RadioButtonUnchecked } from '@/components/ui/icons/radio_button_unchecked/RadioButtonUnchecked.tsx'
+
+import { RadioButtonUnchecked } from './RadioButtonUnchecked'
 
 const meta = {
   argTypes: {

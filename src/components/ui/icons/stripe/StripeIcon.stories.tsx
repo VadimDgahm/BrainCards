@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { StripeIcon } from '@/components/ui/icons/stripe/StripeIcon.tsx'
+
+import { StripeIcon } from './StripeIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Stripe: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

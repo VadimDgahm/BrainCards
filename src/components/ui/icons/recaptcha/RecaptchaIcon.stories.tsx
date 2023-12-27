@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { RecaptchaIcon } from '@/components/ui/icons/recaptcha/RecaptchaIcon.tsx'
+
+import { RecaptchaIcon } from './RecaptchaIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Recaptcha: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

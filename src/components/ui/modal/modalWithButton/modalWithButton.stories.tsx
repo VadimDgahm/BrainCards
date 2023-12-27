@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import ModalWithButton from '@/components/ui/modal/modalWithButton/modalWithButton'
+import ModalWithButton from './modalWithButton'
 
 const meta = {
   component: ModalWithButton,

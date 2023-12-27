@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { ColorPalette } from '@/components/ui/icons/color-palette/ColorPalette.tsx'
+
+import { ColorPalette } from './ColorPalette'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const ColorPaletteIcon: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

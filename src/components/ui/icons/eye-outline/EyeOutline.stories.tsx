@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { EyeOutline } from '@/components/ui/icons/eye-outline/EyeOutline'
+import { EyeOutline } from './EyeOutline'
 
 const meta = {
   argTypes: {

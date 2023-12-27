@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { BlockIcon } from '@/components/ui/icons/block/BlockIcon.tsx'
+
+import { BlockIcon } from './BlockIcon'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Block: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

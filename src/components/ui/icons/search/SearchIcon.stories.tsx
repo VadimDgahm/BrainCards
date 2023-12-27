@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { SearchIcon } from '@/components/ui/icons/search/SearchIcon.tsx'
+
+import { SearchIcon } from './SearchIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Search: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

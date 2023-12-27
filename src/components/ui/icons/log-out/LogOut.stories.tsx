@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { LogOut } from '@/components/ui/icons/log-out/LogOut.tsx'
+
+import { LogOut } from './LogOut'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const LogOutIcon: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

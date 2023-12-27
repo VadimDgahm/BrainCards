@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { BookmarkOutline } from '@/components/ui/icons/bookmark-outline/BookmarkOutline.tsx'
+
+import { BookmarkOutline } from './BookmarkOutline'
 
 const meta = {
   argTypes: {
@@ -18,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Bookmark1: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }

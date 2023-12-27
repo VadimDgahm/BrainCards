@@ -44,7 +44,6 @@ export const RadioWithRating = ({ onSubmit }: { onSubmit: (data: FormValues) => 
         grade: selectedValue.grade.toString(),
       }
 
-      console.log(data.grade) // Вывод значения grade в консоль
       onSubmit(data)
     }
   }
@@ -63,7 +62,9 @@ export const RadioWithRating = ({ onSubmit }: { onSubmit: (data: FormValues) => 
             onValueChange={value => setValue('grade', value)}
             options={values}
           />
-          <Button type={'submit'}>Next Question</Button>
+          <Button className={s.nextButton} type={'submit'}>
+            Next Question
+          </Button>
         </form>
       </div>
     </>

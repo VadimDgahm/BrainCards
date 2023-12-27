@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { GoogleIcon } from '@/components/ui/icons/google/GoogleIcon.tsx'
+
+import { GoogleIcon } from './GoogleIcon'
 
 const meta = {
   argTypes: {
@@ -18,8 +19,8 @@ type Story = StoryObj<typeof meta>
 
 export const Google: Story = {
   args: {
-    onClick: () => alert('ку'),
-
     color: '',
+
+    onClick: () => alert('ку'),
   },
 }

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { PersonOutline } from '@/components/ui/icons/person-outline/PersonOutline'
+import { PersonOutline } from './PersonOutline'
 
 const meta = {
   argTypes: {
@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>
 
 export const Person1: Story = {
   args: {
-    onClick: () => alert('ку'),
     color: '',
+    onClick: () => alert('ку'),
   },
 }
