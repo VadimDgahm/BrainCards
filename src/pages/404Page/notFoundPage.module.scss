@@ -1,6 +1,9 @@
 .image {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+
   margin-top: 150px;
 }
 
@@ -9,8 +12,5 @@
 }
 
 .buttonBack {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 28px auto;
+  margin-top: 28px;
 }
