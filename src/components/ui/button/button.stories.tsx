@@ -82,3 +82,12 @@ export const AsLink: Story = {
     variant: 'primary',
   },
 }
+
+export const FullWidth: Story = {
+  args: {
+    children: 'Full Width Button',
+    disabled: false,
+    fullWidth: true,
+    variant: 'primary',
+  },
+}

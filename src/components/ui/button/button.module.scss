@@ -1,10 +1,11 @@
-.button {
+@mixin button {
   cursor: pointer;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
+  box-sizing: border-box;
   padding: 6px 28px;
 
   font-size: var(--font-size-s);
@@ -19,9 +20,16 @@
   outline: none;
 
   transition: 0.3s;
+
+  &.fullWidth {
+    justify-content: center;
+    width: 100%;
+  }
 }
 
 .primary {
+  @include button;
+
   background-color: var(--color-accent-500);
 
   &:hover {
@@ -50,6 +58,8 @@
 }
 
 .secondary {
+  @include button;
+
   background-color: var(--color-dark-300);
 
   &:hover {
@@ -73,6 +83,8 @@
 }
 
 .tertiary {
+  @include button;
+
   color: var(--color-accent-500);
   background: none;
   border: 1px solid var(--color-accent-500);
@@ -96,6 +108,8 @@
 }
 
 .link {
+  @include button;
+
   color: var(--color-accent-500);
   background: none;
 
