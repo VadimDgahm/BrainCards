@@ -51,7 +51,7 @@ export const ForgotPass = ({ onSubmit }: { onSubmit: (data: FormValues) => void 
         <Typography className={s.remember} variant={'body2'}>
           Did you remember your password?
         </Typography>
-        <Button as={Link} to={'/login'} variant={'link'}>
+        <Button as={Link} fullWidth to={'/login'} variant={'link'}>
           <Typography className={s.signUp} variant={'link1'}>
             Try loggin in
           </Typography>
