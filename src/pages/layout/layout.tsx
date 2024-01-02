@@ -13,13 +13,17 @@ export const Layout = () => {
 
   return (
     <div>
-      <Header
-        avatar={data?.avatar}
-        email={data?.email}
-        isLoggedIn={!error}
-        logout={logout}
-        name={data?.name}
-      />
+      {data ? (
+        <Header
+          avatar={data?.avatar}
+          email={data?.email}
+          isLoggedIn={!error}
+          logout={logout}
+          name={data?.name}
+        />
+      ) : (
+        <Header isLoggedIn={false} logout={logout} />
+      )}
       {false && <Loader />}
       <div className={s.container}>
         <Outlet />
