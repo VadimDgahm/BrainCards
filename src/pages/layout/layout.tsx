@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useNavigate } from 'react-router-dom'
 
 import { Loader } from '@/components/ui/Loader/Loader'
 import { ToastComponent } from '@/components/ui/ToastComponent/ToastComponent'
@@ -10,6 +10,12 @@ import s from './layout.module.scss'
 export const Layout = () => {
   const { data, error } = useGetMeQuery()
   const [logout] = useLogOutMutation()
+  const navigate = useNavigate()
+  const onLogoutHandler = () => {
+    logout()
+      .unwrap()
+      .then(() => navigate('/login'))
+  }
 
   return (
     <div>
@@ -18,11 +24,11 @@ export const Layout = () => {
           avatar={data?.avatar}
           email={data?.email}
           isLoggedIn={!error}
-          logout={logout}
+          logout={onLogoutHandler}
           name={data?.name}
         />
       ) : (
-        <Header isLoggedIn={false} logout={logout} />
+        <Header isLoggedIn={false} logout={onLogoutHandler} />
       )}
       {false && <Loader />}
       <div className={s.container}>
