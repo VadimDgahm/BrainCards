@@ -23,10 +23,9 @@ export type HeaderInfoType = {
 } & ComponentPropsWithoutRef<'header'>
 
 export const Header = forwardRef<HTMLHeadElement, HeaderInfoType>(
-  ({ avatar, email, isLoggedIn, logout, name }, ref) => {
+  ({ avatar, email, isLoggedIn, name }, ref) => {
     const navigate = useNavigate()
     const onSignOutClickHandler = () => {
-      logout()
       navigate('/login')
     }
     const onProfileClickHandler = () => {
